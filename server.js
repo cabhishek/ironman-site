@@ -3,12 +3,20 @@ var logger = require('koa-logger'),
     route = require('koa-route'),
     serve = require('koa-static'),
     render = require('./lib/render'),
+    swig = require('swig'),
     koa = require('koa');
 
 var app = koa();
 
+var env = process.env.NODE_ENV || 'development';
+
 // Middleware
 app.use(logger());
+
+//Disable template caching
+if ('development' === env) {
+    swig.setDefaults({ cache: false });
+}
 
 app.use(route.get('/', index));
 

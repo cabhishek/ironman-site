@@ -9,7 +9,7 @@
     "triathlon"
   ],
   "scripts": {
-    "up": "DEBUG_COLORS=true nodemon --harmony index.js"
+    "up": "DEBUG_COLORS=true nodemon --harmony server.js"
   },
   "author": "Abhishek Kapatkar <cabhishek@gmail.com> (http://cabhishek.com/)",
   "dependencies": {
