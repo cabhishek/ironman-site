@@ -1,15 +1,11 @@
 var $ = require('jquery'),
+    _ = require('underscore'),
     Backbone = require('backbone'),
-    _ = require('underscore');
+    SearchResults = require('./../collections/searchResults');
 
 //Jquery dependancy
 Backbone.$ = $;
 
-var SearchResults = Backbone.View.extend({
-    initialize: function() {
-        this.render();
-    },
-});
 
 var SearchBox = Backbone.View.extend({
 
@@ -32,9 +28,15 @@ var SearchBox = Backbone.View.extend({
     },
 
     submit: function() {
+
         var query = $("#q").val();
 
-        new SearchResults(query);
+        var results = new SearchResults();
+
+        //Set term to search
+        results.searchTerm = query;
+
+        results.fetch();
     }
 
 });
