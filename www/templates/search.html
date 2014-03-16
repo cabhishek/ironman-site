@@ -1,0 +1,30 @@
+{% extends 'layout.html' %} {% block title %}Search{% endblock %} {% block content %}
+
+<script type="text/template" id="searchBoxTemplate">
+    <div class="row">
+        <div class="large-12 columns">
+            <form>
+                <div class="row">
+                    <div class="small-8">
+                        <div class="row collapse">
+                            <div class="small-3 columns">
+                                <label for="right-label" class="right inline">Search</label>
+                            </div>
+                            <div class="small-9 columns">
+                                <input type="text" id="q" placeholder="name...">
+                            </div>
+                            <div class="small-2 columns">
+                                <a href="#" class="button postfix">Go</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</script>
+
+<div id="search"></div>
+
+<script src="bundle/searchAppBundle.js"></script>
+{% endblock %}
