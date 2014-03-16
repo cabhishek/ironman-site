@@ -23,7 +23,8 @@
     "koa-static": "~1.4.3",
     "koa-router": "~3.1.1",
     "koa-route": "~1.1.0",
-    "asyncjs": "0.0.9"
+    "asyncjs": "0.0.9",
+    "koa-mount": "~1.2.3"
   },
   "license": "BSD-2-Clause"
 }
