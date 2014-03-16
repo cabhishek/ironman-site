@@ -3,7 +3,7 @@
 <script type="text/template" id="searchBoxTemplate">
     <div class="row">
         <div class="large-12 columns">
-            <form>
+            <form role="form">
                 <div class="row">
                     <div class="small-8">
                         <div class="row collapse">
@@ -11,10 +11,10 @@
                                 <label for="right-label" class="right inline">Search</label>
                             </div>
                             <div class="small-9 columns">
-                                <input type="text" id="q" placeholder="name...">
+                                <input type="text" id="q" placeholder="name..." >
                             </div>
                             <div class="small-2 columns">
-                                <a href="#" class="button postfix">Go</a>
+                                <button type="button" href="#" id="btn">Go </button>
                             </div>
                         </div>
                     </div>
@@ -24,9 +24,29 @@
     </div>
 </script>
 
+<script type="text/template" id="raceDataTemplate">
+    <tr>
+      <td><%= name %></td>
+      <td><%= email %></td>
+      <td><%= packages %></td>
+    </tr>
+</script>
+
 <div id="search"></div>
 
-<div id="searchResults"></div>
+<div id="searchResults">
+    <table>
+      <thead>
+        <tr>
+          <th width="200">Table Header</th>
+          <th width="150">Table Header</th>
+          <th width="150">Table Header</th>
+        </tr>
+      </thead>
+      <tbody id="tblRows">
+      </tbody>
+    </table>
+</div>
 
 <script src="bundle/searchAppBundle.js"></script>
 
