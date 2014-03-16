@@ -36,3 +36,4 @@ app.get('/', function * index() {
 require('./race/index').load(app);
 
 app.listen(3000);
+console.log('app listening on port 3000');

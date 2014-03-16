@@ -6,6 +6,15 @@ var $ = require('jquery'),
 //Jquery dependancy
 Backbone.$ = $;
 
+var ResultsView = Backbone.View.extend({
+    initialize: function() {
+        this.collection.on('add', this.render, this);
+    },
+
+    render: function(raceData){
+        alert(raceData);
+    }
+});
 
 var SearchBox = Backbone.View.extend({
 
@@ -33,10 +42,10 @@ var SearchBox = Backbone.View.extend({
 
         var results = new SearchResults();
 
-        //Set term to search
-        results.searchTerm = query;
+        results.search(query);
 
-        results.fetch();
+        //Display results
+        new ResultsView({collection: results});
     }
 
 });
