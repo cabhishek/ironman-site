@@ -24,7 +24,9 @@
     "koa-router": "~3.1.1",
     "koa-route": "~1.1.0",
     "asyncjs": "0.0.9",
-    "koa-mount": "~1.2.3"
+    "koa-mount": "~1.2.3",
+    "uglify-js": "~2.4.13",
+    "jquery": "~2.1.0"
   },
   "license": "BSD-2-Clause"
 }

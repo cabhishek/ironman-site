@@ -11,10 +11,10 @@ exports.load = function(app) {
         });
     });
 
-    app.get('/race/history', function *() {
+    app.get('/search', function *() {
 
-        this.body = yield render('history', {
-            name: "Abhishek kapatkar"
+        this.body = yield render('search', {
+            title: "Search"
         });
     });
 };

@@ -2,3 +2,6 @@
 node_modules
 temp.*
 *.log
+www/asssets/bundle
+*Bundle.*
+*bundle.*

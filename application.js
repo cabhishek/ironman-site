@@ -9,10 +9,13 @@ var app = koa();
 
 var env = process.env.NODE_ENV || 'development';
 
-// Middleware
+// Logging Middleware
 app.use(logger());
 
-//Disable template caching on dev env
+//Static files
+app.use(serve('www/assets'));
+
+//Disable template caching on dev
 if ('development' === env) {
     swig.setDefaults({
         cache: false
@@ -22,14 +25,14 @@ if ('development' === env) {
 //Mount router
 app.use(router(app));
 
-//Index page
+//Home page
 app.get('/', function * index() {
     this.body = yield render('index', {
         name: "Abhishek"
     });
 });
 
-//Load race app
+//Load Race app
 require('./race/index').load(app);
 
 app.listen(3000);
