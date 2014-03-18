@@ -9,7 +9,8 @@
     "triathlon"
   ],
   "scripts": {
-    "up": "DEBUG=koa* DEBUG_COLORS=true nodemon --harmony application.js"
+    "up": "DEBUG=koa* DEBUG_COLORS=true nodemon --harmony application.js",
+    "start": "node --harmony application.js"
   },
   "author": "Abhishek Kapatkar <cabhishek@gmail.com> (http://cabhishek.com/)",
   "dependencies": {
@@ -30,6 +31,9 @@
     "bookshelf": "~0.6.8",
     "log": "~1.4.0",
     "mysql": "~2.1.1"
+  },
+  "engines": {
+    "node": "0.11.x"
   },
   "license": "BSD-2-Clause"
 }
