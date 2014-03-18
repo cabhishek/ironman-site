@@ -8,15 +8,28 @@ Backbone.$ = $;
 
 var ResultsView = Backbone.View.extend({
 
-    el: '#tblRows',
+    el: '#results',
 
     template: _.template($('#raceDataTemplate').html()),
+
+    athleteNotFound: _.template($('#athleteNotFound').html()),
 
     initialize: function() {
         this.collection.on('add', this.render, this);
     },
 
     render: function(raceData) {
+
+        if (!raceData.get('found')){
+            alert("Failure");
+            alert(raceData.get('errorMsg'));
+
+            this.$el.append(this.athleteNotFound(raceData.toJSON()));
+
+            return this;
+        }
+
+        alert("Success");
         this.$el.append(this.template(raceData.toJSON()));
 
         return this;
@@ -74,7 +87,5 @@ module.exports = {
     init: function() {
 
         new SearchBox();
-
-
     }
 };

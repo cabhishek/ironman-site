@@ -1,4 +1,5 @@
-var logger = require('koa-logger'),
+var db = require('./lib/dbInitialize')(),
+    logger = require('koa-logger'),
     router = require('koa-router'),
     serve = require('koa-static'),
     render = require('./lib/render'),

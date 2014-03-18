@@ -1,6 +1,9 @@
 var _ = require('underscore'),
-    render = require('./../lib/render');
-
+    render = require('./../lib/render'),
+    Athlete = require('./../models/athlete'),
+    AthleteRace = require('./../models/athleteRace'),
+    Log = require('log'),
+    log = new Log('info');
 
 exports.load = function(app) {
 
@@ -18,30 +21,17 @@ exports.load = function(app) {
         });
     });
 
-    app.get('/api/search/:name', function * (name) {
+    app.get('/api/search/:name', function * (next) {
 
-        this.body = [{
-            name: 'tobi',
-            email: 'tobi@segment.io',
-            packages: 5,
-            friends: ['abby', 'loki', 'jane']
-        }, {
-            name: 'loki',
-            email: 'loki@segment.io',
-            packages: 2,
-            friends: ['loki', 'jane']
-        }, {
-            name: 'jane',
-            email: 'jane@segment.io',
-            packages: 2,
-            friends: []
-        }, {
-            name: 'ewald',
-            email: 'ewald@segment.io',
-            packages: 2,
-            friends: ['tobi']
-        }];
+        var athlete = new Athlete({
+            'first_name': 'Gonzalo',
+            'last_name': 'portas hernandez'
+        });
+
+        yield athlete.fetch({withRelated: ['races']});
+
+        this.body = {
+            'athlete': athlete
+        };
     });
-
-
 };

@@ -9,7 +9,7 @@
     "triathlon"
   ],
   "scripts": {
-    "up": "DEBUG_COLORS=true nodemon --harmony application.js"
+    "up": "DEBUG=koa* DEBUG_COLORS=true nodemon --harmony application.js"
   },
   "author": "Abhishek Kapatkar <cabhishek@gmail.com> (http://cabhishek.com/)",
   "dependencies": {
@@ -26,7 +26,10 @@
     "asyncjs": "0.0.9",
     "koa-mount": "~1.2.3",
     "uglify-js": "~2.4.13",
-    "jquery": "~2.1.0"
+    "jquery": "~2.1.0",
+    "bookshelf": "~0.6.8",
+    "log": "~1.4.0",
+    "mysql": "~2.1.1"
   },
   "license": "BSD-2-Clause"
 }

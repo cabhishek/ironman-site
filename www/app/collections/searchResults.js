@@ -10,8 +10,7 @@ var SearchResults = Backbone.Collection.extend({
     search: function(searchTerm){
         this.searchTerm = searchTerm;
         this.fetch();
-    }
-
+    },
 });
 
 module.exports = SearchResults;
