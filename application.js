@@ -9,6 +9,7 @@ var db = require('./lib/dbInitialize')(),
 var app = koa();
 
 var env = process.env.NODE_ENV || 'development';
+var port = process.env.PORT || 3000;
 
 // Logging Middleware
 app.use(logger());
@@ -36,5 +37,5 @@ app.get('/', function * index() {
 //Load Race app
 require('./race/index').load(app);
 
-app.listen(3000);
-console.log('app listening on port 3000');
+app.listen(port);
+console.log('app listening on port ' + port);
