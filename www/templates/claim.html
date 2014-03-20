@@ -1,0 +1,27 @@
+{% extends 'layout.html' %} {% block title %}Search{% endblock %} {% block content %}
+
+<h1>Your claimed Data</h1>
+
+<div id="container">
+    <table>
+        <thead>
+            <th>Swim Time</th>
+            <th>Run Time</th>
+            <th>Cycle Time</th>
+            <th>Final Time</th>
+        </thead>
+        <tbody id="tblRows"></tbody>
+    </table>
+    <button id="add" type="button" class="btn btn-primary btn-lg">Add</button>
+</div>
+
+<script type="text/template" id="row">
+    <td><input id="swim_time" type="text" value="<%= _pivot_swim_time %>"/></td>
+    <td><input id="run_time" type="text" value="<%= _pivot_run_time %>"/></td>
+    <td><input id="cycle_time" type="text" value="<%= _pivot_cycle_time %>"/></td>
+    <td><input id="final_time" type="text" value="<%= _pivot_final_time %>"/></td>
+</script>
+
+<script src="/bundle/claimAppBundle.js"></script>
+
+{% endblock %}
