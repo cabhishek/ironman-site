@@ -42,13 +42,15 @@ var ClaimView = Backbone.View.extend({
 
     initialize: function() {
 
-        var athlete = new Athlete({
+        this.model = new Athlete({
             id: 175909
         });
 
-        athlete.fetch();
+        window.model = this.model;
 
-        this.listenTo(athlete, 'change', this.renderRaceData);
+        this.model.fetch();
+
+        this.listenTo(this.model, 'change', this.renderRaceData);
     },
 
     renderRaceData: function(athlete) {
@@ -63,10 +65,7 @@ var ClaimView = Backbone.View.extend({
 
         }, this);
 
-        //Log data
-        window.races = races;
-        window.athlete = athlete;
-
+        window.t = t;
         return this;
     },
 
@@ -88,8 +87,6 @@ var ClaimView = Backbone.View.extend({
             "_pivot_final_time": 0
         });
 
-        window.newrace = raceData;
-
         this.renderRaceRow(raceData);
     }
 });
@@ -97,6 +94,7 @@ var ClaimView = Backbone.View.extend({
 //Boot strap view.
 module.exports = {
     init: function() {
+
         new ClaimView();
     }
 };
