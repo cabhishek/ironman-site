@@ -1,8 +1,9 @@
-{% block content %}
+{% extends 'search.html' %} {% block content %}
+
 <h1>Data</h1>
 <ul>
     {% for athlete in athletes %}
-    <li>{{ athlete.first_name }} {{ athlete.last_name }}</li>
+    <li>{{ athlete.first_name }} {{ athlete.last_name }} <a href="/claim/athlete/{{athlete.id}}">claim</a></li>
 
     {% for race in athlete.races%}
 
