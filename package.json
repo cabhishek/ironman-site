@@ -31,7 +31,8 @@
     "bookshelf": "~0.6.8",
     "log": "~1.4.0",
     "mysql": "~2.1.1",
-    "co-body": "0.0.1"
+    "co-body": "0.0.1",
+    "backbone-relational": "~0.8.6"
   },
   "engines": {
     "node": "0.11.x"

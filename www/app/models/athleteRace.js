@@ -1,7 +1,6 @@
-var Backbone = require('backbone');
+var Backbone = require('backbone'),
+    Relational = require('./../../assets/js/backbone-relational');
 
+var AthleteRace = Backbone.RelationalModel.extend({});
 
-var Races = Backbone.Model.extend({
-});
-
-module.exports = Races;
+module.exports = AthleteRace;

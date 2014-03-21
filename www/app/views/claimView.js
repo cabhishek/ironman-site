@@ -2,13 +2,13 @@ var $ = require('jquery'),
     _ = require('underscore'),
     Backbone = require('backbone'),
     Athlete = require('./../models/athlete'),
-    Race = require('./../models/athleteRace'),
+    AthleteRace = require('./../models/athleteRace'),
     Stickit = require('./../../assets/js/backbone.stickit.js');
 
 //Jquery dependancy
 Backbone.$ = $;
 
-var RaceRowView = Backbone.View.extend({
+var RaceRow = Backbone.View.extend({
 
     tagName: "tr",
 
@@ -53,34 +53,32 @@ var ClaimView = Backbone.View.extend({
         this.listenTo(this.model, 'change', this.renderRaceData);
     },
 
-    renderRaceData: function(athlete) {
+    renderRaceData: function() {
 
-        var races = athlete.get("races");
+        //Ugly as hell
+        var races = this.model.get('races').models;
 
         _.map(races, function(race) {
 
-            var raceData = new Race().set(race);
-
-            this.renderRaceRow(raceData);
+            this.renderRaceRow(race);
 
         }, this);
 
-        window.t = t;
         return this;
     },
 
     renderRaceRow: function(race){
 
-        var raceRowView = new RaceRowView({
+        var raceRow = new RaceRow({
             model: race
         });
 
-        $("#tblRows").append(raceRowView.render().el);
+        $("#tblRows").append(raceRow.render().el);
     },
 
     addNewRaceData: function(){
 
-        var raceData = new Race().set({
+        var raceData = new AthleteRace().set({
             "_pivot_swim_time": 0,
             "_pivot_run_time": 0,
             "_pivot_cycle_time": 0,

@@ -1,9 +1,7 @@
-var ClaimView = require("./views/claimView"),
-    Athlete = require('./models/athlete'),
-    Race = require('./models/athleteRace');
+var ClaimView = require("./views/claimView");
 
 (function() {
 
-    ClaimView.init(Athlete, Race);
+    ClaimView.init();
 
 })();
