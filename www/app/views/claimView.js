@@ -5,9 +5,10 @@ var $ = require('jquery'),
     AthleteRace = require('./../models/athleteRace'),
     Stickit = require('./../../assets/js/backbone.stickit.js');
 
-//Jquery dependancy
+//JQuery dependancy
 Backbone.$ = $;
 
+// nicer syntax for template
 _.templateSettings = {
   interpolate: /\{\{(.+?)\}\}/g
 };
@@ -82,12 +83,7 @@ var ClaimView = Backbone.View.extend({
 
     addNewRaceData: function(){
 
-        var raceData = new AthleteRace().set({
-            "_pivot_swim_time": 0,
-            "_pivot_run_time": 0,
-            "_pivot_cycle_time": 0,
-            "_pivot_final_time": 0
-        });
+        var raceData = new AthleteRace();
 
         //add new race row
         this.model.get("races").push(raceData);
