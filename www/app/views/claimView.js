@@ -8,6 +8,10 @@ var $ = require('jquery'),
 //Jquery dependancy
 Backbone.$ = $;
 
+_.templateSettings = {
+  interpolate: /\{\{(.+?)\}\}/g
+};
+
 var RaceRow = Backbone.View.extend({
 
     tagName: "tr",
@@ -84,6 +88,9 @@ var ClaimView = Backbone.View.extend({
             "_pivot_cycle_time": 0,
             "_pivot_final_time": 0
         });
+
+        //add new race row
+        this.model.get("races").push(raceData);
 
         this.renderRaceRow(raceData);
     }
