@@ -9,11 +9,7 @@ var $ = require('jquery'),
 Backbone.$ = $;
 
 window._ = _;
-
-// nicer syntax for template
-_.templateSettings = {
-    interpolate: /\{\{(.+?)\}\}/g
-};
+window.$ = $;
 
 var AthleteDetails = Backbone.View.extend({
 
@@ -23,7 +19,15 @@ var AthleteDetails = Backbone.View.extend({
         '#email': 'email',
     },
 
+    initialize: function(){
+        _.bindAll(this, "element", "render");
+    },
+
     template: _.template($('#details').html()),
+
+    element: function(attr, selector){
+        return this.$('[' + selector + '=' + attr + ']');
+    },
 
     render: function() {
 
@@ -31,7 +35,17 @@ var AthleteDetails = Backbone.View.extend({
 
         this.stickit();
 
-        Backbone.Validation.bind(this);
+        Backbone.Validation.bind(this, {
+            valid: function(view, attr, selector) {
+
+                view.element(attr, selector).removeClass("error").hide();
+            },
+            invalid: function(view, attr, error, selector) {
+
+                view.element(attr, selector).addClass("error").text(error).show();
+
+            }
+        });
 
         return this;
     },
@@ -50,13 +64,26 @@ var RaceRow = Backbone.View.extend({
 
     template: _.template($('#row').html()),
 
+    element: function(attr, selector){
+        return this.$('[' + selector + '=' + attr + ']');
+    },
+
     render: function() {
 
         this.$el.html(this.template(this.model.toJSON()));
 
         this.stickit();
 
-        Backbone.Validation.bind(this);
+        Backbone.Validation.bind(this, {
+            valid: function(view, attr, selector) {
+
+                view.element(attr + "-" + view.model.get("id"), selector).removeClass("error").hide();
+            },
+            invalid: function(view, attr, error, selector) {
+
+                view.element(attr + "-" + view.model.get("id"), selector).addClass("error").text(error).show();
+            }
+        });
 
         return this;
     },
@@ -77,12 +104,10 @@ var ClaimView = Backbone.View.extend({
         //"this" should always be view object
         _.bindAll(this, "renderAhtlete", "addNewRace");
 
-        window.model = this.model;
+        //Counter to track races
+        this.iterator = 10001;
 
-        this.model.bind('validated', function(isValid, model, errors) {
-          console.log("validated");
-          console.log(errors);
-        });
+        window.model = this.model;
 
         //Get data from server
         this.model.fetch({
@@ -121,7 +146,9 @@ var ClaimView = Backbone.View.extend({
 
     addNewRace: function() {
 
-        var race = new AthleteRace();
+        var race = new AthleteRace({
+            id: this.createId()
+        });
 
         //add new race row
         this.model.get("races").push(race);
@@ -139,6 +166,10 @@ var ClaimView = Backbone.View.extend({
         } else {
             console.log("Not valid");
         }
+    },
+
+    createId: function() {
+        return "new" + this.iterator++;
     },
 
     isModelValid: function() {
