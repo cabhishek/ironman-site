@@ -7,6 +7,8 @@
 
     <table>
         <thead>
+            <th>Race Name</th>
+            <th>Year</th>
             <th>Swim Time</th>
             <th>Run Time</th>
             <th>Cycle Time</th>
@@ -38,20 +40,29 @@
 </script>
 
 <script type="text/template" id="row">
-
-    <td><input id="swim_time" type="text" value="<%= _pivot_swim_time %>"/>
+    <td>
+        <select id="race_name"></select>
+    </td>
+    <td>
+        <select id="race_year"></select>
+    </td>
+    <td>
+        <input id="swim_time" type="text" value="<%= _pivot_swim_time %>"/>
         <small name="_pivot_swim_time-<%= id %>"></small>
     </td>
 
-    <td><input id="run_time" type="text" value="<%= _pivot_run_time %>"/>
+    <td>
+        <input id="run_time" type="text" value="<%= _pivot_run_time %>"/>
         <small name="_pivot_run_time-<%= id %>"> </small>
     </td>
 
-    <td><input id="cycle_time" type="text" value="<%= _pivot_cycle_time %>"/>
+    <td>
+        <input id="cycle_time" type="text" value="<%= _pivot_cycle_time %>"/>
         <small name="_pivot_cycle_time-<%= id %>"> </small>
     </td>
 
-    <td><input id="final_time" type="text" value="<%= _pivot_final_time %>"/>
+    <td>
+        <input id="final_time" type="text" value="<%= _pivot_final_time %>"/>
         <small name="_pivot_final_time-<%= id %>"></small>
     </td>
 </script>

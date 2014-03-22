@@ -31,7 +31,6 @@ var AthleteRace = Backbone.RelationalModel.extend({
             required: true,
             msg: 'Required'
         }
-
     },
 });
 

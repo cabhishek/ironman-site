@@ -3,7 +3,8 @@ var $ = require('jquery'),
     Backbone = require('backbone'),
     Validation = require('backbone-validation'),
     Stickit = require('./../../assets/js/backbone.stickit.js'),
-    AthleteRace = require('./../models/athleteRace');
+    AthleteRace = require('./../models/athleteRace'),
+    Races = require('./../races');
 
 //JQuery dependancy
 Backbone.$ = $;
@@ -19,13 +20,9 @@ var AthleteDetails = Backbone.View.extend({
         '#email': 'email',
     },
 
-    initialize: function(){
-        _.bindAll(this, "element", "render");
-    },
-
     template: _.template($('#details').html()),
 
-    element: function(attr, selector){
+    element: function(attr, selector) {
         return this.$('[' + selector + '=' + attr + ']');
     },
 
@@ -60,11 +57,44 @@ var RaceRow = Backbone.View.extend({
         '#run_time': '_pivot_run_time',
         '#cycle_time': '_pivot_cycle_time',
         '#final_time': '_pivot_final_time',
+        'select#race_name': {
+            observe: 'name',
+            selectOptions: {
+                collection: 'this.races',
+                labelPath: 'name',
+                valuePath: 'name',
+                defaultOption: {
+                    label: 'Choose one...',
+                    value: null
+                }
+            }
+        },
+        'select#race_year': {
+            observe: 'year',
+            selectOptions: {
+                collection: 'this.years',
+                labelPath: 'year',
+                valuePath: 'year',
+                defaultOption: {
+                    label: 'Choose one...',
+                    value: null
+                }
+            }
+        }
     },
 
     template: _.template($('#row').html()),
 
-    element: function(attr, selector){
+    initialize: function() {
+        this.races = Races;
+
+        this.years = _.map(_.range(1978, 2015), function(year){
+            return {"year": year};
+        }, this).reverse();
+
+    },
+
+    element: function(attr, selector) {
         return this.$('[' + selector + '=' + attr + ']');
     },
 
