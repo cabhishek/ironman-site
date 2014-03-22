@@ -1,12 +1,14 @@
 var $ = require('jquery'),
     _ = require('underscore'),
     Backbone = require('backbone'),
-    Athlete = require('./../models/athlete'),
-    AthleteRace = require('./../models/athleteRace'),
-    Stickit = require('./../../assets/js/backbone.stickit.js');
+    Validation = require('backbone-validation'),
+    Stickit = require('./../../assets/js/backbone.stickit.js'),
+    AthleteRace = require('./../models/athleteRace');
 
 //JQuery dependancy
 Backbone.$ = $;
+
+window._ = _;
 
 // nicer syntax for template
 _.templateSettings = {
@@ -28,6 +30,8 @@ var AthleteDetails = Backbone.View.extend({
         this.$el.html(this.template(this.model.toJSON()));
 
         this.stickit();
+
+        Backbone.Validation.bind(this);
 
         return this;
     },
@@ -52,6 +56,8 @@ var RaceRow = Backbone.View.extend({
 
         this.stickit();
 
+        Backbone.Validation.bind(this);
+
         return this;
     },
 });
@@ -70,6 +76,13 @@ var ClaimView = Backbone.View.extend({
 
         //"this" should always be view object
         _.bindAll(this, "renderAhtlete", "addNewRace");
+
+        window.model = this.model;
+
+        this.model.bind('validated', function(isValid, model, errors) {
+          console.log("validated");
+          console.log(errors);
+        });
 
         //Get data from server
         this.model.fetch({
@@ -120,11 +133,24 @@ var ClaimView = Backbone.View.extend({
 
         e.preventDefault();
 
-        this.model.save();
+        if (this.isModelValid()) {
+            console.log("valid");
+            this.model.save();
+        } else {
+            console.log("Not valid");
+        }
+    },
+
+    isModelValid: function() {
+        return this.model.isValid(true) && _.every(this.model.get("races").models, function(m) {
+            return m.isValid(true);
+        });
     }
 });
 
 //Boot strap view.
+// 1-1 mapping between view and model
+// model == Athlete
 module.exports = {
     init: function(model) {
 
