@@ -48,7 +48,7 @@ exports.load = function(app) {
 
     });
 
-    app.get('/claim/athlete/:uid', function * (next) {
+    app.get('/claim/:uid/athlete', function * (next) {
 
         this.body = yield render('claim', {
             title: 'Claim'
@@ -70,11 +70,11 @@ exports.load = function(app) {
         log.info("====Response is =====");
         var data = yield parse(this);
 
-        log.info(athlete);
+        log.info(data);
 
-        var stat = yield athlete.save();
+        // var stat = yield athlete.save();
 
-        log.info(stat);
+        // log.info(stat);
 
         this.body = {sucess: true};
     });

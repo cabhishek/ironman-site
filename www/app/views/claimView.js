@@ -13,7 +13,6 @@ _.templateSettings = {
     interpolate: /\{\{(.+?)\}\}/g
 };
 
-
 var AthleteDetails = Backbone.View.extend({
 
     bindings: {
@@ -72,10 +71,7 @@ var ClaimView = Backbone.View.extend({
         //"this" should always be view object
         _.bindAll(this, "renderAhtlete", "addNewRace");
 
-        this.model.set("id", 175909);
-
-        window.model = this.model;
-
+        //Get data from server
         this.model.fetch({
             "success": this.renderAhtlete
         });
@@ -87,19 +83,21 @@ var ClaimView = Backbone.View.extend({
             model: this.model
         });
 
+        //Render athelete data
         $("#athlete").append(details.render().el);
 
         var races = this.model.get('races').models;
 
+        //Render race datas
         _.map(races, function(race) {
-            this.renderRow(race);
+            this.renderRace(race);
 
         }, this);
 
         return this;
     },
 
-    renderRow: function(race) {
+    renderRace: function(race) {
 
         var raceRow = new RaceRow({
             model: race
@@ -110,27 +108,28 @@ var ClaimView = Backbone.View.extend({
 
     addNewRace: function() {
 
-        var raceData = new AthleteRace();
+        var race = new AthleteRace();
 
         //add new race row
-        this.model.get("races").push(raceData);
+        this.model.get("races").push(race);
 
-        this.renderRow(raceData);
+        this.renderRace(race);
     },
 
     submitForm: function(e) {
 
         e.preventDefault();
+
         this.model.save();
     }
 });
 
 //Boot strap view.
 module.exports = {
-    init: function() {
+    init: function(model) {
 
         new ClaimView({
-            model: new Athlete()
+            model: model
         });
     }
 };
