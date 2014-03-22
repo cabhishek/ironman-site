@@ -3,6 +3,8 @@ var Backbone = require('backbone'),
 
 var AthleteRace = Backbone.RelationalModel.extend({
 
+    idAttribute: 'id',
+
     defaults: {
         "_pivot_run_time": "",
         "_pivot_cycle_time": "",

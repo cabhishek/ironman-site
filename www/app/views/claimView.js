@@ -10,8 +10,29 @@ Backbone.$ = $;
 
 // nicer syntax for template
 _.templateSettings = {
-  interpolate: /\{\{(.+?)\}\}/g
+    interpolate: /\{\{(.+?)\}\}/g
 };
+
+
+var AthleteDetails = Backbone.View.extend({
+
+    bindings: {
+        '#first_name': 'first_name',
+        '#last_name': 'last_name',
+        '#email': 'email',
+    },
+
+    template: _.template($('#details').html()),
+
+    render: function() {
+
+        this.$el.html(this.template(this.model.toJSON()));
+
+        this.stickit();
+
+        return this;
+    },
+});
 
 var RaceRow = Backbone.View.extend({
 
@@ -42,37 +63,43 @@ var ClaimView = Backbone.View.extend({
     el: "#container",
 
     events: {
-        'click #add': 'addNewRaceData'
+        'click #add': 'addNewRace',
+        'click #submit': 'submitForm'
     },
 
     initialize: function() {
 
-        this.model = new Athlete({
-            id: 175909
-        });
+        //"this" should always be view object
+        _.bindAll(this, "renderAhtlete", "addNewRace");
+
+        this.model.set("id", 175909);
 
         window.model = this.model;
 
-        this.model.fetch();
-
-        this.listenTo(this.model, 'change', this.renderRaceData);
+        this.model.fetch({
+            "success": this.renderAhtlete
+        });
     },
 
-    renderRaceData: function() {
+    renderAhtlete: function() {
 
-        //Ugly as hell
+        var details = new AthleteDetails({
+            model: this.model
+        });
+
+        $("#athlete").append(details.render().el);
+
         var races = this.model.get('races').models;
 
         _.map(races, function(race) {
-
-            this.renderRaceRow(race);
+            this.renderRow(race);
 
         }, this);
 
         return this;
     },
 
-    renderRaceRow: function(race){
+    renderRow: function(race) {
 
         var raceRow = new RaceRow({
             model: race
@@ -81,14 +108,20 @@ var ClaimView = Backbone.View.extend({
         $("#tblRows").append(raceRow.render().el);
     },
 
-    addNewRaceData: function(){
+    addNewRace: function() {
 
         var raceData = new AthleteRace();
 
         //add new race row
         this.model.get("races").push(raceData);
 
-        this.renderRaceRow(raceData);
+        this.renderRow(raceData);
+    },
+
+    submitForm: function(e) {
+
+        e.preventDefault();
+        this.model.save();
     }
 });
 
@@ -96,6 +129,8 @@ var ClaimView = Backbone.View.extend({
 module.exports = {
     init: function() {
 
-        new ClaimView();
+        new ClaimView({
+            model: new Athlete()
+        });
     }
 };

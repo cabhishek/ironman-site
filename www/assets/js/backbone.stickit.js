@@ -1,7 +1,7 @@
 //
 // backbone.stickit - v0.7.0
 // The MIT License
-// Copyright (c) 2012 The New York Times, CMS Group, Matthew DeLambo <delambo@gmail.com> 
+// Copyright (c) 2012 The New York Times, CMS Group, Matthew DeLambo <delambo@gmail.com>
 //
 (function (factory) {
 
@@ -71,6 +71,8 @@
     // Using `this.bindings` configuration or the `optionalBindingsConfig`, binds `this.model`
     // or the `optionalModel` to elements in the view.
     stickit: function(optionalModel, optionalBindingsConfig) {
+      // console.log("Stickit called");
+
       var model = optionalModel || this.model,
         namespace = '.stickit.' + model.cid,
         bindings = optionalBindingsConfig || _.result(this, "bindings") || {};
@@ -130,10 +132,23 @@
           // Setup a `change:modelAttr` observer to keep the view element in sync.
           // `modelAttr` may be an array of attributes or a single string value.
           _.each(_.flatten([modelAttr]), function(attr) {
+            // console.log(attr);
+            // console.log(model);
             observeModelEvent(model, this, 'change:'+attr, function(model, val, options) {
+
+              // console.log("Att changed =>" + attr);
+              // console.log("Firing =>"+ val);
+
               var changeId = options && options.stickitChange && options.stickitChange.bindId || null;
-              if (changeId !== bindId)
+
+              // console.log("ChangeId =>" + changeId);
+              // console.log("BindId =>" + bindId);
+
+              if (changeId !== bindId){
+                // console.log("Update view");
                 updateViewBindEl(this, $el, config, getAttr(model, modelAttr, config, this), model);
+
+              }
             });
           }, this);
 
@@ -327,6 +342,7 @@
   //     afterUpdate: function($el, val, options) {} // optional callback
   //
   var updateViewBindEl = function(view, $el, config, val, model, isInitializing) {
+    // console.log("updateViewBindEl =>" + val);
     if (!evaluateBoolean(view, config.updateView, val, config)) return;
     applyViewFn(view, config.update, $el, val, model, config);
     if (!isInitializing) applyViewFn(view, config.afterUpdate, $el, val, config);
