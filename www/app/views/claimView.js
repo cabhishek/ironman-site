@@ -15,9 +15,24 @@ window.$ = $;
 var AthleteDetails = Backbone.View.extend({
 
     bindings: {
-        '#first_name': 'first_name',
-        '#last_name': 'last_name',
-        '#email': 'email',
+        '#first_name': {
+            observe: 'first_name',
+            setOptions: {
+                validate: true
+            }
+        },
+        '#last_name': {
+            observe: 'last_name',
+            setOptions: {
+                validate: true
+            }
+        },
+        '#email': {
+            observe: 'email',
+            setOptions: {
+                validate: true
+            }
+        },
     },
 
     template: _.template($('#details').html()),
@@ -97,8 +112,10 @@ var RaceRow = Backbone.View.extend({
     initialize: function() {
         this.races = Races;
 
-        this.years = _.map(_.range(1978, 2015), function(year){
-            return {"year": year};
+        this.years = _.map(_.range(1978, 2015), function(year) {
+            return {
+                "year": year
+            };
         }, this).reverse();
 
     },
