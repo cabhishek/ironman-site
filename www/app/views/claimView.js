@@ -28,10 +28,13 @@ var AthleteDetails = Backbone.View.extend({
 
     render: function() {
 
+        //UI
         this.$el.html(this.template(this.model.toJSON()));
 
+        //2-way binding
         this.stickit();
 
+        //Validation
         Backbone.Validation.bind(this, {
             valid: function(view, attr, selector) {
 
@@ -57,7 +60,7 @@ var RaceRow = Backbone.View.extend({
         '#run_time': '_pivot_run_time',
         '#cycle_time': '_pivot_cycle_time',
         '#final_time': '_pivot_final_time',
-        'select#race_name': {
+        'select#name': {
             observe: 'name',
             selectOptions: {
                 collection: 'this.races',
@@ -67,9 +70,12 @@ var RaceRow = Backbone.View.extend({
                     label: 'Choose one...',
                     value: null
                 }
+            },
+            setOptions: {
+                validate: true
             }
         },
-        'select#race_year': {
+        'select#year': {
             observe: 'year',
             selectOptions: {
                 collection: 'this.years',
@@ -79,6 +85,9 @@ var RaceRow = Backbone.View.extend({
                     label: 'Choose one...',
                     value: null
                 }
+            },
+            setOptions: {
+                validate: true
             }
         }
     },
@@ -100,10 +109,13 @@ var RaceRow = Backbone.View.extend({
 
     render: function() {
 
+        //UI
         this.$el.html(this.template(this.model.toJSON()));
 
+        //2 way binding
         this.stickit();
 
+        //Validation
         Backbone.Validation.bind(this, {
             valid: function(view, attr, selector) {
 

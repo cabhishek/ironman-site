@@ -30,8 +30,14 @@ var AthleteRace = Backbone.RelationalModel.extend({
         _pivot_final_time: {
             required: true,
             msg: 'Required'
+        },
+        name: {
+            required: true
+        },
+        year: {
+            required: true
         }
-    },
+    }
 });
 
 module.exports = AthleteRace;
