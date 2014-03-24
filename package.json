@@ -30,7 +30,10 @@
     "jquery": "~2.1.0",
     "bookshelf": "~0.6.8",
     "log": "~1.4.0",
-    "mysql": "~2.1.1"
+    "mysql": "~2.1.1",
+    "co-body": "0.0.1",
+    "backbone-relational": "~0.8.6",
+    "backbone-validation": "~0.9.1"
   },
   "engines": {
     "node": "0.11.x"

@@ -1,58 +1,29 @@
 {% extends 'layout.html' %} {% block title %}Search{% endblock %} {% block content %}
 
-<script type="text/template" id="searchBoxTemplate">
-    <div class="row">
-        <div class="large-12 columns">
-            <form role="form">
-                <div class="row">
-                    <div class="small-8">
-                        <div class="row collapse">
-                            <div class="small-3 columns">
-                                <label for="right-label" class="right inline">Search</label>
-                            </div>
-                            <div class="small-9 columns">
-                                <input type="text" id="q" placeholder="name..." >
-                            </div>
-                            <div class="small-2 columns">
-                                <button type="button" href="#" id="btn">Go </button>
-                            </div>
+<div class="row">
+    <div class="large-12 columns">
+        <form method="GET" action="/search">
+            <div class="row">
+                <div class="small-8">
+                    <div class="row collapse">
+                        <div class="small-3 columns">
+                            <label for="right-label" class="right inline">Search</label>
+                        </div>
+                        <div class="small-9 columns">
+                            <input type="text" name="q" placeholder="name...">
+                        </div>
+                        <div class="small-2 columns">
+                            <input type="submit" value="submit"/>
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
-</script>
-
-<script type="text/template" id="raceDataTemplate">
-    <tr>
-      <td><%= name %></td>
-      <td><%= email %></td>
-      <td><%= packages %></td>
-    </tr>
-</script>
-
-<script type="text/template" id="athleteNotFound">
-    <h2><%= errorMsg %></h2>
-</script>
-
-<div id="results"> </div>
-<div id="search"></div>
-
-<div id="searchResults">
-    <table>
-      <thead>
-        <tr>
-          <th width="200">Table Header</th>
-          <th width="150">Table Header</th>
-          <th width="150">Table Header</th>
-        </tr>
-      </thead>
-      <tbody id="tblRows">
-      </tbody>
-    </table>
 </div>
 
-<script src="bundle/searchAppBundle.js"></script>
+{% if has_query %}
+<h1>HAS QUEYR</h1>
+{% endif %}
 
 {% endblock %}
