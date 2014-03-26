@@ -12,6 +12,8 @@ module.exports = function * persistAthleteRace(data) {
 
     if (athlete) {
 
+        log.info("Found athlete %s %s", athlete.get('first_name'), athlete.get('last_name'));
+
         //E-cap
         yield athlete.save({'email': data.email}, {
             patch: true
@@ -21,7 +23,9 @@ module.exports = function * persistAthleteRace(data) {
 
     } else {
 
-        return yield _createAthlete(raceData, callback);
+        log.info("Athlete %s %s not found.. So creating one.", data.first_name, data.last_name);
+
+        return yield _createAthlete(data);
     }
 
     return {
@@ -37,19 +41,11 @@ function * _getAthlete(data) {
 
     }).fetch();
 
-    if (athlete) {
-
-        log.info("Found athlete %s %s", athlete.get('first_name'), athlete.get('last_name'));
-
-    } else {
-        log.info("Athlete not found %s %s", data.first_name, data.last_name);
-    }
-
     return athlete;
 }
 
 function * _getRace(raceData) {
-    log.info("getting race data for =>" + raceData.name + " -- " + raceData.year);
+    log.info("Getting race data for =>%s--%s", raceData.name, raceData.year);
 
     return yield new Race({
         name: raceData.name,
@@ -59,17 +55,17 @@ function * _getRace(raceData) {
 
 }
 
-function * _createAthlete(raceData, callback) {
+function * _createAthlete(data) {
 
     var athlete = yield Athlete.forge({
-        first_name: raceData.firstName,
-        last_name: raceData.lastName,
-        email: raceData.email
+        first_name: data.first_name,
+        last_name: data.last_name,
+        email: data.email
 
     }).save();
 
     //Now go save races for that athlete
-    return yield _persistAthleteRaceData(athlete, raceData);
+    return yield _persistAthleteRaceData(athlete, data);
 }
 
 function * _persistAthleteRaceData(athlete, data) {
