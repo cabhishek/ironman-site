@@ -13,9 +13,7 @@ module.exports = function * persistAthleteRace(data) {
     if (athlete) {
 
         //E-cap
-        yield athlete.save({
-            'email': data.email
-        }, {
+        yield athlete.save({'email': data.email}, {
             patch: true
         });
 
@@ -66,13 +64,12 @@ function * _createAthlete(raceData, callback) {
     var athlete = yield Athlete.forge({
         first_name: raceData.firstName,
         last_name: raceData.lastName,
-        athlinks_id: raceData.athlinksId,
+        email: raceData.email
 
     }).save();
 
     //Now go save races for that athlete
-
-    return yield _persistAthleteRaceData(athlete, raceData, callback);
+    return yield _persistAthleteRaceData(athlete, raceData);
 }
 
 function * _persistAthleteRaceData(athlete, data) {

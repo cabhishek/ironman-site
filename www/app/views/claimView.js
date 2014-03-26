@@ -158,10 +158,36 @@ var ClaimView = Backbone.View.extend({
 
         window.model = this.model;
 
-        //Get data from server
-        this.model.fetch({
-            "success": this.renderAthlete
-        });
+        if (this.isNewAthlete()){
+
+            //Create new one empty race
+            var race = new AthleteRace({
+                id: this.createId()
+            });
+
+            this.model.get("races").push(race);
+
+            this.renderAthlete();
+
+        }else{
+
+            //Get data from server
+            this.model.fetch({
+                "success": this.renderAthlete
+            });
+        }
+    },
+
+    isNewAthlete: function(){
+
+        if (this.model.id == 'new'){
+            //initialize with empty races
+            this.model.set("races", []);
+
+            return true;
+        }
+
+        return false;
     },
 
     renderAthlete: function() {

@@ -9,6 +9,13 @@ var Athlete = Backbone.RelationalModel.extend({
 
     idAttribute: 'id',
 
+    defaults: {
+        "id": "",
+        "first_name": "",
+        "last_name": "",
+        "email": ""
+    },
+
     validation: {
         first_name: {
             required: true,
