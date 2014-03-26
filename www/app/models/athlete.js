@@ -1,4 +1,5 @@
-var Backbone = require('backbone'),
+var _ = require('underscore'),
+    Backbone = require('backbone'),
     Validation = require('backbone-validation'),
     Relational = require('./../../assets/js/backbone-relational'),
     AthleteRace = require('./athleteRace');

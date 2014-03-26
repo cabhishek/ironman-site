@@ -27,10 +27,6 @@ module.exports = function * persistAthleteRace(data) {
 
         return yield _createAthlete(data);
     }
-
-    return {
-        'sucess': true
-    };
 };
 
 function * _getAthlete(data) {
