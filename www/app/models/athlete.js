@@ -49,6 +49,12 @@ var Athlete = Backbone.RelationalModel.extend({
         return this;
     },
 
+    isErrorFree: function(){
+        return this.isValid(true) && _.every(this.races(), function(race) {
+            return race.isValid(true);
+        });
+    },
+
     relations: [{
         type: Backbone.HasMany,
         key: 'races',

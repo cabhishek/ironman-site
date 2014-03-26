@@ -206,7 +206,7 @@ var ClaimView = Backbone.View.extend({
         });
 
         //add new race row
-        this.model.get("races").push(race);
+        this.model.pushRace(race);
 
         this.renderRace(race);
     },
@@ -215,9 +215,11 @@ var ClaimView = Backbone.View.extend({
 
         e.preventDefault();
 
-        if (this.isModelValid()) {
+        if (this.model.isErrorFree()) {
+
             console.log("valid");
             this.model.save();
+
         } else {
             console.log("Not valid");
         }
@@ -225,13 +227,8 @@ var ClaimView = Backbone.View.extend({
 
     createId: function() {
         return "new" + this.iterator++;
-    },
-
-    isModelValid: function() {
-        return this.model.isValid(true) && _.every(this.model.get("races").models, function(m) {
-            return m.isValid(true);
-        });
     }
 });
 
+//Expose our Main view
 module.exports = ClaimView;
