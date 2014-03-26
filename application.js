@@ -34,6 +34,12 @@ app.get('/', function * index() {
     });
 });
 
+app.get('/landing', function * index() {
+    this.body = yield render('landing', {
+        title: "landing"
+    });
+});
+
 //Load Race app
 require('./race/index').load(app);
 

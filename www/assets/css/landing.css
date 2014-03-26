@@ -1,0 +1,224 @@
+body {
+    /*background:url("http://bgfons.com/upload/light_texture2213.jpg");*/
+    background:url("file://C:\Users\apape\Desktop\shenandoah.jpg");
+}
+
+#header {
+    margin-top: -8px;
+    margin-left: -8px;
+    background-color: black;
+    padding-top:4px;
+    padding-bottom:4px;
+    background: url("http://static.panoramio.com/photos/large/39282895.jpg");
+    /*background: url("http://www.muddybranch.org/sites/default/files/attachments/path_in_the_woods.jpg");*/
+    /*background: url("http://3.bp.blogspot.com/-tbXtnOFYJi0/UZzBc0_Pv-I/AAAAAAAA_nE/xCVT35yjPTM/s1600/N-D-F+Rail-Trail+5-21-13.jpg");
+    */
+    background-position: bottom;
+    border-bottom: 4px solid black;
+}
+#logo {
+    display:inline-block;
+    color:white;
+    font-family:Courier;
+    font-weight:bold;
+    font-size:36px;
+    margin-left:80px;
+    padding-left:20px;
+    cursor:pointer;
+}
+#topnav {
+    display:inline-block;
+    color:white;
+    font-family:'Varela';
+    font-size:14px;
+    float:right;
+    margin-right:150px;
+}
+
+a {
+    color:inherit;
+    text-decoration: inherit;
+}
+
+ul {
+    padding: 0px;
+    margin: 0px;
+}
+li {
+    display:inline-block;
+    padding: 0px 14px 0px 14px;
+    cursor:pointer;
+    line-height: 38px;
+    vertical-align: middle;
+}
+
+h1 {
+    text-align:center;
+    font-family: Varela;
+    font-size: 40px;
+    text-transform: capitalize;
+}
+
+#landing > p {
+    text-align:center;
+    font-family: Varela;
+    margin-top:-25px;
+}
+
+.stepsContainer {
+    margin-top:50px;
+    margin-right: auto;
+    margin-left: auto;
+    height:160px;
+    text-align:center;
+}
+
+.step {
+    padding: 5px;
+    height:150px;
+    width:180px;
+    border-radius:12px;
+    display: inline-block;
+    margin-right:30px;
+    margin-left:30px;
+    color:black;
+    vertical-align: top;
+}
+
+.step > h2 {
+    margin-top:10px;
+    font-family: Varela;
+    font-size:48px;
+    color:white;
+    background-color: #FFBF00;
+    border-radius: 70px;
+    width:65px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.step > p {
+    margin-top: -20px;
+    font-size:20px;
+    font-family: Varela;
+    vertical-align: middle;
+}
+
+.search {
+    width:420px;
+    margin-top:70px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.searchBox {
+    padding:4px;
+    height:25px;
+    width: 300px;
+    border:6px solid #2ECCFA;
+    border-radius:9px;
+    line-height:20px;
+    vertical-align: middle;
+    display:inline-block;
+    font-family: Varela;
+    font-size:18px;
+}
+
+input:focus {
+    outline:none;
+}
+
+input:focus + .searchIcon {
+    background: #0080FF;
+    cursor: pointer;
+}
+
+.searchIcon {
+    display: inline-block;
+    background: #2ECCFA;
+    border-radius: 6px;
+    padding:6px;
+    height:32px;
+    width:32px;
+    font-size: 22px;
+    text-align: center;
+    line-height:32px;
+    vertical-align: middle;
+    color:white;
+}
+
+#howitworks {
+    margin-top:100px;
+    margin-left:-10px;
+    height:950px;
+    background:gray;
+}
+
+.howitworksContainer {
+    width:700px;
+    margin-right:auto;
+    margin-left:auto;
+    color:white;
+    font-family:Varela;
+}
+
+.howitworksContainer > h2 {
+    padding-top:15px;
+    font-size:32px;
+}
+
+.howitworksContainer > .linebreak {
+    margin-top:-20px;
+    border: 1px solid white;
+    width:700px;
+}
+
+.graph1 {
+    vertical-align: text-top;
+    padding:0px;
+    margin-bottom: -20px;
+}
+
+.graph1 > p {
+    display: inline-block;
+    width:385px;
+    margin-top:0px;
+}
+
+.graph1 > img {
+    float: right;
+    display:inline-block;
+}
+
+.graph2 > img {
+    float:left;
+    display:inline-block;
+    margin-right:30px;
+}
+
+#whatwedo {
+    margin-top:0px;
+    margin-left:-10px;
+    height:950px;
+    background:white;
+}
+
+.whatwedoContainer {
+    width:700px;
+    margin-right:auto;
+    margin-left:auto;
+    color:black;
+    font-family:Varela;
+}
+
+.whatwedoContainer > h2 {
+    padding-top:0px;
+    font-size:32px;
+}
+
+.whatwedoContainer > .linebreak {
+    margin-top:-20px;
+    border: 1px solid black;
+    width:700px;
+}
+
