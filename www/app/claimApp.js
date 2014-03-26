@@ -11,15 +11,20 @@ var Backbone = require('backbone'),
 
         loadAthlete: function(uid) {
 
+            //Our model
             var model = new Athlete({
                 id: uid
             });
 
-            ClaimView.init(model);
+            //Map model <=> view and render data on UI
+            new ClaimView({
+                model: model
+
+            }).render();
         }
     });
 
-     //Bootstrap
+     //Bootstrap router and start tracking URL
     new router();
 
     Backbone.history.start({

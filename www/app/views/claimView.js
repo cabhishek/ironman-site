@@ -9,9 +9,6 @@ var $ = require('jquery'),
 //JQuery dependancy
 Backbone.$ = $;
 
-window._ = _;
-window.$ = $;
-
 var AthleteDetails = Backbone.View.extend({
 
     bindings: {
@@ -43,7 +40,7 @@ var AthleteDetails = Backbone.View.extend({
 
     render: function() {
 
-        //UI
+        //Render races on UI
         this.$el.html(this.template(this.model.toJSON()));
 
         //2-way binding
@@ -85,9 +82,6 @@ var RaceRow = Backbone.View.extend({
                     label: 'Choose one...',
                     value: null
                 }
-            },
-            setOptions: {
-                validate: true
             }
         },
         'select#year': {
@@ -100,9 +94,6 @@ var RaceRow = Backbone.View.extend({
                     label: 'Choose one...',
                     value: null
                 }
-            },
-            setOptions: {
-                validate: true
             }
         }
     },
@@ -148,7 +139,6 @@ var RaceRow = Backbone.View.extend({
     },
 });
 
-
 var ClaimView = Backbone.View.extend({
 
     el: "#container",
@@ -158,23 +148,23 @@ var ClaimView = Backbone.View.extend({
         'click #submit': 'submitForm'
     },
 
-    initialize: function() {
+    render: function() {
 
         //"this" should always be view object
-        _.bindAll(this, "renderAhtlete", "addNewRace");
+        _.bindAll(this, "renderAthlete", "addNewRace");
 
-        //Counter to track races
+        //Counter to track unique races you add
         this.iterator = 10001;
 
         window.model = this.model;
 
         //Get data from server
         this.model.fetch({
-            "success": this.renderAhtlete
+            "success": this.renderAthlete
         });
     },
 
-    renderAhtlete: function() {
+    renderAthlete: function() {
 
         var details = new AthleteDetails({
             model: this.model
@@ -238,14 +228,4 @@ var ClaimView = Backbone.View.extend({
     }
 });
 
-//Boot strap view.
-// 1-1 mapping between view and model
-// model == Athlete
-module.exports = {
-    init: function(model) {
-
-        new ClaimView({
-            model: model
-        });
-    }
-};
+module.exports = ClaimView;

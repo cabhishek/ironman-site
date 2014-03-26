@@ -69,13 +69,12 @@ exports.load = function(app) {
     });
 
     app.put('/api/athlete/:uid', function * (next) {
-        log.info("====Response is =====");
 
         var data = yield parse(this);
 
         var status = yield persisAthleteRace(data);
 
-        console.log("Status ====>" + status.sucess);
+        console.log("Persistance Status ====>" + status.sucess);
 
         this.body = {
             sucess: status

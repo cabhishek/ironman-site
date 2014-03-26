@@ -13,13 +13,17 @@ module.exports = function * persistAthleteRace(data) {
     if (athlete) {
 
         //E-cap
-        yield athlete.save({'email': data.email}, {patch:true});
+        yield athlete.save({
+            'email': data.email
+        }, {
+            patch: true
+        });
 
         return yield _persistAthleteRaceData(athlete, data);
 
     } else {
 
-        // _createAthlete(raceData, callback);
+        return yield _createAthlete(raceData, callback);
     }
 
     return {
@@ -57,62 +61,18 @@ function * _getRace(raceData) {
 
 }
 
-// function _createAthlete(raceData, callback) {
+function * _createAthlete(raceData, callback) {
 
-//     Athlete.forge({
-//         first_name: raceData.firstName,
-//         last_name: raceData.lastName,
-//         athlinks_id: raceData.athlinksId,
+    var athlete = yield Athlete.forge({
+        first_name: raceData.firstName,
+        last_name: raceData.lastName,
+        athlinks_id: raceData.athlinksId,
 
-//     }).save().then(function(athlete) {
-//         log.info("Created athlete %s %s %s", raceData.athlinksId, raceData.firstName, raceData.lastName);
+    }).save();
 
-//         _persistAthleteRaceData(athlete, raceData, callback);
-//     }).
-//     catch (function(e) {
-//         log.info(e.message);
+    //Now go save races for that athlete
 
-//         callback();
-//     });
-// }
-
-function * persist(race) {
-
-    var ironmanRace = yield _getRace(race);
-
-    if (ironmanRace) {
-        log.info("Ironman race id =>" + ironmanRace.id);
-
-        var athleteRace = yield new AthleteRace({
-                'id': race._pivot_id
-        }).fetch();
-
-        data = {
-            swim_time: race._pivot_swim_time,
-            run_time: race._pivot_run_time,
-            cycle_time: race._pivot_cycle_time,
-            final_time: race._pivot_final_time
-        };
-
-        if (athleteRace){
-            yield athleteRace.save(data, {patch: true});
-
-        }else{
-            //create a new record
-
-            _.extend(data, {
-                athlete_id: race.athlete_id,
-                race_id: ironmanRace.id,
-            });
-
-            yield AthleteRace.forge(data).save();
-        }
-
-} else {
-    log.info("Race not found");
-}
-
-return true;
+    return yield _persistAthleteRaceData(athlete, raceData, callback);
 }
 
 function * _persistAthleteRaceData(athlete, data) {
@@ -131,4 +91,45 @@ function * _persistAthleteRaceData(athlete, data) {
     return {
         'sucess': true
     };
+}
+
+function * persist(race) {
+
+    var ironmanRace = yield _getRace(race);
+
+    if (ironmanRace) {
+        log.info("Ironman race id =>" + ironmanRace.id);
+
+        var athleteRace = yield new AthleteRace({
+            'id': race._pivot_id
+        }).fetch();
+
+        data = {
+            swim_time: race._pivot_swim_time,
+            run_time: race._pivot_run_time,
+            cycle_time: race._pivot_cycle_time,
+            final_time: race._pivot_final_time
+        };
+
+        if (athleteRace) {
+            yield athleteRace.save(data, {
+                patch: true
+            });
+
+        } else {
+
+            //create a new record
+            _.extend(data, {
+                athlete_id: race.athlete_id,
+                race_id: ironmanRace.id,
+            });
+
+            yield AthleteRace.forge(data).save();
+        }
+
+    } else {
+        log.info("Race not found");
+    }
+
+    return true;
 }
