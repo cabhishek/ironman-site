@@ -3,6 +3,8 @@ var _ = require('underscore'),
     Athlete = require('./../models/athlete'),
     Athletes = require('./../collections/Athletes'),
     AthleteRace = require('./../models/athleteRace'),
+    persisAthleteRace = require('./../db/persistAthleteRace'),
+    thunkify = require('thunkify'),
     parse = require('co-body'),
     Log = require('log'),
     log = new Log('info');
@@ -51,7 +53,7 @@ exports.load = function(app) {
     app.get('/claim/:uid/athlete', function * (next) {
 
         this.body = yield render('claim', {
-            title: 'Claim'
+            title: 'Claim Races'
         });
     });
 
@@ -66,16 +68,17 @@ exports.load = function(app) {
         this.body = athlete.toJSON();
     });
 
-    app.put('/api/athlete/:uid', function *(next) {
+    app.put('/api/athlete/:uid', function * (next) {
         log.info("====Response is =====");
+
         var data = yield parse(this);
 
-        log.info(data);
+        var status = yield persisAthleteRace(data);
 
-        // var stat = yield athlete.save();
+        console.log("Status ====>" + status.sucess);
 
-        // log.info(stat);
-
-        this.body = {sucess: true};
+        this.body = {
+            sucess: status
+        };
     });
 };

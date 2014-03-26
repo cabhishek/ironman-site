@@ -24,7 +24,6 @@
     "koa-static": "~1.4.3",
     "koa-router": "~3.1.1",
     "koa-route": "~1.1.0",
-    "asyncjs": "0.0.9",
     "koa-mount": "~1.2.3",
     "uglify-js": "~2.4.13",
     "jquery": "~2.1.0",
@@ -33,7 +32,10 @@
     "mysql": "~2.1.1",
     "co-body": "0.0.1",
     "backbone-relational": "~0.8.6",
-    "backbone-validation": "~0.9.1"
+    "backbone-validation": "~0.9.1",
+    "co": "~3.0.5",
+    "thunkify": "0.0.1",
+    "async": "~0.2.10"
   },
   "engines": {
     "node": "0.11.x"
