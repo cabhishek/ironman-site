@@ -13,22 +13,13 @@ var AthleteDetails = Backbone.View.extend({
 
     bindings: {
         '#first_name': {
-            observe: 'first_name',
-            setOptions: {
-                validate: true
-            }
+            observe: 'first_name'
         },
         '#last_name': {
-            observe: 'last_name',
-            setOptions: {
-                validate: true
-            }
+            observe: 'last_name'
         },
         '#email': {
-            observe: 'email',
-            setOptions: {
-                validate: true
-            }
+            observe: 'email'
         },
     },
 
@@ -158,14 +149,17 @@ var ClaimView = Backbone.View.extend({
 
         window.model = this.model;
 
-        if (this.isNewAthlete()){
+        if (this.model.isNewAthlete()){
+
+            //initialize with empty races
+            this.model.initializeRaces();
 
             //Create new one empty race
             var race = new AthleteRace({
                 id: this.createId()
             });
 
-            this.model.get("races").push(race);
+            this.model.pushRace(race);
 
             this.renderAthlete();
 
@@ -178,18 +172,6 @@ var ClaimView = Backbone.View.extend({
         }
     },
 
-    isNewAthlete: function(){
-
-        if (this.model.id == 'new'){
-            //initialize with empty races
-            this.model.set("races", []);
-
-            return true;
-        }
-
-        return false;
-    },
-
     renderAthlete: function() {
 
         var details = new AthleteDetails({
@@ -199,10 +181,8 @@ var ClaimView = Backbone.View.extend({
         //Render athelete data
         $("#athlete").append(details.render().el);
 
-        var races = this.model.get('races').models;
-
         //Render race datas
-        _.map(races, function(race) {
+        _.map(this.model.races(), function(race) {
             this.renderRace(race);
 
         }, this);

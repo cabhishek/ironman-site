@@ -10,7 +10,6 @@ var Athlete = Backbone.RelationalModel.extend({
     idAttribute: 'id',
 
     defaults: {
-        "id": "",
         "first_name": "",
         "last_name": "",
         "email": ""
@@ -30,6 +29,24 @@ var Athlete = Backbone.RelationalModel.extend({
             pattern: 'email',
             msg: 'Required'
         }
+    },
+
+    isNewAthlete: function(){
+        return this.id == 'new';
+    },
+
+    initializeRaces: function(){
+        this.set("races", []);
+    },
+
+    races: function(){
+        return this.get("races").models;
+    },
+
+    pushRace: function(race){
+        this.get("races").push(race);
+
+        return this;
     },
 
     relations: [{
