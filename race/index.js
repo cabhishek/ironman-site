@@ -1,7 +1,7 @@
 var _ = require('underscore'),
     render = require('./../lib/render'),
     Athlete = require('./../models/athlete'),
-    Athletes = require('./../collections/Athletes'),
+    Athletes = require('./../collections/athletes'),
     AthleteRace = require('./../models/athleteRace'),
     persisAthleteRace = require('./../data/persistAthleteRace'),
     thunkify = require('thunkify'),
