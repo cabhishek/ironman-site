@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "up": "DEBUG_COLORS=true nodemon --harmony application.js",
+    "watch": "chmod +x scripts/watch.sh && scripts/./watch.sh",
     "start": "node --harmony application.js"
   },
   "author": "Abhishek Kapatkar <cabhishek@gmail.com> (http://cabhishek.com/)",

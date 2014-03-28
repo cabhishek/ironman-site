@@ -58,6 +58,10 @@ var RaceRow = Backbone.View.extend({
 
     tagName: "tr",
 
+    events: {
+        'click .delete': 'deleteRace',
+    },
+
     bindings: {
         '#swim_time': '_pivot_swim_time',
         '#run_time': '_pivot_run_time',
@@ -106,6 +110,12 @@ var RaceRow = Backbone.View.extend({
         return this.$('[' + selector + '=' + attr + ']');
     },
 
+    deleteRace: function(){
+
+        this.model.destroy();
+
+        this.remove();
+    },
     render: function() {
 
         //UI
@@ -141,7 +151,7 @@ var ClaimView = Backbone.View.extend({
 
     render: function() {
 
-        //"this" should always be view object
+        //"this" should always be view instance
         _.bindAll(this, "renderAthlete", "addNewRace");
 
         //Counter to track unique races you add
@@ -182,10 +192,7 @@ var ClaimView = Backbone.View.extend({
         $("#athlete").append(details.render().el);
 
         //Render race datas
-        _.map(this.model.races(), function(race) {
-            this.renderRace(race);
-
-        }, this);
+        _.map(this.model.races(), this.renderRace);
 
         return this;
     },

@@ -77,6 +77,20 @@ exports.load = function(app) {
         this.body = athlete.toJSON();
     });
 
+    app.delete('/api/athleteRace/:id', function * (next) {
+
+        console.log("Delete athlete race id ==>" + this.params.id);
+
+        var athleteRace = yield new AthleteRace({
+            id: this.params.id
+        }).fetch();
+
+        if(athleteRace)
+            yield athleteRace.destroy();
+
+        this.body = {'sucess': true};
+    });
+
     app.put('/api/athlete/:uid', function * (next) {
 
         var data = yield parse(this);

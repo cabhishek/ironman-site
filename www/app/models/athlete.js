@@ -11,9 +11,9 @@ var Athlete = Backbone.RelationalModel.extend({
     idAttribute: 'id',
 
     defaults: {
-        "first_name": "",
-        "last_name": "",
-        "email": ""
+        'first_name': '',
+        'last_name': '',
+        'email': ''
     },
 
     validation: {
@@ -32,25 +32,25 @@ var Athlete = Backbone.RelationalModel.extend({
         }
     },
 
-    isNewAthlete: function(){
-        return this.id == 'new';
+    isNewAthlete: function() {
+        return this.id === 'new';
     },
 
-    initializeRaces: function(){
-        this.set("races", []);
+    initializeRaces: function() {
+        this.set('races', []);
     },
 
-    races: function(){
-        return this.get("races").models;
+    races: function() {
+        return this.get('races').models;
     },
 
-    pushRace: function(race){
-        this.get("races").push(race);
+    pushRace: function(race) {
+        this.get('races').push(race);
 
         return this;
     },
 
-    isErrorFree: function(){
+    isErrorFree: function() {
         return this.isValid(true) && _.every(this.races(), function(race) {
             return race.isValid(true);
         });
