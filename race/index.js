@@ -32,11 +32,20 @@ exports.load = function(app) {
             var firstName = _.first(names);
             var lastName = _.rest(names, 1).join(' ');
 
-            var athletes = yield new Athletes().query({
-                where: {
-                    'first_name': firstName,
+            var where_clause = {
+                'first_name': firstName
+            };
+
+            if (!_.isEmpty(lastName)) {
+                _.extend(where_clause, {
                     'last_name': lastName
-                }
+                });
+            }
+
+            log.info('where_clause =>%s', _.keys(where_clause));
+
+            var athletes = yield new Athletes().query({
+                'where': where_clause
             }).fetch({
                 withRelated: ['races']
             });
