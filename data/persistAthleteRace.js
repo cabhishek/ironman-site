@@ -66,8 +66,6 @@ function * _createAthlete(data) {
 
 function * _persistAthleteRaceData(athlete, data) {
 
-    log.info("-- Inside _persistAthleteRaceData --");
-
     // Add athlete_id since we save race data in parallel
     _.each(data.races, function(race) {
         _.extend(race, {

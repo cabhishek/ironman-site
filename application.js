@@ -10,6 +10,7 @@ var db = require('./lib/dbInitialize'),
 var app = koa();
 
 console.log("Connecting to DB =>" + config.db.connection.host);
+console.log("Env isProduction =>" + config.isProduction);
 
 //connect to DB
 db.init(config.db.connection);
