@@ -74,7 +74,11 @@ exports.load = function(app) {
             withRelated: ['races']
         });
 
-        this.body = athlete.toJSON();
+        if(athlete){
+            this.body = athlete.toJSON();
+        }else{
+            this.body = {};
+        }
     });
 
     app.delete('/api/athleteRace/:id', function * (next) {

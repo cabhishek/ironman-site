@@ -1,24 +1,27 @@
-var db = require('./lib/dbInitialize')(),
+var db = require('./lib/dbInitialize'),
     logger = require('koa-logger'),
     router = require('koa-router'),
     serve = require('koa-static'),
     render = require('./lib/render'),
     swig = require('swig'),
-    koa = require('koa');
+    koa = require('koa'),
+    config = require('./config');
 
 var app = koa();
 
-var env = process.env.NODE_ENV || 'development';
-var port = process.env.PORT || 3000;
+console.log("Connecting to DB =>" + config.db.connection.host);
+
+//connect to DB
+db.init(config.db.connection);
 
 // Logging Middleware
 app.use(logger());
 
 //Static files
-app.use(serve('www/assets'));
+app.use(serve(config.staticDir));
 
 //Disable template caching on dev
-if ('development' === env) {
+if (!config.isProduction) {
     swig.setDefaults({
         cache: false
     });
@@ -43,5 +46,7 @@ app.get('/landing', function * index() {
 //Load Race app
 require('./race/index').load(app);
 
-app.listen(port);
-console.log('app listening on port ' + port);
+//Boot app
+app.listen(config.port);
+
+console.log('App listening on port ' + config.port);
