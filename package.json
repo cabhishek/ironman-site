@@ -10,10 +10,11 @@
   ],
   "scripts": {
     "up": "DEBUG_COLORS=true nodemon --harmony application.js",
+    "start": "node --harmony application.js",
     "watch": "chmod +x scripts/watch.sh && scripts/./watch.sh",
     "build": "chmod +x scripts/build.sh && scripts/./build.sh",
     "clean": "rm -rf www/assets/bundle/*.js",
-    "start": "node --harmony application.js"
+    "preinstall": "npm run build"
   },
   "author": "Abhishek Kapatkar <cabhishek@gmail.com> (http://cabhishek.com/)",
   "dependencies": {
