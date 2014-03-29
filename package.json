@@ -14,7 +14,7 @@
     "watch": "chmod +x scripts/watch.sh && scripts/./watch.sh",
     "build": "chmod +x scripts/build.sh && scripts/./build.sh",
     "clean": "rm -rf www/assets/bundle/*.js",
-    "postinstall": "./node_modules/.bin/browserify www/app/app.js | uglifyjs -mc > www/assets/bundle/bundle.js"
+    "postinstall": "./node_modules/.bin/browserify www/app/app.js | uglifyjs -mc > www/assets/bundle.js"
   },
   "author": "Abhishek Kapatkar <cabhishek@gmail.com> (http://cabhishek.com/)",
   "repository": {
