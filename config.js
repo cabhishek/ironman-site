@@ -20,11 +20,33 @@ var localDB = {
     charset: 'utf8'
 };
 
+//Swig + Consolidate ulginess
+var templateOptions = (function() {
+    if (isProduction) {
+        return {
+            map: {
+                html: 'swig'
+            },
+            cache: "memory"
+        };
+    } else {
+
+        return {
+            map: {
+                html: 'swig'
+            },
+            cache: false
+        };
+    }
+})();
+
 //Base
 var config = {
     env: process.env.NODE_ENV || 'development',
     port: process.env.PORT || 3000,
     staticDir: path.resolve(projectRoot + "/www/assets"),
+    templateDir: path.resolve(projectRoot + "/www/templates"),
+    templateOptions: templateOptions,
     browserifyDebug: !isProduction,
     isProduction: isProduction,
     projectRoot: projectRoot,
