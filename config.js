@@ -3,6 +3,8 @@ var path = require('path'),
 
 var projectRoot = path.resolve(settings.PROJECT_DIR);
 
+console.log("NODE_ENV =>" + process.env.NODE_ENV);
+
 var isProduction = process.env.NODE_ENV === "production";
 
 var liveDB = {
