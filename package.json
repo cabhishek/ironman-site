@@ -13,7 +13,7 @@
     "start": "node --harmony application.js",
     "watch": "chmod +x scripts/watch.sh && scripts/./watch.sh",
     "build": "chmod +x scripts/build.sh && scripts/./build.sh",
-    "clean": "rm -rf www/assets/bundle/*.js",
+    "clean": "rm -rf www/assets/bundle*.js",
     "postinstall": "./node_modules/.bin/browserify www/app/app.js | uglifyjs -mc > www/assets/bundle.js"
   },
   "author": "Abhishek Kapatkar <cabhishek@gmail.com> (http://cabhishek.com/)",
@@ -39,11 +39,11 @@
     "log": "~1.4.0",
     "mysql": "~2.1.1",
     "co-body": "0.0.1",
-    "backbone-relational": "~0.8.6",
     "backbone-validation": "~0.9.1",
     "co": "~3.0.5",
     "thunkify": "0.0.1",
-    "async": "~0.2.10"
+    "async": "~0.2.10",
+    "browserify-shim": "~3.4.0"
   },
   "engines": {
     "node": "0.11.x"

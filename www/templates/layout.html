@@ -15,7 +15,10 @@
             <link rel="stylesheet" href="/css/foundation.css" />
             <script src="/js/modernizr-2.6.2.min.js"></script>
         {% endblock %}
+
+        {% block custom_css %} {% endblock %}
     </head>
+
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -31,5 +34,11 @@
           ga('create', 'UA-49160228-1', 'datathletics.com');
           ga('send', 'pageview');
         </script>
+
+      <footer class="footer">
+        <div class="container">
+          <a href="mailto:contact@sourcing.io?subject=Hello">Contact</a>
+        </div>
+    </footer>
     </body>
 </html>

@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+{% extends 'layout.html' %}
 
-<html>
+{% block head %}
 
-<head>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Duru+Sans|Belgrano|Muli|Alef|Telex|Varela&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link type="text/css" rel="stylesheet" href="css/landing.css" />
-    <title>Datathletics</title>
-</head>
+{% endblock %}
 
-<body>
+
+{% block content %}
+
     <div id="landing">
         <div id="header">
             <div id="logo">
@@ -18,8 +18,9 @@
             </div>
             <div id="topnav">
                 <ul>
+                    <li><a href="#howitworks">Our Analysis</a>
                     <li>What We Do</li>
-                    <li><a href="#howitworks">Our Analysis</a></li>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -44,19 +45,19 @@
 
         <div class="search">
             <form method="GET" action="/search">
-	            <div class="row">
-	                <div class="small-8">
-	                    <div class="row collapse">
-	                        <div class="small-9 columns">
-	                            <input type="text" name="q" class= "searchBox" placeholder="Search by first and last name">
-	                        </div>
-	                        <div class="small-2 columns">
-	                            <input type="submit" value="submit"/>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-        	</form>
+                <div class="row">
+                    <div class="small-8">
+                        <div class="row collapse">
+                            <div class="small-9 columns">
+                                <input type="text" name="q" class="searchBox" placeholder="Search by first and last name">
+                            </div>
+                            <div class="small-2 columns">
+                                <input type="submit" value="submit" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
 
             <div class="searchIcon">
                 <i class="fa fa-search"></i>
@@ -106,7 +107,11 @@
             <p>new paragraph starts here</p>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            var deck = new $.scrolldeck();
+        });
+    </script>
 
-</body>
+{% endblock %}
 
-</html>
