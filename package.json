@@ -14,8 +14,13 @@
     "watch": "chmod +x scripts/watch.sh && scripts/./watch.sh",
     "build": "chmod +x scripts/build.sh && scripts/./build.sh",
     "clean": "rm -rf www/assets/bundle/*.js"
+    "postinstall": "./node_modules/.bin/browserify www/app/app.js | uglifyjs -mc > www/assets/bundle/bundle.js"
   },
   "author": "Abhishek Kapatkar <cabhishek@gmail.com> (http://cabhishek.com/)",
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:cabhishek/datathletics-site.git"
+  },
   "dependencies": {
     "koa": "~0.5.1",
     "underscore": "~1.6.0",
