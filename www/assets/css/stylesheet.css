@@ -15,6 +15,12 @@ body {
     padding-left:20px;
     cursor:pointer;
 }
+
+a {
+    color:inherit;
+    text-decoration: inherit;
+}
+
 #topnav {
     display:inline-block;
     color:white;
@@ -38,7 +44,7 @@ li {
     text-align: left;
     width:550px;
     border-radius:3px;
-    background-color:rgba(88, 88, 88, 0.3);
+    background-color:rgba(88, 88, 88, 0.5);
 }
 .tagline {
     font-family:'Varela';
