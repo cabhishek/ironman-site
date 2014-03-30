@@ -66,6 +66,14 @@ exports.load = function(app) {
         });
     });
 
+    app.get('/confirmation', function * (next) {
+
+        this.body = yield render('claim', {
+            title: 'Confirmation'
+        });
+    });
+
+    // API's streaming JSON for Backone view
     app.get('/api/athlete/:uid', function * (next) {
 
         var athlete = yield new Athlete({
@@ -79,6 +87,19 @@ exports.load = function(app) {
         }else{
             this.body = {};
         }
+    });
+
+    app.put('/api/athlete/:uid', function * (next) {
+
+        var data = yield parse(this);
+
+        var status = yield persisAthleteRace(data);
+
+        console.log("Persistance Status ====>" + status.sucess);
+
+        this.body = {
+            sucess: status
+        };
     });
 
     app.delete('/api/athleteRace/:id', function * (next) {
@@ -95,23 +116,5 @@ exports.load = function(app) {
         this.body = {'sucess': true};
     });
 
-    app.get('/confirmation', function * (next) {
 
-        this.body = yield render('confirmation', {
-            title: 'Confirmation'
-        });
-    });
-
-    app.put('/api/athlete/:uid', function * (next) {
-
-        var data = yield parse(this);
-
-        var status = yield persisAthleteRace(data);
-
-        console.log("Persistance Status ====>" + status.sucess);
-
-        this.body = {
-            sucess: status
-        };
-    });
 };
