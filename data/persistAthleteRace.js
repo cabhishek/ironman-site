@@ -15,7 +15,11 @@ module.exports = function * persistAthleteRace(data) {
         log.info("Found athlete %s %s", athlete.get('first_name'), athlete.get('last_name'));
 
         //E-cap
-        yield athlete.save({'email': data.email}, {
+        yield athlete.save({
+            'first_name': data.first_name,
+            'last_name': data.last_name,
+            'email': data.email
+        }, {
             patch: true
         });
 
@@ -32,9 +36,7 @@ module.exports = function * persistAthleteRace(data) {
 function * _getAthlete(data) {
 
     var athlete = yield new Athlete({
-        'first_name': data.first_name,
-        'last_name': data.last_name
-
+        'id': data.id
     }).fetch();
 
     return athlete;
