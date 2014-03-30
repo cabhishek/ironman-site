@@ -153,13 +153,13 @@ h1 {
     margin-top:100px;
     margin-left:-10px;
     height:950px;
-    background:#f8f8f8;
+    background:gray;
 }
 .howitworksContainer {
     width:700px;
     margin-right:auto;
     margin-left:auto;
-    color:black;
+    color:white;
     font-family:Varela;
 }
 .howitworksContainer > h2 {
@@ -168,7 +168,7 @@ h1 {
 }
 .howitworksContainer > .linebreak {
     margin-top:-20px;
-    border: 1px solid black;
+    border: 1px solid white;
     width:700px;
 }
 .graph1 {
