@@ -1,16 +1,40 @@
 {% extends 'search.html' %} {% block search_data %}
 
-<h1>Data</h1>
+</br>
 <ul>
     {% for athlete in athletes %}
-    <li>{{ athlete.first_name }} {{ athlete.last_name }} <a href="/claim/{{athlete.id}}/athlete">claim</a>
-    </li>
+    <p>{{ athlete.first_name }} {{ athlete.last_name }}
+    <a class="btn btn-info" href="/claim/{{athlete.id}}/athlete">claim</a>
+    </p>
 
-    {% for race in athlete.races%}
+    <table class="table">
+        <thead>
+            <th>Race Name</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Cyle Time</th>
+            <th>Run Time</th>
+            <th>Bike Time</th>
+            <th>Final Time</th>
+        </thead>
+        <tbody id="tblRows">
+            {% for race in athlete.races%}
+            <tr>
+                <td>{{race.name}}</td>
+                <td>{{race.location}}</td>
+                <td>{{race.date}}</td>
+                <td>{{race._pivot_swim_time}}</td>
+                <td>{{race._pivot_run_time}}</td>
+                <td>{{race._pivot_cycle_time}}</td>
+                <td>{{race._pivot_final_time}}</td>
+            </tr>
+            {%endfor%} {% endfor %}
+        </tbody>
 
-    <ul>{{race.name}},{{race.location}},{{race.date}},{{race._pivot_swim_time}},{{race._pivot_run_time}},{{race._pivot_cycle_time}},{{race._pivot_final_time}}</ul>
 
-    {%endfor%} {% endfor %}
+        </tbody>
+    </table>
+
 </ul>
 
 {% endblock %}
