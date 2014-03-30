@@ -8,6 +8,7 @@ var $ = require('jquery'),
 
 //JQuery dependancy
 Backbone.$ = $;
+window.$ = $;
 
 var Ecap = Backbone.View.extend({
 
@@ -267,10 +268,9 @@ var ClaimView = Backbone.View.extend({
 
         if (this.model.isErrorFree()) {
 
-            console.log("valid");
             this.model.save();
 
-            this.navigate("/confirmation");
+            Backbone.history.navigate('/confirmation', {trigger: true, replace: true});
 
         } else {
             console.log("Not valid");

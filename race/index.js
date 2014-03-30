@@ -97,7 +97,7 @@ exports.load = function(app) {
 
     app.get('/confirmation', function * (next) {
 
-        this.body = yield render('confirmation', {
+        this.body = yield render('claim', {
             title: 'Confirmation'
         });
     });

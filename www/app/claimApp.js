@@ -1,13 +1,14 @@
 var Backbone = require('backbone'),
     Athlete = require('./models/athlete'),
-    ClaimView = require("./views/claimView");
+    ClaimView = require("./views/claimView"),
+    Confirmation = require("./views/confirmationView");
 
 (function() {
 
     var router = Backbone.Router.extend({
         routes: {
             "claim/:uid/athlete": "loadAthlete",
-            "confirm": "confirm"
+            "confirmation": "confirm"
         },
 
         loadAthlete: function(uid) {
@@ -25,7 +26,7 @@ var Backbone = require('backbone'),
         },
 
         confirm: function(){
-            alert("confirm");
+            new Confirmation().render();
         }
     });
 
