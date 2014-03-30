@@ -231,7 +231,7 @@ var ClaimView = Backbone.View.extend({
         //Render athelete data
         $("#athlete").append(details.render().el);
 
-        //Ecap wdiget
+        //Ecap widget
         $("#ecap").append(ecap.render().el);
 
         //Render race datas
@@ -269,6 +269,8 @@ var ClaimView = Backbone.View.extend({
 
             console.log("valid");
             this.model.save();
+
+            this.navigate("/confirmation");
 
         } else {
             console.log("Not valid");

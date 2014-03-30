@@ -15,8 +15,8 @@
                 <th>Race Name</th>
                 <th>Year</th>
                 <th>Swim Time</th>
-                <th>Run Time</th>
                 <th>Bike Time</th>
+                <th>Run Time</th>
                 <th>Final Time</th>
             </thead>
             <tbody id="tblRows"></tbody>
@@ -76,15 +76,15 @@
     </td>
 
     <td>
+        <small class="control-label" name="_pivot_cycle_time-<%= id %>"> </small>
+        <input id="cycle_time" type="text" class="form-control col-xs-8" value="<%= _pivot_cycle_time %>"/>
+    </td>
+
+    <td>
         <div class="form-group">
             <small class="control-label" name="_pivot_run_time-<%= id %>"> </small>
             <input id="run_time" type="text" class="form-control col-xs-8" value="<%= _pivot_run_time %>"/>
         </div>
-    </td>
-
-    <td>
-        <small class="control-label" name="_pivot_cycle_time-<%= id %>"> </small>
-        <input id="cycle_time" type="text" class="form-control col-xs-8" value="<%= _pivot_cycle_time %>"/>
     </td>
 
     <td>
