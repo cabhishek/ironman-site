@@ -1,0 +1,61 @@
+{% extends 'search.html' %} {% block search_data %} {% if found %}
+<div class="row">
+    <p>
+        <strong>Claim Your Races!</strong>
+    </p>
+    <p>
+        Select the race results that belong to you. If multiple results are yours, select any relevant entry to continue — you’ll have a chance to add the others next.
+    </p>
+</div>
+
+<div class="container result-grid">
+    <ul class="list-unstyled">
+        {% for athlete in athletes %}
+        <li class="list-unstyled">
+            <div class="row">
+                <p class="lead">
+                    <strong>{{ athlete.first_name }} {{ athlete.last_name }}</strong>
+                    <a class="btn btn-success" href="/claim/{{athlete.id}}/athlete">claim</a>
+                </p>
+                <table class="table">
+                    <thead>
+                        <th>Race Name</th>
+                        <th>Location</th>
+                        <th>Date</th>
+                        <th>Swim Time</th>
+                        <th>Bike Time</th>
+                        <th>Run Time</th>
+                        <th>Final Time</th>
+                    </thead>
+                    <tbody id="tblRows">
+                        {% for race in athlete.races%}
+                        <tr>
+                            <td>{{race.name}}</td>
+                            <td>{{race.location}}</td>
+                            <td>{{race.date}}</td>
+                            <td>{{race._pivot_swim_time}}</td>
+                            <td>{{race._pivot_cycle_time}}</td>
+                            <td>{{race._pivot_run_time}}</td>
+                            <td>{{race._pivot_final_time}}</td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% else %}
+<div class="row">
+    <p>
+        <strong>We couldn’t find any race results under that name….</strong>
+    </p>
+    <p>
+        If you’ve raced under a different name — such as Alexander instead of Alex — try searching for that. If not, no worries! You can tell us about your races in the next step.
+    </p>
+    <div class="row">
+      <a class="btn btn-success" href="/claim/new/athlete">Continue</a>
+    </div>
+</div>
+{% endif %} {% endblock %}

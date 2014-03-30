@@ -11,13 +11,6 @@ var _ = require('underscore'),
 
 exports.load = function(app) {
 
-    app.get('/race', function * () {
-
-        this.body = yield render('race', {
-            name: "Abhishek kapatkar"
-        });
-    });
-
     app.get('/search', function * () {
 
         if (_.isUndefined(this.query.q)) {
@@ -50,7 +43,7 @@ exports.load = function(app) {
                 withRelated: ['races']
             });
 
-            this.body = yield render('race', {
+            this.body = yield render('raceResults', {
                 found: _.size(athletes) > 0,
                 total: _.size(athletes),
                 athletes: athletes.toJSON()
