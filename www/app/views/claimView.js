@@ -31,20 +31,6 @@ var Ecap = Backbone.View.extend({
         //2-way binding
         this.stickit();
 
-        //Validation
-        Backbone.Validation.bind(this, {
-            valid: function(view, attr, selector) {
-
-                view.element(attr, selector).hide();
-                view.element(attr, selector).parent().removeClass("has-error");
-            },
-            invalid: function(view, attr, error, selector) {
-
-                view.element(attr, selector).text(error).show();
-                view.element(attr, selector).parent().addClass("has-error");
-            }
-        });
-
         return this;
     },
 });
@@ -83,8 +69,14 @@ var AthleteDetails = Backbone.View.extend({
             },
             invalid: function(view, attr, error, selector) {
 
-                view.element(attr, selector).text(error).show();
-                view.element(attr, selector).parent().addClass("has-error");
+                //Email a.k.a Ecap is a child view rendered using different template.
+                if(attr === 'email'){
+                    view.childView.element(attr, selector).text(error).show();
+                    view.childView.element(attr, selector).parent().addClass("has-error");
+                } else{
+                    view.element(attr, selector).text(error).show();
+                    view.element(attr, selector).parent().addClass("has-error");
+                }
             }
         });
 
@@ -233,6 +225,8 @@ var ClaimView = Backbone.View.extend({
         var ecap = new Ecap({
             model: this.model
         });
+
+        details.childView = ecap;
 
         //Render athelete data
         $("#athlete").append(details.render().el);
