@@ -1,7 +1,7 @@
 var Backbone = require('backbone'),
     Athlete = require('./models/athlete'),
     ClaimView = require("./views/claimView"),
-    Confirmation = require("./views/confirmationView");
+    ConfirmationView = require("./views/confirmationView");
 
 (function() {
 
@@ -25,15 +25,13 @@ var Backbone = require('backbone'),
             }).render();
         },
 
-        confirm: function(){
-            new Confirmation().render();
+        confirm: function() {
+            new ConfirmationView().render();
         }
     });
 
-     //Bootstrap router and start tracking URL
-    var r = new router();
-
-    window.r = r;
+    //Bootstrap router and start tracking URL
+    new router();
 
     Backbone.history.start({
         pushState: true

@@ -8,7 +8,6 @@ var $ = require('jquery'),
 
 //JQuery dependancy
 Backbone.$ = $;
-window.$ = $;
 
 var Ecap = Backbone.View.extend({
 
@@ -71,10 +70,10 @@ var AthleteDetails = Backbone.View.extend({
             invalid: function(view, attr, error, selector) {
 
                 //Email a.k.a Ecap is a child view rendered using different template.
-                if(attr === 'email'){
+                if (attr === 'email') {
                     view.childView.element(attr, selector).text(error).show();
                     view.childView.element(attr, selector).parent().addClass("has-error");
-                } else{
+                } else {
                     view.element(attr, selector).text(error).show();
                     view.element(attr, selector).parent().addClass("has-error");
                 }
@@ -127,7 +126,9 @@ var RaceRow = Backbone.View.extend({
     template: _.template($('#row').html()),
 
     initialize: function() {
-        this.races = Races;
+        this.races = _.sortBy(Races, function(race) {
+            return race.name;
+        });
 
         this.years = _.map(_.range(1978, 2015), function(year) {
             return {
@@ -270,7 +271,10 @@ var ClaimView = Backbone.View.extend({
 
             this.model.save();
 
-            Backbone.history.navigate('/confirmation', {trigger: true, replace: true});
+            Backbone.history.navigate('/confirmation', {
+                trigger: true,
+                replace: true
+            });
 
         } else {
             console.log("Not valid");
