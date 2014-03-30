@@ -1,74 +1,98 @@
 {% extends 'layout.html' %} {% block title %}Search{% endblock %} {% block content %}
 
+{% block custom_css %}
+    <link rel="stylesheet" href="/css/claim.css" />
+{% endblock %}
+
 <h1>Your claimed Data</h1>
 <div id="container">
 
     <div id="athlete"></div>
 
-    <table>
-        <thead>
-            <th>Race Name</th>
-            <th>Year</th>
-            <th>Swim Time</th>
-            <th>Run Time</th>
-            <th>Bike Time</th>
-            <th>Final Time</th>
-        </thead>
-        <tbody id="tblRows"></tbody>
-    </table>
-    <button id="add" type="button" class="btn btn-primary btn-lg">Add</button>
-    <button id="submit" type="button" class="btn btn-primary btn-lg">Submit</button>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <th>Race Name</th>
+                <th>Year</th>
+                <th>Swim Time</th>
+                <th>Bike Time</th>
+                <th>Run Time</th>
+                <th>Final Time</th>
+            </thead>
+            <tbody id="tblRows"></tbody>
+        </table>
+    </div>
+
+    <button id="add" type="button" class="btn btn-primary">Add</button>
+    </br></br></br>
+
+    <div>
+        <div id="ecap"></div>
+        <button id="submit" type="button" class="btn btn-primary btn-lg btn-success">Submit</button>
+    <div>
 </div>
 
+
+<script type="text/template" id="email-template">
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">email</label>
+            <small class="control-label" name="email"></small>
+            <input class="form-control" id="email" type="text" value="<%= email %>"/>
+        </div>
+    </form>
+</script>
+
 <script type="text/template" id="details">
-     <div id="athlete-control-group">
-        <div class="large-4 columns">
-            <input id="first_name" type="text" value="<%= first_name %>"/>
-            <small name="first_name"></small>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="first_name" class="col-sm-2 control-label">First Name</label>
+            <small class="control-label" name="first_name"></small>
+            <input class="form-control" id="first_name" type="text" value="<%= first_name %>"/>
         </div>
 
-        <div class="large-4 columns">
-            <input id="last_name" type="text" value="<%= last_name %>"/>
-            <small name="last_name"></small>
+        <div class="form-group">
+            <label for="last_name" class="col-sm-2 control-label">Last Name</label>
+            <small class="control-label" name="last_name"></small>
+            <input class="form-control" id="last_name" type="text" value="<%= last_name %>"/>
         </div>
-
-        <div class="large-4 columns">
-            <input id="email" type="text" value="<%= email %>"/>
-            <small name="email"></small>
-        </div>
-      </div>
+    </form>
 </script>
 
 <script type="text/template" id="row">
     <td>
-        <select id="name"></select>
+        <select class="dropdown" id="name"></select>
         <small name="name-<%= id %>"></small>
     </td>
     <td>
-        <select id="year"></select>
+        <select class="dropdown" id="year"></select>
         <small name="year-<%= id %>"></small>
     </td>
     <td>
-        <input id="swim_time" type="text" value="<%= _pivot_swim_time %>"/>
-        <small name="_pivot_swim_time-<%= id %>"></small>
+        <div class="form-group">
+            <small class="control-label" name="_pivot_swim_time-<%= id %>"></small>
+            <input id="swim_time" type="text" class="form-control col-xs-8" value="<%= _pivot_swim_time %>"/>
+        </div>
     </td>
 
     <td>
-        <input id="run_time" type="text" value="<%= _pivot_run_time %>"/>
-        <small name="_pivot_run_time-<%= id %>"> </small>
+        <small class="control-label" name="_pivot_cycle_time-<%= id %>"> </small>
+        <input id="cycle_time" type="text" class="form-control col-xs-8" value="<%= _pivot_cycle_time %>"/>
     </td>
 
     <td>
-        <input id="cycle_time" type="text" value="<%= _pivot_cycle_time %>"/>
-        <small name="_pivot_cycle_time-<%= id %>"> </small>
+        <div class="form-group">
+            <small class="control-label" name="_pivot_run_time-<%= id %>"> </small>
+            <input id="run_time" type="text" class="form-control col-xs-8" value="<%= _pivot_run_time %>"/>
+        </div>
     </td>
 
     <td>
-        <input id="final_time" type="text" value="<%= _pivot_final_time %>"/>
-        <small name="_pivot_final_time-<%= id %>"></small>
+        <small class="control-label" name="_pivot_final_time-<%= id %>"></small>
+        <input id="final_time" type="text" class="form-control col-xs-8" value="<%= _pivot_final_time %>"/>
     </td>
     <td>
-        <input class="delete" id="<%= id %>" type="button" value="delete"/>
+        <input class="btn btn-danger delete" id="<%= id %>" type="button" value="delete"/>
     </td>
 </script>
 

@@ -1,31 +1,21 @@
-{% extends 'layout.html' %}
+{% extends 'layout.html' %} {% block title %}Search{% endblock %}
 
-{% block title %}Search{% endblock %}
 
-{% block content %}
+{% block custom_css %}
+<link rel="stylesheet" href="/css/main.css" />{% endblock %} {% block content %}
 
-<div class="row">
-    <div class="large-12 columns">
-        <form method="GET" action="/search">
-            <div class="row">
-                <div class="small-8">
-                    <div class="row collapse">
-                        <div class="small-3 columns">
-                            <label for="right-label" class="right inline">Search</label>
-                        </div>
-                        <div class="small-9 columns">
-                            <input type="text" name="q" placeholder="name...">
-                        </div>
-                        <div class="small-2 columns">
-                            <input type="submit" value="submit"/>
-                        </div>
-                    </div>
-                </div>
+<div class="container">
+    <div class="row">
+
+        <form method="GET" action="/search" class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <input type="text" name="q" class="form-control input-lg searchBox" placeholder="First and last name...">
             </div>
+            <input class="btn btn-lg btn-primary" type="submit" value="search"></input>
         </form>
-    </div>
-</div>
 
-{% block search_data %}{% endblock %}
+    </div>
+    {% block search_data %}{% endblock %}
+</div>
 
 {% endblock %}

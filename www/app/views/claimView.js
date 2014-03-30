@@ -9,6 +9,32 @@ var $ = require('jquery'),
 //JQuery dependancy
 Backbone.$ = $;
 
+var Ecap = Backbone.View.extend({
+
+    bindings: {
+        '#email': {
+            observe: 'email'
+        },
+    },
+
+    template: _.template($('#email-template').html()),
+
+    element: function(attr, selector) {
+        return this.$('[' + selector + '=' + attr + ']');
+    },
+
+    render: function() {
+
+        //Render races on UI
+        this.$el.html(this.template(this.model.toJSON()));
+
+        //2-way binding
+        this.stickit();
+
+        return this;
+    },
+});
+
 var AthleteDetails = Backbone.View.extend({
 
     bindings: {
@@ -17,10 +43,7 @@ var AthleteDetails = Backbone.View.extend({
         },
         '#last_name': {
             observe: 'last_name'
-        },
-        '#email': {
-            observe: 'email'
-        },
+        }
     },
 
     template: _.template($('#details').html()),
@@ -41,12 +64,19 @@ var AthleteDetails = Backbone.View.extend({
         Backbone.Validation.bind(this, {
             valid: function(view, attr, selector) {
 
-                view.element(attr, selector).removeClass("error").hide();
+                view.element(attr, selector).hide();
+                view.element(attr, selector).parent().removeClass("has-error");
             },
             invalid: function(view, attr, error, selector) {
 
-                view.element(attr, selector).addClass("error").text(error).show();
-
+                //Email a.k.a Ecap is a child view rendered using different template.
+                if(attr === 'email'){
+                    view.childView.element(attr, selector).text(error).show();
+                    view.childView.element(attr, selector).parent().addClass("has-error");
+                } else{
+                    view.element(attr, selector).text(error).show();
+                    view.element(attr, selector).parent().addClass("has-error");
+                }
             }
         });
 
@@ -110,7 +140,7 @@ var RaceRow = Backbone.View.extend({
         return this.$('[' + selector + '=' + attr + ']');
     },
 
-    deleteRace: function(){
+    deleteRace: function() {
 
         this.model.destroy();
 
@@ -128,11 +158,15 @@ var RaceRow = Backbone.View.extend({
         Backbone.Validation.bind(this, {
             valid: function(view, attr, selector) {
 
-                view.element(attr + "-" + view.model.get("id"), selector).removeClass("error").hide();
+                view.element(attr + "-" + view.model.get("id"), selector).hide();
+                view.element(attr + "-" + view.model.get("id"), selector).parent().removeClass("has-error");
+
             },
             invalid: function(view, attr, error, selector) {
 
-                view.element(attr + "-" + view.model.get("id"), selector).addClass("error").text(error).show();
+                view.element(attr + "-" + view.model.get("id"), selector).text(error).show();
+                view.element(attr + "-" + view.model.get("id"), selector).parent().addClass("has-error");
+
             }
         });
 
@@ -159,7 +193,7 @@ var ClaimView = Backbone.View.extend({
 
         window.model = this.model;
 
-        if (this.model.isNewAthlete()){
+        if (this.model.isNewAthlete()) {
 
             //initialize with empty races
             this.model.initializeRaces();
@@ -173,7 +207,7 @@ var ClaimView = Backbone.View.extend({
 
             this.renderAthlete();
 
-        }else{
+        } else {
 
             //Get data from server
             this.model.fetch({
@@ -188,8 +222,17 @@ var ClaimView = Backbone.View.extend({
             model: this.model
         });
 
+        var ecap = new Ecap({
+            model: this.model
+        });
+
+        details.childView = ecap;
+
         //Render athelete data
         $("#athlete").append(details.render().el);
+
+        //Ecap widget
+        $("#ecap").append(ecap.render().el);
 
         //Render race datas
         _.map(this.model.races(), this.renderRace);
@@ -226,6 +269,8 @@ var ClaimView = Backbone.View.extend({
 
             console.log("valid");
             this.model.save();
+
+            this.navigate("/confirmation");
 
         } else {
             console.log("Not valid");

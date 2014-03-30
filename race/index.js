@@ -95,6 +95,13 @@ exports.load = function(app) {
         this.body = {'sucess': true};
     });
 
+    app.get('/confirmation', function * (next) {
+
+        this.body = yield render('confirmation', {
+            title: 'Confirmation'
+        });
+    });
+
     app.put('/api/athlete/:uid', function * (next) {
 
         var data = yield parse(this);

@@ -1,15 +1,17 @@
-<!DOCTYPE html>
+{% extends 'layout.html' %}
 
-<html>
+{% block head %}
 
-<head>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Duru+Sans|Belgrano|Muli|Alef|Telex|Varela&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link type="text/css" rel="stylesheet" href="css/landing.css" />
-    <title>Datathletics</title>
-</head>
 
-<body>
+    <link href='http://fonts.googleapis.com/css?family=Duru+Sans|Belgrano|Muli|Alef|Telex|Varela&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+    <link type="text/css" rel="stylesheet" href="css/landing.css" />
+{% endblock %}
+
+
+{% block content %}
+
     <div id="landing">
         <div id="header">
             <div id="logo">
@@ -56,8 +58,6 @@
 	                    </div>
 	                </div>
 	            </div>
-        	</form>
-
         </div>
     </div>
 
@@ -127,7 +127,5 @@
             </ul>
         </div>
     </div>
+{% endblock %}
 
-</body>
-
-</html>

@@ -7,6 +7,7 @@ var Backbone = require('backbone'),
     var router = Backbone.Router.extend({
         routes: {
             "claim/:uid/athlete": "loadAthlete",
+            "confirm": "confirm"
         },
 
         loadAthlete: function(uid) {
@@ -21,11 +22,17 @@ var Backbone = require('backbone'),
                 model: model
 
             }).render();
+        },
+
+        confirm: function(){
+            alert("confirm");
         }
     });
 
      //Bootstrap router and start tracking URL
-    new router();
+    var r = new router();
+
+    window.r = r;
 
     Backbone.history.start({
         pushState: true
