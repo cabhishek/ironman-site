@@ -9,6 +9,46 @@ var $ = require('jquery'),
 //JQuery dependancy
 Backbone.$ = $;
 
+var Ecap = Backbone.View.extend({
+
+    bindings: {
+        '#email': {
+            observe: 'email'
+        },
+    },
+
+    template: _.template($('#email-template').html()),
+
+    element: function(attr, selector) {
+        return this.$('[' + selector + '=' + attr + ']');
+    },
+
+    render: function() {
+
+        //Render races on UI
+        this.$el.html(this.template(this.model.toJSON()));
+
+        //2-way binding
+        this.stickit();
+
+        //Validation
+        Backbone.Validation.bind(this, {
+            valid: function(view, attr, selector) {
+
+                view.element(attr, selector).hide();
+                view.element(attr, selector).parent().removeClass("has-error");
+            },
+            invalid: function(view, attr, error, selector) {
+
+                view.element(attr, selector).text(error).show();
+                view.element(attr, selector).parent().addClass("has-error");
+            }
+        });
+
+        return this;
+    },
+});
+
 var AthleteDetails = Backbone.View.extend({
 
     bindings: {
@@ -17,10 +57,7 @@ var AthleteDetails = Backbone.View.extend({
         },
         '#last_name': {
             observe: 'last_name'
-        },
-        '#email': {
-            observe: 'email'
-        },
+        }
     },
 
     template: _.template($('#details').html()),
@@ -111,7 +148,7 @@ var RaceRow = Backbone.View.extend({
         return this.$('[' + selector + '=' + attr + ']');
     },
 
-    deleteRace: function(){
+    deleteRace: function() {
 
         this.model.destroy();
 
@@ -164,7 +201,7 @@ var ClaimView = Backbone.View.extend({
 
         window.model = this.model;
 
-        if (this.model.isNewAthlete()){
+        if (this.model.isNewAthlete()) {
 
             //initialize with empty races
             this.model.initializeRaces();
@@ -178,7 +215,7 @@ var ClaimView = Backbone.View.extend({
 
             this.renderAthlete();
 
-        }else{
+        } else {
 
             //Get data from server
             this.model.fetch({
@@ -193,8 +230,15 @@ var ClaimView = Backbone.View.extend({
             model: this.model
         });
 
+        var ecap = new Ecap({
+            model: this.model
+        });
+
         //Render athelete data
         $("#athlete").append(details.render().el);
+
+        //Ecap wdiget
+        $("#ecap").append(ecap.render().el);
 
         //Render race datas
         _.map(this.model.races(), this.renderRace);
