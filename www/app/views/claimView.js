@@ -41,12 +41,13 @@ var AthleteDetails = Backbone.View.extend({
         Backbone.Validation.bind(this, {
             valid: function(view, attr, selector) {
 
-                view.element(attr, selector).removeClass("error").hide();
+                view.element(attr, selector).hide();
+                view.element(attr, selector).parent().removeClass("has-error");
             },
             invalid: function(view, attr, error, selector) {
 
-                view.element(attr, selector).addClass("error").text(error).show();
-
+                view.element(attr, selector).text(error).show();
+                view.element(attr, selector).parent().addClass("has-error");
             }
         });
 
@@ -128,11 +129,15 @@ var RaceRow = Backbone.View.extend({
         Backbone.Validation.bind(this, {
             valid: function(view, attr, selector) {
 
-                view.element(attr + "-" + view.model.get("id"), selector).removeClass("error").hide();
+                view.element(attr + "-" + view.model.get("id"), selector).hide();
+                view.element(attr + "-" + view.model.get("id"), selector).parent().removeClass("has-error");
+
             },
             invalid: function(view, attr, error, selector) {
 
-                view.element(attr + "-" + view.model.get("id"), selector).addClass("error").text(error).show();
+                view.element(attr + "-" + view.model.get("id"), selector).text(error).show();
+                view.element(attr + "-" + view.model.get("id"), selector).parent().addClass("has-error");
+
             }
         });
 
