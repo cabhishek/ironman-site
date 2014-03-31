@@ -4,37 +4,38 @@
     <link rel="stylesheet" href="/css/claim.css" />
 {% endblock %}
 
-<div id="container">
+<div id="container" class="container">
+    <div class="row">
+        <h3><strong>Confirm Your Races</strong></h3>
+        <p>Add any races not captured below, and make sure all your race data looks correct. When you’re ready, click <strong>Submit!</strong></p>
 
-    <h3><strong>Confirm Your Races</strong></h3>
+        <div id="athlete"></div>
 
-    <p>Add any races not captured below, and make sure all your race data looks correct. When you’re ready, click <strong>Submit!</strong></p>
+        <div class="table-responsive container">
+            <div class="row">
+                <table class="table col-lg-12">
+                    <thead>
+                        <th>Race Name</th>
+                        <th>Year</th>
+                        <th>Swim Time</th>
+                        <th>Bike Time</th>
+                        <th>Run Time</th>
+                        <th>Final Time</th>
+                    </thead>
+                    <tbody id="tblRows"></tbody>
+                </table>
+            </div>
+        </div>
 
-    <div id="athlete"></div>
-
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <th>Race Name</th>
-                <th>Year</th>
-                <th>Swim Time</th>
-                <th>Bike Time</th>
-                <th>Run Time</th>
-                <th>Final Time</th>
-            </thead>
-            <tbody id="tblRows"></tbody>
-        </table>
+        <button id="add" type="button" class="btn btn-primary">Add</button>
+        <div class="row">
+            <div class="col-lg-12 centered">
+                <div id="ecap"></div>
+                <button id="submit" type="button" class="btn btn-primary btn-lg btn-success">Submit</button>
+            </div>
+        <div>
     </div>
-
-    <button id="add" type="button" class="btn btn-primary">Add</button>
-    </br></br></br>
-
-    <div>
-        <div id="ecap"></div>
-        <button id="submit" type="button" class="btn btn-primary btn-lg btn-success">Submit</button>
-    <div>
 </div>
-
 
 <script type="text/template" id="confirmation-template">
     <h1>We have received your request!</h1>
@@ -47,8 +48,8 @@
 
 <script type="text/template" id="email-template">
     <form class="form-horizontal" role="form">
-        <div class="form-group">
-            <label for="email" class="col-sm-2 control-label">email</label>
+        <div class="form-group centered">
+            <label for="email" class="control-label"><h3><strong>email</h3></strong></label>
             <small class="control-label" name="email"></small>
             <input class="form-control" id="email" type="text" value="<%= email %>"/>
         </div>
@@ -57,16 +58,16 @@
 
 <script type="text/template" id="details">
     <form class="form-horizontal" role="form">
-        <div class="form-group">
+        <div class="form-group col-lg-8">
             <label for="first_name" class="col-sm-2 control-label">First Name</label>
             <small class="control-label" name="first_name"></small>
             <input class="form-control" id="first_name" type="text" value="<%= first_name %>"/>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-lg-8">
             <label for="last_name" class="col-sm-2 control-label">Last Name</label>
             <small class="control-label" name="last_name"></small>
-            <input class="form-control" id="last_name" type="text" value="<%= last_name %>"/>
+            <input class="form-control col-lg-4" id="last_name" type="text" value="<%= last_name %>"/>
         </div>
     </form>
 </script>
@@ -83,25 +84,25 @@
     <td>
         <div class="form-group">
             <small class="control-label" name="_pivot_swim_time-<%= id %>"></small>
-            <input id="swim_time" type="text" class="form-control col-xs-8" value="<%= _pivot_swim_time %>"/>
+            <input id="swim_time" type="text" class="form-control col-lg-12 col-xs-8" value="<%= _pivot_swim_time %>"/>
         </div>
     </td>
 
     <td>
         <small class="control-label" name="_pivot_cycle_time-<%= id %>"> </small>
-        <input id="cycle_time" type="text" class="form-control col-xs-8" value="<%= _pivot_cycle_time %>"/>
+        <input id="cycle_time" type="text" class="form-control col-lg-12 col-xs-8" value="<%= _pivot_cycle_time %>"/>
     </td>
 
     <td>
         <div class="form-group">
             <small class="control-label" name="_pivot_run_time-<%= id %>"> </small>
-            <input id="run_time" type="text" class="form-control col-xs-8" value="<%= _pivot_run_time %>"/>
+            <input id="run_time" type="text" class="form-control col-lg-12 col-xs-8" value="<%= _pivot_run_time %>"/>
         </div>
     </td>
 
     <td>
         <small class="control-label" name="_pivot_final_time-<%= id %>"></small>
-        <input id="final_time" type="text" class="form-control col-xs-8" value="<%= _pivot_final_time %>"/>
+        <input id="final_time" type="text" class="form-control col-lg-12 col-xs-8" value="<%= _pivot_final_time %>"/>
     </td>
     <td>
         <input class="btn btn-danger delete" id="<%= id %>" type="button" value="delete"/>
