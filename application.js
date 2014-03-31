@@ -33,9 +33,10 @@ app.use(router(app));
 
 //Home page
 app.get('/', function * index() {
-    this.body = yield render('index', {
-        name: "Abhishek"
-    });
+
+    this.redirect('/landing');
+
+    this.body = 'Redirecting to landing page';
 });
 
 app.get('/landing', function * index() {
