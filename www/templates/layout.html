@@ -23,40 +23,41 @@
 </head>
 
 <body>
-    <div class="site-header">
-        <div id="logo">
-            <i class="fa fa-bar-chart-o"></i>
-            <a href="/">DATATHLETICS</a>
+    <div class="wrap">
+        <div class="site-header">
+            <div id="logo">
+                <i class="fa fa-bar-chart-o"></i>
+                <a href="/">DATATHLETICS</a>
+            </div>
+            <div id="topnav">
+                <ul>
+                    <li><a href="#howitworks">Our Analysis</a>
+                    </li>
+                    <li><a href="#whatwedo">What We Do</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div id="topnav">
-            <ul>
-                <li><a href="#howitworks">Our Analysis</a>
-                </li>
-                <li><a href="#whatwedo">What We Do</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-    {% block content %}{% endblock %}
-
-    <div class="site-header">
-        <div class="footerContainer">
-            <ul>
-                <li><a href="/">Home</a>
-                </li>
-                <li>|</li>
-                <li><a href="#whatwedo">What We Do</a>
-                </li>
-                <li>|</li>
-                <li><a href="#howitworks">Our Analysis</a>
-                </li>
-            </ul>
+        <!--[if lt IE 7]>
+                <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
+        <div class="main">
+        {% block content %}{% endblock %}
         </div>
     </div>
+    <div class="footerContainer">
+        <ul>
+            <li><a href="/">Home</a>
+            </li>
+            <li>|</li>
+            <li><a href="#whatwedo">What We Do</a>
+            </li>
+            <li>|</li>
+            <li><a href="#howitworks">Our Analysis</a>
+            </li>
+        </ul>
+    </div>
+
 
     <script>
     (function(i, s, o, g, r, a, m) {
