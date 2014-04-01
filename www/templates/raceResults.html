@@ -1,14 +1,14 @@
 {% extends 'search.html' %} {% block search_data %} {% if found %}
+
 <div class="row">
     <p>
-        <strong>Claim Your Races!</strong>
+        <h3><strong>Claim Your Races!</strong></h3>
     </p>
     <p>
         Select the race results that belong to you. If multiple results are yours, select any relevant entry to continue — you’ll have a chance to add the others next.
     </p>
 </div>
-
-<div class="container result-grid">
+<div class="row">
     <ul class="list-unstyled">
         {% for athlete in athletes %}
         <li class="list-unstyled">
@@ -55,7 +55,7 @@
         If you’ve raced under a different name — such as Alexander instead of Alex — try searching for that. If not, no worries! You can tell us about your races in the next step.
     </p>
     <div class="row">
-      <a class="btn btn-success" href="/claim/new/athlete">Continue</a>
+        <a class="btn btn-success" href="/claim/new/athlete">Continue</a>
     </div>
 </div>
 {% endif %} {% endblock %}

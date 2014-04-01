@@ -1,3 +1,16 @@
+.centered {
+    text-align: center;
+}
+
+.result-grid {
+    width: 900px;
+    height: inherit;
+}
+
+.container-height {
+    height: 900px;
+}
+
 .site-header {
     margin-top: -8px;
     margin-left: -8px;

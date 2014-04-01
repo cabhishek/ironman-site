@@ -1,5 +1,5 @@
 .form-control {
-    width: 16%;
+    width: auto;
     padding:1px 5px;
 }
 
@@ -7,6 +7,9 @@
     width: 900px
 }
 
-.col-xs-8 {
-    width: 46%
+#ecap {
+    margin-top: 90px;
+}
+#ecap input {
+    display: inline;
 }

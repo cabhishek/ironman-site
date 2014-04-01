@@ -1,17 +1,15 @@
-{% extends 'layout.html' %} {% block title %}Search{% endblock %} {% block custom_css %}
-<link rel="stylesheet" href="/css/main.css" />
-{% endblock %} {% block content %}
+{% extends 'layout.html' %} {% block title %}Search{% endblock %}  {% block content %}
 
-<div class="container">
-
+<div class="container result-grid">
     <div class="row">
-
-        <form method="GET" action="/search" class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-                <input type="text" name="q" class="form-control input-lg searchBox" placeholder="First and last name...">
-            </div>
-            <input class="btn btn-lg btn-primary" type="submit" value="search"></input>
-        </form>
+        <div class="col-lg-12 centered">
+            <form method="GET" action="/search" class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" name="q" class="form-control input-lg searchBox" placeholder="First and last name...">
+                </div>
+                <input class="btn btn-lg btn-primary" type="submit" value="search"></input>
+            </form>
+        </div>
     </div>
 
     {% block search_data %}{% endblock %}
