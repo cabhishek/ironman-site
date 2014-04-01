@@ -4,7 +4,7 @@
 
 .result-grid {
     width: 900px;
-    height: 900px
+    height: inherit;
 }
 
 .container-height {
