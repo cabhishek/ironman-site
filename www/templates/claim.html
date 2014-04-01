@@ -2,6 +2,7 @@
 
 {% block custom_css %}
     <link rel="stylesheet" href="/css/claim.css" />
+    <link type="text/css" rel="stylesheet" href="css/confirmation.css">
 {% endblock %}
 
 {% block content %}
@@ -43,11 +44,18 @@
 </div>
 
 <script type="text/template" id="confirmation-template">
-    <h1>We have received your request!</h1>
-
-    <div class="explanation">
+    <div class="container">
+        <div class="logoIcon">
+            <i class="fa fa-bar-chart-o"></i>
+        </div>
+        <div class="headline">
+            <h1>We&#39;ve received your request!</h1>
+        </div>
+        <div class="explanation">
             <p>We'll get to work analyzing your race history and extracting insights about how you perform in hot conditions.</p>
-            <p>You'll receive your personal report by email within <strong>48 hours.</strong></p>
+            <p>You'll receive your personal report by email within 48 hours.</p>
+        </div>
+        <div class="linebreak"></div>
     </div>
 </script>
 

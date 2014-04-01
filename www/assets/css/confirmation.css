@@ -1,49 +1,5 @@
-#header {
-    margin-top: -8px;
-    margin-left: -8px;
-    background-color: black;
-    padding-top:4px;
-    padding-bottom:4px;
-    background: 1577DA;
-    background-position: bottom;
-    border-bottom: 4px solid black;
-}
-#logo {
-    display:inline-block;
-    color:white;
-    font-family:Courier;
-    font-weight:bold;
-    font-size:36px;
-    margin-left:80px;
-    padding-left:20px;
-    cursor:pointer;
-}
-#topnav {
-    display:inline-block;
-    color:white;
-    font-family:'Varela';
-    font-size:14px;
-    float:right;
-    margin-right:150px;
-}
-a {
-    color:inherit;
-    text-decoration: inherit;
-}
-ul {
-    padding: 0px;
-    margin: 0px;
-}
-li {
-    display:inline-block;
-    padding: 0px 14px 0px 14px;
-    cursor:pointer;
-    line-height: 38px;
-    vertical-align: middle;
-}
-
 .container {
-	font-family:Varela;
+	font-family:'Varela';
 	width:700px;
 	height:300px;
 	margin-left:auto;
