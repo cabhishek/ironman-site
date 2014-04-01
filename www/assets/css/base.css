@@ -3,7 +3,12 @@
 }
 
 .result-grid {
-    width: 900px
+    width: 900px;
+    height: 900px
+}
+
+.container-height {
+    height: 900px;
 }
 
 .site-header {

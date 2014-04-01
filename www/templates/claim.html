@@ -1,10 +1,13 @@
-{% extends 'layout.html' %} {% block title %}Search{% endblock %} {% block content %}
+{% extends 'layout.html' %} {% block title %}Search{% endblock %}
 
 {% block custom_css %}
     <link rel="stylesheet" href="/css/claim.css" />
 {% endblock %}
 
-<div id="container" class="container">
+{% block content %}
+
+<div id="container" class="container container-height">
+
     <div class="row">
         <h3><strong>Confirm Your Races</strong></h3>
         <p>Add any races not captured below, and make sure all your race data looks correct. When you’re ready, click <strong>Submit!</strong></p>
@@ -28,12 +31,14 @@
         </div>
 
         <button id="add" type="button" class="btn btn-primary">Add</button>
+
         <div class="row">
             <div class="col-lg-12 centered">
                 <div id="ecap"></div>
                 <button id="submit" type="button" class="btn btn-primary btn-lg btn-success">Submit</button>
             </div>
-        <div>
+        </div>
+
     </div>
 </div>
 
