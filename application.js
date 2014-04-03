@@ -2,6 +2,7 @@ var db = require('./lib/dbInitialize'),
     logger = require('koa-logger'),
     router = require('koa-router'),
     serve = require('koa-static'),
+    staticCache = require('koa-static-cache'),
     render = require('./lib/render'),
     swig = require('swig'),
     koa = require('koa'),
@@ -18,14 +19,18 @@ db.init(config.db.connection);
 // Logging Middleware
 app.use(logger());
 
-//Static files
-app.use(serve(config.staticDir));
 
 //Disable template caching on dev
 if (!config.isProduction) {
     swig.setDefaults({
         cache: false
     });
+    //Static files
+    app.use(serve(config.staticDir));
+} else {
+    app.use(staticCache(config.staticDir, {
+        maxAge: 365 * 24 * 60 * 60
+    }));
 }
 
 //Mount router
