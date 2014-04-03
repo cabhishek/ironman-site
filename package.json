@@ -43,7 +43,8 @@
     "co": "~3.0.5",
     "thunkify": "0.0.1",
     "async": "~0.2.10",
-    "browserify-shim": "~3.4.0"
+    "browserify-shim": "~3.4.0",
+    "koa-static-cache": "~1.0.9"
   },
   "engines": {
     "node": "0.11.x"
