@@ -1,3 +1,8 @@
+html, body {
+    height: 100%;
+    width:100%;
+}
+
 body {
     margin: 0;
 }
@@ -17,12 +22,8 @@ body {
 
 .site-header {
     background-color: black;
-    padding-top:6px;
-    padding-bottom:4px;
-    height:40px;
-    background: 1577DA;
-    background-position: bottom;
-    border-bottom: 4px solid black;
+    background: black;
+    height:50px;
     font-family:'Varela';
 }
 
@@ -53,6 +54,8 @@ body {
     margin-left:80px;
     padding-left:20px;
     cursor:pointer;
+    line-height: 50px;
+    vertical-align: center;
 }
 #topnav {
     display:inline-block;

@@ -1,3 +1,7 @@
+#confirmation-template {
+	width:100%;
+}
+
 .container {
 	font-family:'Varela';
 	width:700px;
@@ -8,13 +12,13 @@
 }
 
 .logoIcon {
-	text-align: center;
+	text-align:center;
 	font-size:60px;
 	color:#2ECCFA;
 }
 
 .headline {
-	text-align: center;
+	text-align:center;
 	color:black;
 	font-size:22px;
 }
@@ -41,8 +45,4 @@
     padding:0px;
     color:gray;
     text-align: center;
-}
-
-html, body {
-    height: 100%
 }

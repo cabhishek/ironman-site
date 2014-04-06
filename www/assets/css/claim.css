@@ -13,3 +13,19 @@
 #ecap input {
     display: inline;
 }
+
+.container {
+	width:100%;
+}
+
+#container {
+	width:100%;
+}
+
+.confirmation-template {
+	width:100%;
+}
+
+.email-template {
+	width:100%;
+}

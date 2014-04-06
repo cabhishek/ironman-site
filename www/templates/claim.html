@@ -1,8 +1,19 @@
 {% extends 'layout.html' %} {% block title %}Search{% endblock %}
 
+{% block head %}
+
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Duru+Sans|Belgrano|Muli|Alef|Telex|Varela&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+    <link type="text/css" rel="stylesheet" href="css/landing.css" />
+    <link rel="stylesheet" href="/css/base.css" />
+{% endblock %}
+
+
 {% block custom_css %}
     <link rel="stylesheet" href="/css/claim.css" />
-    <link type="text/css" rel="stylesheet" href="css/confirmation.css">
+    <link type="text/css" rel="stylesheet" href="/css/confirmation.css">
 {% endblock %}
 
 {% block content %}
@@ -49,11 +60,11 @@
             <i class="fa fa-bar-chart-o"></i>
         </div>
         <div class="headline">
-            <h1>We&#39;ve received your request!</h1>
+            <h1>We&#39re On It!</h1>
         </div>
         <div class="explanation">
-            <p>We'll get to work analyzing your race history and extracting insights about how you perform in hot conditions.</p>
-            <p>You'll receive your personal report by email within 48 hours.</p>
+            <p>We&#39;ll get to work analyzing your race history and extracting insights about how you perform in hot conditions.</p>
+            <p>You&#39;ll receive your personal report by email within 48 hours.</p>
         </div>
         <div class="linebreak"></div>
     </div>
