@@ -1,17 +1,12 @@
 {% extends 'layout.html' %} {% block title %}Search{% endblock %}
 
-{% block head %}
+{% block custom_css %}
 
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
     <link href='http://fonts.googleapis.com/css?family=Duru+Sans|Belgrano|Muli|Alef|Telex|Varela&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
-    <link type="text/css" rel="stylesheet" href="css/landing.css" />
-    <link rel="stylesheet" href="/css/base.css" />
-{% endblock %}
-
-
-{% block custom_css %}
+    <link type="text/css" rel="stylesheet" href="/css/landing.css" />
     <link rel="stylesheet" href="/css/claim.css" />
     <link type="text/css" rel="stylesheet" href="/css/confirmation.css">
 {% endblock %}
@@ -55,7 +50,7 @@
 </div>
 
 <script type="text/template" id="confirmation-template">
-    <div class="container">
+    <div class="confirmation-container">
         <div class="logoIcon">
             <i class="fa fa-bar-chart-o"></i>
         </div>
