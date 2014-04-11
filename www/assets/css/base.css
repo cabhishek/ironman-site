@@ -74,7 +74,8 @@ body {
 .main {
     overflow:auto;
     padding-bottom: 50px;
-    }  /* must be same height as the footer */ 
+    width: 100%;
+}  /* must be same height as the footer */
 
 .footerContainer {
     position:relative;
@@ -101,4 +102,12 @@ body {
 .footerContainer a {
     color:white;
     text-decoration: none;
+}
+
+.resultText{
+    padding: 0 0 20px;
+}
+
+.searchCenter{
+    margin: 5% 0 5% 15%;
 }
