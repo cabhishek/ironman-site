@@ -105,7 +105,7 @@ h1 {
 #howitworks {
     margin-top:100px;
     margin-left:-10px;
-    height:950px;
+    padding-bottom:10px;
     background:gray;
 }
 .howitworksContainer {
@@ -141,13 +141,13 @@ h1 {
 .graph2 > img {
     float:left;
     display:inline-block;
-    margin-right:30px;
+    margin-right:25px;
 }
 #whatwedo {
     margin-top:0px;
     margin-left:-10px;
-    height:600px;
     background:white;
+    padding-bottom:25px;
 }
 .whatwedoContainer {
     width:700px;
