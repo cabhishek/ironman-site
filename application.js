@@ -36,7 +36,7 @@ if (!config.isProduction) {
 //Mount router
 app.use(router(app));
 
-//Home page
+//Empty home page
 app.get('/', function * index() {
 
     this.redirect('/landing');
@@ -44,10 +44,19 @@ app.get('/', function * index() {
     this.body = 'Redirecting to landing page';
 });
 
+//Main Landing
 app.get('/landing', function * index() {
     this.body = yield render('landing', {
         title: "landing"
     });
+});
+
+//Old URL paths gets redirected to landing page.
+app.get('/qualifier*', function * index() {
+
+    this.redirect('/landing');
+
+    this.body = 'Redirecting to landing page';
 });
 
 //Load Race app
