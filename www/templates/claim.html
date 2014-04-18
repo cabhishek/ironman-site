@@ -18,12 +18,18 @@
     <div class="row">
         <h3><strong>Confirm Your Races</strong></h3>
         <p>Add any races not captured below, and make sure all your race data looks correct. When you’re ready, click <strong>Submit!</strong></p>
-
+        </br>
+            <small>* All fields are required </small>
+        </br>
+        </br>
         <div id="athlete"></div>
 
         <div class="table-responsive container">
             <div class="row">
                 <table class="table col-lg-12">
+
+
+
                     <thead>
                         <th>Race Name</th>
                         <th>Year</th>
@@ -32,7 +38,8 @@
                         <th>Run Time</th>
                         <th>Final Time</th>
                     </thead>
-                    <tbody id="tblRows"></tbody>
+                    <tbody id="tblRows">
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -49,6 +56,9 @@
     </div>
 </div>
 
+<!-- All UI Templates are here. Edit HTML here-->
+
+<!-- Ecap confirmation Template -->
 <script type="text/template" id="confirmation-template">
     <div class="confirmation-container">
         <div class="logoIcon">
@@ -65,6 +75,7 @@
     </div>
 </script>
 
+<!-- Ecap Template -->
 <script type="text/template" id="email-template">
     <form class="form-horizontal" role="form">
         <div class="form-group centered">
@@ -75,6 +86,7 @@
     </form>
 </script>
 
+<!-- Athlete details Template -->
 <script type="text/template" id="details">
     <form class="form-horizontal" role="form">
         <div class="form-group col-lg-8">
@@ -91,6 +103,7 @@
     </form>
 </script>
 
+<!-- All race details -->
 <script type="text/template" id="row">
     <td>
         <select class="dropdown" id="name"></select>
