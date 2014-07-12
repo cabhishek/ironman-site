@@ -62,6 +62,9 @@ app.get('/qualifier*', function * index() {
 //Load Race app
 require('./race/index').load(app);
 
+//Load race comparison app
+require('./race/comparison').load(app);
+
 //Boot app
 app.listen(config.port);
 

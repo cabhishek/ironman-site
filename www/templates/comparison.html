@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container result-grid">
+        <div class="row">
+            <div class="col-lg-12 centered">
+                <form id="athleteSearch" method="GET" action="/search" class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" name="athlete_id" class="form-control input-sm searchBox" placeholder="Athlete id" size="20">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="race_id" class="form-control input-sm searchBox" placeholder="Race id" size="20">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="with_race_id" class="form-control input-sm searchBox" placeholder="With race id" size="20">
+                    </div>
+                    <input class="btn btn-md btn-primary" type="submit" value="compare"></input>
+                </form>
+            </div>
+        </div>
+        <h1> {{first_name}} </h1>
+        <h1> {{last_name}} </h1>
+        {% block comparison_result %}{% endblock %}
+    </div>
+
+
+{% endblock %}
