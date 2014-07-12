@@ -7,7 +7,7 @@ var _ = require('underscore'),
     thunkify = require('thunkify'),
     parse = require('co-body'),
     Log = require('log'),
-    log = new Log('info');
+    log = new Log('info')
 
 exports.load = function(app) {
 
@@ -15,7 +15,7 @@ exports.load = function(app) {
 
         return yield new Athlete({
             id: athleteId
-        }).fetch();
+        }).fetch()
     }
 
     function* fetchAthleteRace(raceId, athleteId) {
@@ -23,7 +23,7 @@ exports.load = function(app) {
         return yield new AthleteRace({
             race_id: raceId,
             athlete_id: athleteId
-        }).fetch();
+        }).fetch()
     }
 
     function* getAgeGroupRaceResults(raceId, options) {
@@ -33,16 +33,16 @@ exports.load = function(app) {
                 m_f: options.m_f,
                 age: options.age
             }).orderBy('final_time')
-        }).fetch();
+        }).fetch()
     }
 
     function* raceAdjustedPercentile(athleteRace, raceAgeGroupResults) {
-        var actuaAthleteRace = raceAgeGroupResults.get(athleteRace);
-        var ageGroupRank = raceAgeGroupResults.indexOf(actuaAthleteRace);
+        var actuaAthleteRace = raceAgeGroupResults.get(athleteRace)
+        var ageGroupRank = raceAgeGroupResults.indexOf(actuaAthleteRace)
 
         var totalAgeGroupFinishers = _.size(raceAgeGroupResults)
 
-        var percentile_75 = parseInt(0.75 * totalAgeGroupFinishers);
+        var percentile_75 = parseInt(0.75 * totalAgeGroupFinishers)
 
 
         return parseInt(ageGroupRank / percentile_75 * 100)
@@ -57,16 +57,16 @@ exports.load = function(app) {
                 yield render('comparison', {
                     status: "Missing comparison data",
                     has_query: false
-                });
+                })
 
         } else {
 
-            var athleteId = parseInt(this.query.athlete_id);
-            var raceId = parseInt(this.query.race_id);
-            var withRaceId = parseInt(this.query.with_race_id);
+            var athleteId = parseInt(this.query.athlete_id)
+            var raceId = parseInt(this.query.race_id)
+            var withRaceId = parseInt(this.query.with_race_id)
 
             var athlete =
-                yield fetchAthlete(athleteId);
+                yield fetchAthlete(athleteId)
 
             var athleteRace =
                 yield fetchAthleteRace(raceId, athlete.attributes.id)
@@ -79,14 +79,14 @@ exports.load = function(app) {
 
             var adjPercentile = yield raceAdjustedPercentile(athleteRace, raceAgeGroupResults)
 
-            log.info('AdjPercentile ==>' + adjPercentile);
+            log.info('AdjPercentile ==>' + adjPercentile)
 
             this.body =
                 yield render('comparison', {
                     first_name: athlete.attributes.first_name,
                     last_name: athlete.attributes.last_name
-                });
+                })
         }
 
-    });
-};
+    })
+}
