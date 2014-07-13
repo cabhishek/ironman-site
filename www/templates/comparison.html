@@ -27,63 +27,73 @@
         <thead>
             <th></th>
             <th>{{race.year}} {{race.name}}</th>
-            <th>{{withRace.year}} {{withRace.name}}</th>
+            <th>{{comparedRace.year}} {{comparedRace.name}}</th>
         </thead>
         <tbody id="tblRows">
             <tr>
                 <td>Actual time</td>
-                <td>{{athleteRace.final_time}}</td>
-                <td>{{withAthleteRace.final_time}}</td>
+                <td>{{athleteRaceResult.final_time}}</td>
+                <td>{{comparedAthleteRaceResult.final_time}}</td>
             </tr>
             <tr>
                 <td>Predicted time</td>
                 <td>N/A</td>
-                <td>N/A</td>
+                <td>{{predictedTime}}</td>
+            </tr>
+            <tr>
+                <td>Age Group Rank</td>
+                <td>{{raceAgeGroupRank}}</td>
+                <td>{{comparedRaceAgeGroupRank}}</td>
             </tr>
             <tr>
                 <td>Age Group Percentile</td>
-                <td>{{race75Percentile}}</td>
-                <td>{{withRace75Percentile}}</td>
+                <td>{{raceAgeGroupPercentile}}th percentile</td>
+                <td>{{comparedRaceAgeGroupPercentile}}th percentile</td>
             </tr>
             <tr>
                 <td>High Temperature</td>
                 <td>{{race.high_temp}}</td>
-                <td>{{withRace.high_temp}}</td>
+                <td>{{comparedRace.high_temp}}</td>
             </tr>
             <tr>
                 <td>Low Temperature</td>
                 <td>{{race.low_temp}}</td>
-                <td>{{withRace.low_temp}}</td>
+                <td>{{comparedRace.low_temp}}</td>
             </tr>
             <tr>
                 <td>High Humidity</td>
                 <td>{{race.high_humidity}}%</td>
-                <td>{{withRace.high_humidity}}%</td>
+                <td>{{comparedRace.high_humidity}}%</td>
             </tr>
             <tr>
                 <td>Low Humidity</td>
                 <td>{{race.low_humidity}}%</td>
-                <td>{{withRace.low_humidity}}%</td>
+                <td>{{comparedRace.low_humidity}}%</td>
             </tr>
             <tr>
                 <td>Dew Point</td>
                 <td>{{race.dew_point}}F</td>
-                <td>{{withRace.dew_point}}F</td>
+                <td>{{comparedRace.dew_point}}F</td>
             </tr>
             <tr>
                 <td>Peak Wind Speed</td>
                 <td>{{race.peak_wind_speed}}</td>
-                <td>{{withRace.peak_wind_speed}}</td>
+                <td>{{comparedRace.peak_wind_speed}}</td>
             </tr>
             <tr>
                 <td>Precipitation</td>
                 <td>{{race.precipitation_inches}}"</td>
-                <td>{{withRace.precipitation_inches}}"</td>
+                <td>{{comparedRace.precipitation_inches}}"</td>
             </tr>
             <tr>
                 <td>Age Group Wining Time</td>
                 <td>{{raceAgeGroupWiningTime}}</td>
-                <td>{{withRaceAgeGroupWiningTime}}</td>
+                <td>{{comparedRaceAgeGroupWiningTime}}</td>
+            </tr>
+            <tr>
+                <td>Age Group 10th Percentile</td>
+                <td>{{raceAgeGroup10Percentile}}</td>
+                <td>{{comparedRaceAgeGroup10Percentile}}</td>
             </tr>
         </tbody>
     </table>

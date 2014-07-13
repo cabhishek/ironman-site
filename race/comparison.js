@@ -4,6 +4,7 @@ var _ = require('underscore'),
     Race = require('./../models/race'),
     AthleteRace = require('./../models/athleteRace'),
     AthleteRaces = require('./../collections/athleteRaces'),
+    ageGroups = require('./../data/ageGroups'),
     thunkify = require('thunkify'),
     parse = require('co-body'),
     Log = require('log'),
@@ -33,12 +34,19 @@ exports.load = function(app) {
     }
 
     function* fetchAgeGroupRaceResults(raceId, options) {
+
+        var athleteAgeGroup = _.first(_.filter(ageGroups, function(ageGroup) {
+            if (options.age >= ageGroup.min_age && options.age <= ageGroup.max_age)
+                return ageGroup;
+        }));
+
+        log.info("athleteAgeGroup =>" + athleteAgeGroup.min_age + "-" + athleteAgeGroup.max_age)
+
         return yield new AthleteRaces().query(function(qb) {
             qb.where({
                 race_id: raceId,
-                m_f: options.m_f,
-                age: options.age
-            }).orderBy('final_time')
+                m_f: options.m_f
+            }).whereBetween('age', [athleteAgeGroup.min_age, athleteAgeGroup.max_age]).orderBy('final_time')
         }).fetch()
     }
 
@@ -46,16 +54,16 @@ exports.load = function(app) {
         return parseInt(0.75 * _.size(values))
     }
 
-    function* getRank(athleteRace, raceResults) {
-        return raceResults.indexOf(raceResults.get(athleteRace))
+    function* getRank(athleteRaceResult, raceResults) {
+        return raceResults.indexOf(raceResults.get(athleteRaceResult)) + 1
     }
 
-    function* adjustedPercentile(athleteRace, raceAgeGroupResults) {
+    function* adjustedPercentile(athleteRaceResult, athleteAgeGroupRaceFinishers) {
         var ageGroupRank =
-            yield getRank(athleteRace, raceAgeGroupResults)
+            yield getRank(athleteRaceResult, athleteAgeGroupRaceFinishers)
 
         var percentile =
-            yield percentile_75(raceAgeGroupResults)
+            yield percentile_75(athleteAgeGroupRaceFinishers)
 
         return parseInt(ageGroupRank / percentile * 100)
 
@@ -75,7 +83,7 @@ exports.load = function(app) {
 
             var athleteId = parseInt(this.query.athlete_id)
             var raceId = parseInt(this.query.race_id)
-            var withRaceId = parseInt(this.query.with_race_id)
+            var comparedRaceId = parseInt(this.query.with_race_id)
 
             var race =
                 yield fetchRace(raceId)
@@ -83,65 +91,78 @@ exports.load = function(app) {
             var athlete =
                 yield fetchAthlete(athleteId)
 
-            var athleteRace =
+            var athleteRaceResult =
                 yield fetchAthleteRace(raceId, athlete.attributes.id)
 
-            var raceAgeGroupResults =
+            var athleteAgeGroupRaceFinishers =
                 yield fetchAgeGroupRaceResults(raceId, {
-                    m_f: athleteRace.attributes.m_f,
-                    age: athleteRace.attributes.age
+                    m_f: athleteRaceResult.attributes.m_f,
+                    age: athleteRaceResult.attributes.age
                 })
-
-            var race75Percentile =
-                yield percentile_75(raceAgeGroupResults)
 
             var adjPercentile =
-                yield adjustedPercentile(athleteRace, raceAgeGroupResults)
+                yield adjustedPercentile(athleteRaceResult, athleteAgeGroupRaceFinishers)
 
-            log.info('race75Percentile ==>' + race75Percentile)
-            log.info('Total Race group size ==>'+ _.size(raceAgeGroupResults))
+            var raceAgeGroupRank =
+                yield getRank(athleteRaceResult, athleteAgeGroupRaceFinishers)
 
-            var withAthleteRace =
-                yield fetchAthleteRace(withRaceId, athlete.attributes.id)
+            log.info('Total Race group size ==>' + _.size(athleteAgeGroupRaceFinishers))
+            log.info('athleteRaceResult.attributes.age ==>' + athleteRaceResult.attributes.age)
+            log.info('adjPercentile ==>' + adjPercentile)
 
-            var withRace =
-                yield fetchRace(withRaceId)
+            var comparedAthleteRaceResult =
+                yield fetchAthleteRace(comparedRaceId, athlete.attributes.id)
 
-            var withRaceAgeGroupResults =
-                yield fetchAgeGroupRaceResults(withRaceId, {
-                    m_f: withAthleteRace.attributes.m_f,
-                    age: withAthleteRace.attributes.age
+            var comparedRace =
+                yield fetchRace(comparedRaceId)
+
+            var athleteAgeGroupComparedRaceFinishers =
+                yield fetchAgeGroupRaceResults(comparedRaceId, {
+                    m_f: comparedAthleteRaceResult.attributes.m_f,
+                    age: comparedAthleteRaceResult.attributes.age
                 })
 
-            var withRace75Percentile =
-                yield percentile_75(withRaceAgeGroupResults)
-            var predictedWithRaceRank = parseInt(adjPercentile * withRace75Percentile / 100)
+            var athleteComparedRaceAgeGroup75Percentile =
+                yield percentile_75(athleteAgeGroupComparedRaceFinishers)
 
-            log.info('withRace75Percentile ==>' + withRace75Percentile)
-            log.info('Total With Race group size ==>'+ _.size(withRaceAgeGroupResults))
+            var predictedRaceRank = parseInt(adjPercentile * athleteComparedRaceAgeGroup75Percentile / 100)
 
+            var comparedRaceAgeGroupRank =
+                yield getRank(comparedAthleteRaceResult, athleteAgeGroupComparedRaceFinishers)
 
-            var actualWithRaceRank =
-                yield getRank(withAthleteRace, withRaceAgeGroupResults)
+            log.info('Total With Race group size ==>' + _.size(athleteAgeGroupComparedRaceFinishers))
+            log.info('comparedAthleteRaceResult.attributes.age ==>' + comparedAthleteRaceResult.attributes.age)
+
+            var actualComparedRaceRank =
+                yield getRank(comparedAthleteRaceResult, athleteAgeGroupComparedRaceFinishers)
+
+            log.info("actualComparedRaceRank ==>" + actualComparedRaceRank)
+            log.info("predictedRaceRank ==>" + predictedRaceRank)
+
+            var predictedTime = athleteAgeGroupComparedRaceFinishers.at(predictedRaceRank).attributes.final_time
 
             this.body =
                 yield render('comparison', {
                     first_name: athlete.attributes.first_name,
                     last_name: athlete.attributes.last_name,
 
-                    actualWithRaceRank: actualWithRaceRank,
-                    predictedWithRaceRank: predictedWithRaceRank,
-
-                    raceAgeGroupWiningTime: raceAgeGroupResults.at(0).attributes.final_time,
-                    withRaceAgeGroupWiningTime: withRaceAgeGroupResults.at(0).attributes.final_time,
+                    raceAgeGroupWiningTime: athleteAgeGroupRaceFinishers.at(0).attributes.final_time,
+                    comparedRaceAgeGroupWiningTime: athleteAgeGroupComparedRaceFinishers.at(0).attributes.final_time,
 
                     race: race.toJSON(),
-                    race75Percentile: race75Percentile,
-                    withRace75Percentile: withRace75Percentile,
+                    raceAgeGroupRank: raceAgeGroupRank,
+                    raceAgeGroupPercentile: parseInt(raceAgeGroupRank / _.size(athleteAgeGroupRaceFinishers) * 100),
 
-                    withRace: withRace.toJSON(),
-                    athleteRace: athleteRace.toJSON(),
-                    withAthleteRace: withAthleteRace.toJSON(),
+                    comparedRace: comparedRace.toJSON(),
+                    comparedRaceAgeGroupRank: comparedRaceAgeGroupRank,
+                    comparedRaceAgeGroupPercentile: parseInt(comparedRaceAgeGroupRank / _.size(athleteAgeGroupComparedRaceFinishers) * 100),
+                    predictedTime: predictedTime,
+
+                    athleteRaceResult: athleteRaceResult.toJSON(),
+                    comparedAthleteRaceResult: comparedAthleteRaceResult.toJSON(),
+
+                    raceAgeGroup10Percentile: athleteAgeGroupRaceFinishers.at(parseInt(_.size(athleteAgeGroupRaceFinishers) * 0.10)).attributes.final_time,
+                    comparedRaceAgeGroup10Percentile: athleteAgeGroupComparedRaceFinishers.at(parseInt(_.size(athleteAgeGroupComparedRaceFinishers) * 0.10)).attributes.final_time
                 })
         }
 
