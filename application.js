@@ -37,7 +37,7 @@ if (!config.isProduction) {
 app.use(router(app));
 
 //Empty home page
-app.get('/', function * index() {
+app.get('/', function* index() {
 
     this.redirect('/landing');
 
@@ -45,14 +45,15 @@ app.get('/', function * index() {
 });
 
 //Main Landing
-app.get('/landing', function * index() {
-    this.body = yield render('landing', {
-        title: "landing"
-    });
+app.get('/landing', function* index() {
+    this.body =
+        yield render('landing', {
+            title: "landing"
+        });
 });
 
 //Old URL paths gets redirected to landing page.
-app.get('/qualifier*', function * index() {
+app.get('/qualifier*', function* index() {
 
     this.redirect('/landing');
 
