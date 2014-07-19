@@ -5,7 +5,6 @@ var _ = require('underscore'),
     AthleteRace = require('./../models/athleteRace'),
     AthleteRaces = require('./../collections/athleteRaces'),
     ageGroups = require('./../data/ageGroups'),
-    thunkify = require('thunkify'),
     parse = require('co-body'),
     Log = require('log'),
     log = new Log('info')

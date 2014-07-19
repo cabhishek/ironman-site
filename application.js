@@ -6,19 +6,31 @@ var db = require('./lib/dbInitialize'),
     render = require('./lib/render'),
     swig = require('swig'),
     koa = require('koa'),
-    config = require('./config');
+    config = require('./config'),
+    bodyParser = require('koa-bodyparser'),
+    passport = require('koa-passport'),
+    session = require('koa-session')
+
+require('./auth/auth')
 
 var app = koa();
 
 console.log("Connecting to DB =>" + config.db.connection.host);
 console.log("Env isProduction =>" + config.isProduction);
 
+app.keys = ['your-session-secret']
+app.use(session())
+
+app.use(passport.initialize())
+app.use(passport.session())
+
+
 //connect to DB
 db.init(config.db.connection);
 
 // Logging Middleware
 app.use(logger());
-
+app.use(bodyParser())
 
 //Disable template caching on dev
 if (!config.isProduction) {
@@ -51,6 +63,35 @@ app.get('/landing', function* index() {
             title: "landing"
         });
 });
+
+app.get('/login', function* index() {
+    this.body =
+        yield render('login', {
+            greetings: "Hello User"
+        });
+});
+
+app.post('/login',
+    passport.authenticate('local', {
+        successRedirect: '/success',
+        failureRedirect: '/fail'
+    })
+)
+
+app.get('/success', function* index() {
+    this.body =
+        yield {
+            'status': 'success'
+        }
+});
+
+app.get('/fail', function* index() {
+    this.body =
+        yield {
+            'status': 'fail'
+        }
+});
+
 
 //Old URL paths gets redirected to landing page.
 app.get('/qualifier*', function* index() {

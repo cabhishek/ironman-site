@@ -1,0 +1,22 @@
+{% extends 'layout.html' %} {% block content %}
+
+ <h2>{{greetings}}</h2>
+
+  <form action="/login" method="post">
+    <p>
+      <label>Username:
+        <input type="text" name="username" value="test" />
+      </label>
+    </p>
+    <p>
+      <label>Password:
+        <input type="password" name="password" value="test" />
+      </label>
+    </p>
+    <p>
+      <button type="submit">Log In</button>
+    </p>
+  </form>
+
+
+{% endblock %}
