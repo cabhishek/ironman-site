@@ -1,5 +1,5 @@
 var Bookshelf = require('bookshelf').Mysql,
-    AthleteRace = require('./athleteRace');
+    AthleteRace = require('./athleteRace')
 
 var Race = Bookshelf.Model.extend({
     tableName: 'races',
@@ -7,9 +7,9 @@ var Race = Bookshelf.Model.extend({
     hasTimestamps: ['created', 'modified'],
 
     athleteRace: function(){
-        return this.hasMany(AthleteRace);
+        return this.hasMany(AthleteRace)
     }
 
-});
+})
 
-module.exports = Race;
+module.exports = Race

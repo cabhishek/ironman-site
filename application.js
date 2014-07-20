@@ -13,8 +13,8 @@ var db = require('./lib/dbInitialize'),
 
 var app = koa()
 
-console.log("Connecting to DB =>" + config.db.connection.host)
-console.log("Env isProduction =>" + config.isProduction)
+console.log('Connecting to DB =>' + config.db.connection.host)
+console.log('Env isProduction =>' + config.isProduction)
 
 app.keys = ['your-session-secret']
 app.use(session())
@@ -58,7 +58,7 @@ app.get('/', function* index() {
 app.get('/landing', function* index() {
     this.body =
         yield render('landing', {
-            title: "landing"
+            title: 'landing'
         })
 })
 
@@ -77,12 +77,13 @@ app.get('/qualifier*', function* index() {
     this.body = 'Redirecting to landing page'
 })
 
-//Load Race app
-require('./race/index').load(app)
-require('./race/comparison').load(app)
-require('./auth/auth').load(app)
+//Load web routes
+require('./auth/routes')(app)
+require('./race/routes')(app)
+
+console.log('Done loading routes')
 
 //Boot app
 app.listen(config.port)
 
-console.log('App listening on port ' + config.port)
+console.log('App listening on port =>' + config.port)

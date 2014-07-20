@@ -2,9 +2,11 @@ var passport = require('koa-passport'),
     co = require('co'),
     User = require('./../models/user'),
     render = require('./../lib/render'),
-    passport = require('koa-passport')
+    passport = require('koa-passport'),
+    LocalStrategy = require('passport-local').Strategy
 
-exports.load = function(app) {
+exports.routes = function(app) {
+
     passport.serializeUser(function(user, done) {
         done(null, user.id)
     })
@@ -24,8 +26,6 @@ exports.load = function(app) {
         })()
     })
 
-    var LocalStrategy = require('passport-local').Strategy
-
     passport.use(new LocalStrategy(function(username, password, done) {
         co(function*() {
 
@@ -35,8 +35,12 @@ exports.load = function(app) {
                     'password': password
                 }).fetch();
 
-            if (username === user.get('username') && password === user.get('password')) {
-                done(null, user)
+            if (user) {
+                if (username === user.get('username') && password === user.get('password')) {
+                    done(null, user)
+                } else {
+                    done(null, false)
+                }
             } else {
                 done(null, false)
             }
