@@ -2,13 +2,12 @@ var AthleteRace = require('./../models/athleteRace'),
     Athlete = require('./../models/athlete'),
     Race = require('./../models/race'),
     _ = require('underscore'),
-    async = require('async'),
     Log = require('log'),
     log = new Log('info')
 
 module.exports = function * persistAthleteRace(data) {
 
-    var athlete = yield _getAthlete(data)
+    var athlete = yield _fetchAthlete(data)
 
     if (athlete) {
 
@@ -33,7 +32,7 @@ module.exports = function * persistAthleteRace(data) {
     }
 }
 
-function * _getAthlete(data) {
+function * _fetchAthlete(data) {
 
     var athlete = yield new Athlete({
         'id': data.id
@@ -42,7 +41,7 @@ function * _getAthlete(data) {
     return athlete
 }
 
-function * _getRace(raceData) {
+function * _fetchRace(raceData) {
     log.info("Getting race data for =>%s--%s", raceData.name, raceData.year)
 
     return yield new Race({
@@ -84,7 +83,7 @@ function * _persistAthleteRaceData(athlete, data) {
 
 function * persist(race) {
 
-    var ironmanRace = yield _getRace(race)
+    var ironmanRace = yield _fetchRace(race)
 
     if (ironmanRace) {
         log.info("Ironman race id =>" + ironmanRace.id)
