@@ -1,6 +1,6 @@
 var db = require('./lib/dbInitialize'),
     logger = require('koa-logger'),
-    router = require('koa-router'),
+    Router = require('koa-router'),
     serve = require('koa-static'),
     staticCache = require('koa-static-cache'),
     render = require('./lib/render'),
@@ -16,9 +16,9 @@ var app = koa()
 console.log('Connecting to DB =>' + config.db.connection.host)
 console.log('Env isProduction =>' + config.isProduction)
 
-app.keys = ['your-session-secret']
-app.use(session())
+app.keys = config.sessionKey
 
+app.use(session())
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -43,43 +43,47 @@ if (!config.isProduction) {
     }))
 }
 
-//Mount router
-app.use(router(app))
+var public = new Router()
 
-//Empty home page
-app.get('/', function* index() {
+require('./auth/routes')(public)
 
-    this.redirect('/landing')
+//Load public routes
+app.use(public.middleware())
 
-    this.body = 'Redirecting to landing page'
+//Middleware Auth check
+app.use(function*(next) {
+    if (this.isAuthenticated()) {
+        yield next
+    } else {
+        this.redirect('/login')
+    }
 })
 
-//Main Landing
-app.get('/landing', function* index() {
+var secured = new Router()
+
+//Empty home page
+secured.get('/', function* index() {
+    this.redirect('/landing')
+})
+
+secured.get('/landing', function* index() {
     this.body =
         yield render('landing', {
             title: 'landing'
         })
 })
 
-app.get('/fail', function* index() {
-    this.body =
-        yield {
-            'status': 'fail'
-        }
-})
-
-//Old URL paths gets redirected to landing page.
-app.get('/qualifier*', function* index() {
+secured.get('/qualifier*', function* index() {
 
     this.redirect('/landing')
 
     this.body = 'Redirecting to landing page'
 })
 
-//Load web routes
-require('./auth/routes')(app)
-require('./race/routes')(app)
+//Load secure web routes
+require('./race/routes')(secured)
+
+app.use(secured.middleware())
 
 console.log('Done loading routes')
 

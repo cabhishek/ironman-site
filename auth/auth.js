@@ -9,10 +9,30 @@ exports.routes = function(app) {
             yield render('auth/login', {
                 greetings: "Hello User"
             });
-    });
+    })
 
     app.post('/login', passport.authenticate('local', {
-        successRedirect: '/landing',
-        failureRedirect: '/fail'
+        successRedirect: '/',
+        failureRedirect: '/login'
     }))
+
+    app.get('/fail', function* index() {
+        this.body =
+            yield {
+                'status': 'fail'
+            }
+    })
+
+    app.get('/out', function* index() {
+        this.body =
+            yield {
+                'loggged in status': this.isAuthenticated()
+            }
+    })
+
+    app.get('/logout', function*(next) {
+        this.logout()
+        this.redirect('/out')
+    })
+
 }
