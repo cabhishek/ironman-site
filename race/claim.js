@@ -3,9 +3,9 @@ var _ = require('underscore'),
     Log = require('log'),
     log = new Log('info')
 
-exports.routes = function(app) {
+exports.routes = function(route) {
 
-    app.get('/claim/:uid/athlete', function*(next) {
+    route.get('/claim/:uid/athlete', function*(next) {
 
         this.body =
             yield render('claim', {
@@ -13,7 +13,7 @@ exports.routes = function(app) {
             });
     });
 
-    app.get('/confirmation', function*(next) {
+    route.get('/confirmation', function*(next) {
 
         this.body =
             yield render('claim', {

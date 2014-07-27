@@ -4,8 +4,8 @@ var _ = require('underscore'),
     Log = require('log'),
     log = new Log('info')
 
-exports.routes = function(app) {
-    app.get('/search', function*() {
+exports.routes = function(route) {
+    route.get('/search', function*() {
 
         if (_.isUndefined(this.query.q)) {
             this.body =

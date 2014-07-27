@@ -7,9 +7,9 @@ var _ = require('underscore'),
     log = new Log('info')
 
 // API's streaming JSON for Backone view
-exports.routes = function(app) {
+exports.routes = function(route) {
 
-    app.get('/api/athlete/:uid', function*(next) {
+    route.get('/api/athlete/:uid', function*(next) {
 
         var athlete =
             yield new Athlete({
@@ -25,7 +25,7 @@ exports.routes = function(app) {
         }
     })
 
-    app.put('/api/athlete/:uid', function*(next) {
+    route.put('/api/athlete/:uid', function*(next) {
 
         var data =
             yield parse(this)
@@ -40,7 +40,7 @@ exports.routes = function(app) {
         }
     })
 
-    app.delete('/api/athleteRace/:id', function*(next) {
+    route.delete('/api/athleteRace/:id', function*(next) {
 
         console.log("Delete athlete race id ==>" + this.params.id)
 

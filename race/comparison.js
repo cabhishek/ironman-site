@@ -66,9 +66,9 @@ function _adjustedPercentile(athleteRaceResult, athleteAgeGroupRaceFinishers) {
 
 }
 
-exports.routes = function(app) {
+exports.routes = function(route) {
 
-    app.get('/compare', function*() {
+    route.get('/compare', function*() {
         if (_.isUndefined(this.query.athlete_id)) {
 
             this.body =

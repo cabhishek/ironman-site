@@ -48,7 +48,7 @@ exports.init = function() {
     passport.use(new FacebookStrategy({
         clientID: 603335306450490,
         clientSecret: '75c245c512210a6a71b35739fb5fbb64',
-        callbackURL: "http://datathletics.com/auth/facebook/callback"
+        callbackURL: "http://www.example.com/auth/facebook/callback"
       },
       function(accessToken, refreshToken, profile, done) {
         console.log(profile)
