@@ -2,7 +2,6 @@ var _ = require('underscore'),
     Athlete = require('./../models/athlete'),
     AthleteRace = require('./../models/athleteRace'),
     persisAthleteRace = require('./../data/persistAthleteRace'),
-    parse = require('co-body'),
     Log = require('log'),
     log = new Log('info')
 
@@ -27,8 +26,9 @@ exports.routes = function(route) {
 
     route.put('/api/athlete/:uid', function*(next) {
 
-        var data =
-            yield parse(this)
+        var data = this.request.body
+
+        log.info("Saving data for athlete =>" + data.id)
 
         var status =
             yield persisAthleteRace(data)
@@ -36,13 +36,13 @@ exports.routes = function(route) {
         console.log("Persistance Status ==>" + status.sucess)
 
         this.body = {
-            sucess: status
+            'sucess': status
         }
     })
 
     route.delete('/api/athleteRace/:id', function*(next) {
 
-        console.log("Delete athlete race id ==>" + this.params.id)
+        log.info("Delete athlete race id ==>" + this.params.id)
 
         var athleteRace =
             yield new AthleteRace({
