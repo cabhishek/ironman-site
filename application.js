@@ -43,12 +43,34 @@ if (!config.isProduction) {
     }))
 }
 
-var public = new Router()
+var publicRoute = new Router()
 
-require('./auth/routes')(public)
+require('./auth/routes')(publicRoute)
+require('./race/routes').loadPublicRoutes(publicRoute)
 
-//Load public routes
-app.use(public.middleware())
+//Index Page
+publicRoute.get('/', function* index() {
+    this.redirect('/landing')
+})
+
+
+publicRoute.get('/landing', function* index() {
+    this.body =
+        yield render('landing', {
+            title: 'landing'
+        })
+})
+
+publicRoute.get('/qualifier*', function* index() {
+
+    this.redirect('/landing')
+
+    this.body = 'Redirecting to landing page'
+})
+
+
+//Load publicRoute routes
+app.use(publicRoute.middleware())
 
 //Middleware Auth check
 app.use(function*(next) {
@@ -59,31 +81,12 @@ app.use(function*(next) {
     }
 })
 
-var secured = new Router()
-
-//Empty home page
-secured.get('/', function* index() {
-    this.redirect('/landing')
-})
-
-secured.get('/landing', function* index() {
-    this.body =
-        yield render('landing', {
-            title: 'landing'
-        })
-})
-
-secured.get('/qualifier*', function* index() {
-
-    this.redirect('/landing')
-
-    this.body = 'Redirecting to landing page'
-})
+var securedRoute = new Router()
 
 //Load secure web routes
-require('./race/routes')(secured)
+require('./race/routes').loadSecuredRoutes(securedRoute)
 
-app.use(secured.middleware())
+app.use(securedRoute.middleware())
 
 console.log('Done loading routes')
 

@@ -1,6 +1,9 @@
-exports = module.exports = function(app) {
-    require('./claim').routes(app)
-    require('./comparison').routes(app)
-    require('./search').routes(app)
-    require('./api').routes(app)
+exports.loadPublicRoutes = function(publicRouter) {
+    require('./claim').routes(publicRouter)
+    require('./search').routes(publicRouter)
+    require('./api').routes(publicRouter)
+}
+
+exports.loadSecuredRoutes = function(securedRouter) {
+    require('./comparison').routes(securedRouter)
 }
