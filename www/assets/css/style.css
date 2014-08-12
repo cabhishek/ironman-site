@@ -1,0 +1,217 @@
+body {
+	max-width: 2000px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+#header {
+	height :100px;
+	width: 80%;
+	float:left;
+	padding: 0 10%;
+}
+
+#logo {
+	float: left;
+	padding: 33px 0 0 60px;
+	color: #C83527;
+}
+
+.menu.right{
+	float:right;
+}
+
+.menu ul {
+	list-style: none;
+	margin: 0;
+}
+
+.menu ul li{
+	float: left;
+	position: relative;
+	/*text-transform: uppercase;*/
+	height: 100px;
+	padding: 0 10px;
+}
+
+.menu ul li:hover{
+	background-color: #C83527;
+}
+
+.menu ul li a{
+	display: block;
+	padding: 33px 0 0;
+	color: #C83527;
+	text-decoration: none;
+}
+
+.menu ul li a:hover, .menu ul li:hover a{
+	color: #fff;
+}
+
+#banner {
+	clear:both;
+	height: 1230px;
+	background: url(https://mdn.mozillademos.org/files/6457/mdn_logo_only_color.png) no-repeat;
+}
+
+#raceform {
+	width: 560px;
+	height: 845px;
+	float: right;
+	margin: 385px 140px 0 0;
+	background: #fff;
+	opacity: 0.9;
+	border-top: 20px solid #C83527;
+	padding: 0 0 0 40px;
+}
+
+#raceform h3 {
+	color: #C83527;
+	font-weight: bold;
+	margin: 40px 0;
+}
+
+#raceform p {
+	color: #585959;
+}
+
+#raceform #lines {
+	display: block;
+	border-top: 1px solid #C83527;
+	border-bottom: 1px solid #C83527;
+	height: 5px;
+	width: 93%;
+	margin: 40px 0;
+}
+
+#raceform h4 {
+	display: block;
+	background-color: #C83527;
+	color: #fff;
+	padding: 10px;
+	width: 345px;
+	margin: 40px 0;
+}
+
+#raceform #rf_email{
+	width: 360px;
+	height: 25px;
+	border: 1px solid #C83527;
+}
+
+#raceform #rf_submit {
+	background-color: #BBBBBB;
+	color: #fff;
+	text-transform: uppercase;
+	height: 28px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#about-content{
+	padding: 0 250px;
+	color: #137182;
+}
+
+#about h3 {
+	margin: 60px 0;
+}
+
+#ab-content2 h3 {
+	margin: 0;
+}
+
+#about img {
+	float: left;
+	padding-right: 25px
+}
+
+#ab-content1, #ab-content2{
+	clear: both;
+	overflow:auto;
+}
+
+#ab-content1 {
+	margin-bottom: 80px;
+}
+
+#ab-content2 {
+	padding: 80px 0;
+	border-top: 10px double #137182;
+}
+
+#about-banner {
+	clear: both;
+	height: 900px;
+	/*background: url(about1.png) no-repeat;*/
+	padding: 50px 200px 0;
+	color: #fff;
+	margin: 0;
+}
+
+#about-banner p {
+	width: 75%;
+}
+
+#contact, #contact-logo, #contact-form {
+	float: left;
+}
+
+#contact {
+	width: 100%;
+	color: #BBBBBB;
+}
+
+#contact-logo, #contact-form {
+	width: 50%;
+}
+
+#contact h3{
+	padding: 60px 0 0;
+	color: #C83527;
+	margin: 0;
+}
+
+#contact label {
+	vertical-align: top;
+	display: inline-block;
+	width: 100px;
+}
+
+#contact .field {
+	margin: 40px 0;
+}
+
+#c_name, #c_email {
+	height: 25px;
+	width: 360px;
+}
+
+#c_msg {
+	padding: 0;
+	margin: 0;
+}
+
+#footer {
+	clear: both;
+	width: 100%;
+	height: 100px;
+	background-color: #C83527;
+}
+
+.menu.left{
+	float:left;
+}
+
+#footer .menu ul li:hover{
+	background-color: #fff;
+}
+
+#footer .menu ul li a{
+	color: #fff;
+}
+
+#footer .menu ul li a:hover, #footer .menu ul li:hover a{
+	color: #C83527;
+}

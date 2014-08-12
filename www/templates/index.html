@@ -1,24 +1,101 @@
 <!DOCTYPE html>
 
 <html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Datathletics</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <head>
-    <link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Duru+Sans|Belgrano|Muli|Alef|Telex|Varela&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
     <title>Datathletics</title>
 </head>
 
 <body>
-
-    <div id="CTA">
-        <p class="tagline">Become a
-            <span class="emphasis">smarter</span>triathlete.</p>
-        <p class="intro">Place higher in your age group. Learn where to race, and when. Improve your chances of qualifying for Kona or 70.3 World Championships.</p>
+    <div id="wrapper">
+        <div id="header">
+            <div id="logo">
+                DATATHLETICS
+            </div>
+            <div class="menu right">
+                <ul>
+                    <li><a href="#">ANALYSIS</a>
+                    </li>
+                    <li><a href="#">ABOUT</a>
+                    </li>
+                    <li><a href="#">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="banner">
+            <div id="raceform">
+                <h3>DATASCIENCE + ATHLETICS</h3>
+                <p>Discover what affects you as an athlete</p>
+                <p>Compare with competitors</p>
+                <p>Turn knowledge into advantages</p>
+                <span id="lines"></span>
+                <h4>GET YOUR RACE ANALYSIS</h4>
+                <form>
+                    <input type="text" id="rf_email" placeholder="firstname+lastname" />
+                    <input type="submit" id="rf_submit" value="Search">
+                </form>
+            </div>
+        </div>
+        <div id="about">
+            <div id="about-content">
+                <div id="ab-content1">
+                    <h3>SCIENTIFIC ADVANTAGE</h3>
+                    <img src="images/about1.png">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+                </div>
+                <div id="ab-content2">
+                    <img src="images/about2.png">
+                    <h3>OUR ANALYSIS</h3>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+                </div>
+            </div>
+            <div id="about-banner">
+                <h3>ABOUT US</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+            </div>
+        </div>
+        <div id="contact">
+            <div id="contact-logo">
+                <h3>LOGO
+                    <h3>
+            </div>
+            <div id="contact-form">
+                <h3>CONTACT</h3>
+                <div class="field">
+                    <label for="c_name">Name</label>
+                    <input type="text" id="c_name" />
+                </div>
+                <div class="field">
+                    <label for="c_email">Email</label>
+                    <input type="text" id="c_email" />
+                </div>
+                <div class="field">
+                    <label for="c_msg">Message</label>
+                    <textarea rows="10" cols="49" id="c_msg"></textarea>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="menu left">
+                <ul>
+                    <li><a href="#">Privacy Policy</a>
+                    </li>
+                    <li><a href="#">Other Link</a>
+                    </li>
+                    <li><a href="#">Blah</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <form action="/landing">
-        <button>Dive In</button>
-    </form>
 </body>
 
 </html>
