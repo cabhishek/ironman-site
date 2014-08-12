@@ -51,7 +51,10 @@ require('./race/routes').loadPublicRoutes(publicRoute)
 
 //Index Page
 publicRoute.get('/', function* index() {
-    this.redirect('/landing')
+    this.body =
+        yield render('index', {
+            title: 'index'
+        })
 })
 
 
