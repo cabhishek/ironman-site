@@ -12,7 +12,7 @@ exports.routes = function(route) {
     })
 
     route.post('/login', passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/compare',
         failureRedirect: '/login'
     }))
 

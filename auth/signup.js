@@ -32,7 +32,7 @@ exports.routes = function(route) {
         }).save()
 
         yield passport.authenticate('local', {
-              successRedirect: '/',
+              successRedirect: '/compare',
               failureRedirect: '/login'
         })
     })

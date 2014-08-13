@@ -29,17 +29,13 @@ exports.init = function() {
 
             console.log("Inside LocalStrategy")
 
-            console.log(username)
-            console.log(password)
-
             //Passport JS works well with usernames
+            //SO THIS IS A HACK TO BE CLEANED IN FUTURE
             var user =
                 yield new User({
                     'email': username,
                     'password': password
                 }).fetch();
-
-            console.log(user)
 
             if (user) {
                 if (username === user.get('email') && password === user.get('password')) {
