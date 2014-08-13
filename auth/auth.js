@@ -32,7 +32,7 @@ exports.routes = function(route) {
 
     route.get('/logout', function*(next) {
         this.logout()
-        this.redirect('/out')
+        this.redirect('/login')
     })
 
     route.get('/auth/facebook', passport.authenticate('facebook'));
