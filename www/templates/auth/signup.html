@@ -1,0 +1,67 @@
+{% extends '../layout.html' %} {% block content %}
+
+<h2>{{greetings}}</h2>
+
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
+<form action="/signup" id="registration-form" role="form" method="POST">
+
+    <div class="form-group">
+        <label>
+            <span>First name</span>
+            <input type="text" name="first_name" autocomplete="first-name" value="" required="" autofocus="">
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label>
+            <span>Last name</span>
+            <input type="text" name="last_name" autocomplete="last-name" value="" required="">
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label>
+            <span>Email</span>
+            <input type="email" name="username" autocomplete="email" value="" required="">
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label>
+            <span>Password</span>
+            <input type="password" name="password" required="">
+        </label>
+    </div>
+
+    <button id="customButton">Signup</button>
+
+    <a href="/login">Or <strong>sign in</strong> to your account.</a>
+    <script>
+      var handler = StripeCheckout.configure({
+          key: 'pk_test_4Zyapezg1w1gapFAiGEhQdtU',
+          image: '/square-image.png',
+          token: function(token) {
+              var form$ = $("#registration-form");
+
+              form$.append("<input type='hidden' name='stripeToken' value='" + JSON.stringify(token) + "' />");
+
+              form$.get(0).submit();
+          }
+      });
+
+      document.getElementById('customButton').addEventListener('click', function(e) {
+          handler.open({
+              name: 'Datathletics',
+              description: 'Post Race Analysis ($20.00)',
+              amount: 2000
+          });
+          e.preventDefault();
+      });
+    </script>
+
+</form>
+
+
+{% endblock %}

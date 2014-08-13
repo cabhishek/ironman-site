@@ -1,4 +1,5 @@
-
-exports = module.exports = function(app) {
-    require('./auth').routes(app)
+exports.loadPublicRoutes = function(publicRouter) {
+   require('./auth').routes(publicRouter)
+   require('./signup').routes(publicRouter)
 }
+

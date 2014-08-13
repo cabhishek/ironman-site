@@ -45,7 +45,8 @@ if (!config.isProduction) {
 
 var publicRoute = new Router()
 
-require('./auth/routes')(publicRoute)
+// All public web routes start below
+require('./auth/routes').loadPublicRoutes(publicRoute)
 require('./race/routes').loadPublicRoutes(publicRoute)
 
 //Index Page
@@ -69,7 +70,7 @@ publicRoute.get('/qualifier*', function* index() {
 })
 
 
-//Load publicRoute routes
+//Mount Public web routes
 app.use(publicRoute.middleware())
 
 //Middleware Auth check
@@ -83,7 +84,7 @@ app.use(function*(next) {
 
 var securedRoute = new Router()
 
-//Load secure web routes
+//All secure web routes
 require('./race/routes').loadSecuredRoutes(securedRoute)
 
 app.use(securedRoute.middleware())
