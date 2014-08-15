@@ -73,7 +73,7 @@ h3 {
     background: url(../images/banner.png) no-repeat;
 }
 #raceform {
-    width: 560px;
+    width: 510px;
     height: 495px;
     float: right;
     margin: 185px 140px 0 0;
@@ -125,13 +125,13 @@ h3 {
     padding: 0 250px;
     color: #137182;
 }
-#about h3 {
+#analysis h3 {
     margin: 30px 0;
 }
 #ab-content2 h3 {
     margin: 0;
 }
-#about img {
+#analysis img {
     float: left;
     padding-right: 25px
 }
@@ -146,7 +146,7 @@ h3 {
     padding: 40px 0;
     border-top: 10px double #137182;
 }
-#about-banner {
+#about {
     clear: both;
     height: 400px;
     background: #F8F8F8;
@@ -154,13 +154,13 @@ h3 {
     color: #137182;
     margin: 0;
 }
-#about-banner p {
+#about p {
     width: 100%;
 }
 #contact, #contact-logo, #contact-form {
     float: left;
 }
-#products {
+#pricing {
     width: 600px;
     color: #BBBBBB;
     text-align: center;
@@ -171,8 +171,9 @@ h3 {
     padding: 0 50px 30px;
     color: #585959;
     width: 200px;
+    height: 400;
 }
-#products h3 {
+#pricing h3 {
     color: #C83527;
 }
 .plan ul, .plan ol {
