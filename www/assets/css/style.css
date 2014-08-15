@@ -95,6 +95,7 @@ h3{
 	opacity: 0.9;
 	border-top: 20px solid #C83527;
 	padding: 0 0 0 40px;
+
 }
 
 #raceform h3 {
@@ -132,12 +133,14 @@ h3{
 }
 
 #raceform #rf_submit {
-	background-color: #BBBBBB;
+	background-color: #137182;
 	color: #fff;
 	text-transform: uppercase;
 	height: 28px;
 	font-size: 14px;
 	font-weight: bold;
+	border-radius: 5px;
+	border: none;
 }
 
 #about-content{
