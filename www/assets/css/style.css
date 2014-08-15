@@ -27,6 +27,8 @@ h3 {
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
 }
+
+/* Heading menu */
 .menu.right {
     float: right;
 }
@@ -37,7 +39,7 @@ h3 {
 .menu ul li {
     float: left;
     position: relative;
-    /*text-transform: uppercase;*/
+    text-transform: uppercase;
     height: 70px;
     padding: 0 10px;
 }
@@ -59,7 +61,9 @@ h3 {
     height: 52px;
     margin: 0 5px;
 }
-.button span {
+/*Login sign up button*/
+
+.menu ul li span a {
     font-size: 16px;
     color: #fff;
     background: #137182;
