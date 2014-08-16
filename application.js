@@ -59,15 +59,12 @@ publicRoute.get('/', function* index() {
 
 
 publicRoute.get('/landing', function* index() {
-    this.body =
-        yield render('landing', {
-            title: 'landing'
-        })
+    this.redirect('/')
 })
 
 publicRoute.get('/qualifier*', function* index() {
 
-    this.redirect('/landing')
+    this.redirect('/')
 
     this.body = 'Redirecting to landing page'
 })

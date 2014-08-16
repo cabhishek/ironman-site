@@ -1,116 +1,63 @@
-<!DOCTYPE html>
+{% extends 'layout.html' %} {% block content %}
 
-<html>
-<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Datathletics</title>
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<head>
-    <link type="text/css" rel="stylesheet" href="css/style.css" />
-    <title>Datathletics</title>
-</head>
-
-<body>
-    <div id="wrapper">
-        <div id="header">
-            <div id="logo" class="heading">
-                <i class="fa fa-bar-chart-o"></i>
-                DATATHLETICS
-            </div>
-            <div id="main-menu" class="menu right heading">
-                <ul>
-                    <li data-menuanchor="analysis"><a href="#analysis">ANALYSIS</a>
-                    </li>
-                    <li data-menuanchor="pricing"><a href="#pricing">PRICING</a>
-                        <li data-menuanchor="about"><a href="#about">ABOUT</a>
-                        </li>
-                        <li class="button">
-                            <span><a href="/login">Login</a></span>
-                        </li>
-                        <li class="button">
-                            <span><a href="/signup">Signup</a></span>
-                        </li>
-
-                </ul>
-            </div>
+<div id="banner">
+    <div id="raceform">
+        <h3>DATASCIENCE + ATHLETICS</h3>
+        <p>Discover what affects you as an athlete</p>
+        <p>Compare with competitors</p>
+        <p>Turn knowledge into advantages</p>
+        <span id="lines"></span>
+        <h4>GET YOUR RACE ANALYSIS</h4>
+        <form>
+            <input type="text" id="rf_email" placeholder="firstname+lastname" />
+            <input type="submit" id="rf_submit" value="Search">
+        </form>
+    </div>
+</div>
+<div id="analysis">
+    <div id="about-content" class="section">
+        <div id="ab-content1">
+            <h3>OUR ANALYSIS</h3>
+            <img src="images/about1.png">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
         </div>
-        <div id="banner">
-            <div id="raceform">
-                <h3>DATASCIENCE + ATHLETICS</h3>
-                <p>Discover what affects you as an athlete</p>
-                <p>Compare with competitors</p>
-                <p>Turn knowledge into advantages</p>
-                <span id="lines"></span>
-                <h4>GET YOUR RACE ANALYSIS</h4>
-                <form>
-                    <input type="text" id="rf_email" placeholder="firstname+lastname" />
-                    <input type="submit" id="rf_submit" value="Search">
-                </form>
-            </div>
-        </div>
-        <div id="analysis">
-            <div id="about-content" class="section">
-                <div id="ab-content1">
-                    <h3>SCIENTIFIC ADVANTAGE</h3>
-                    <img src="images/about1.png">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
-                </div>
-                <div id="ab-content2">
-                    <img src="images/about2.png">
-                    <h3>OUR ANALYSIS</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
-                </div>
-            </div>
-            <div id="about" class="section">
-                <h3>ABOUT US</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
-            </div>
-        </div>
-        <div id="pricing" class="section">
-            <h3>SIMPLE PRICING</h3>
-            <div class="plan">
-                <h3>Some Plan</h3>
-                <ul>
-                    <ol>+ blah blah</ol>
-                    <ol>+ blah blah</ol>
-                    <ol>+ blah blah</ol>
-                </ul>
-                <span class="price">$15.00</span>
-                <button>Buy</button>
-            </div>
-            <div class="plan">
-                <h3>Some Plan 2</h3>
-                <ul>
-                    <ol>+ blah blah</ol>
-                    <ol>+ blah blah</ol>
-                    <ol>+ blah blah</ol>
-                </ul>
-                <span class="price">$15.00</span>
-                <button>Buy</button>
-            </div>
-        </div>
-        <div id="footer">
-            <div class="menu left">
-                <ul>
-                    <li><a href="#">PRIVACY POLICY</a>
-                    </li>
-                    <li><a href="#">TERMS OF USE</a>
-                    </li>
-                    <li><a href="#">CONTACT</a>
-                    </li>
-                </ul>
-            </div>
+        <div id="ab-content2">
+            <img src="images/about2.png">
+            <h3>SCIENTIFIC ADVANTAGE</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
         </div>
     </div>
-</body>
+    <div id="about" class="section">
+        <h3>ABOUT US</h3>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+    </div>
+</div>
+<div id="pricing" class="section">
+    <h3>SIMPLE PRICING</h3>
+    <div class="plan">
+        <h3>Some Plan</h3>
+        <ul>
+            <ol>+ blah blah</ol>
+            <ol>+ blah blah</ol>
+            <ol>+ blah blah</ol>
+        </ul>
+        <span class="price">$15.00</span>
+        <button>Buy</button>
+    </div>
+    <div class="plan">
+        <h3>Some Plan 2</h3>
+        <ul>
+            <ol>+ blah blah</ol>
+            <ol>+ blah blah</ol>
+            <ol>+ blah blah</ol>
+        </ul>
+        <span class="price">$15.00</span>
+        <button>Buy</button>
+    </div>
+</div>
 
-</html>
+{% endblock %}

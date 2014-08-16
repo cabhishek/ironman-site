@@ -1,0 +1,22 @@
+.form{
+    width: 100%;
+    color: #137182;
+    height: 636px;
+    padding: 100px 300px;
+}
+
+.form button {
+    background-color: #137182;
+    color: #fff;
+    text-transform: uppercase;
+    height: 28px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    width: 80px;
+}
+
+.form strong {
+    padding: 0 10px;
+}

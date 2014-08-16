@@ -15,39 +15,91 @@
 
 
     <!-- start Mixpanel -->
-        <script type="text/javascript">
-            (function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
+    <script type="text/javascript">
+    (function(e, b) {
+        if (!b.__SV) {
+            var a, f, i, g;
+            window.mixpanel = b;
+            b._i = [];
+            b.init = function(a, e, d) {
+                function f(b, h) {
+                    var a = h.split(".");
+                    2 == a.length && (b = b[a[0]], h = a[1]);
+                    b[h] = function() {
+                        b.push([h].concat(Array.prototype.slice.call(arguments, 0)))
+                    }
+                }
+                var c = b;
+                "undefined" !== typeof d ? c = b[d] = [] : d = "mixpanel";
+                c.people = c.people || [];
+                c.toString = function(b) {
+                    var a = "mixpanel";
+                    "mixpanel" !== d && (a += "." + d);
+                    b || (a += " (stub)");
+                    return a
+                };
+                c.people.toString = function() {
+                    return c.toString(1) + ".people (stub)"
+                };
+                i = "disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
 
-            for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+                for (g = 0; g < i.length; g++) f(c, i[g]);
+                b._i.push([a, e, d])
+            };
+            b.__SV = 1.2;
+            a = e.createElement("script");
+            a.type = "text/javascript";
+            a.async = !0;
+            a.src = ("https:" === e.location.protocol ? "https:" : "http:") + '//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';
+            f = e.getElementsByTagName("script")[0];
+            f.parentNode.insertBefore(a, f)
+        }
+    })(document, window.mixpanel || []);
 
-            mixpanel.init("ec76954e75b9e44d0ece589ded502bc0");
-        </script>
+    mixpanel.init("ec76954e75b9e44d0ece589ded502bc0");
+    </script>
     <!-- end Mixpanel -->
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     {% block head %}
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/bootstrap.css" />
-    <link rel="stylesheet" href="/css/base.css" />
-    <link href='http://fonts.googleapis.com/css?family=Duru+Sans|Belgrano|Muli|Alef|Telex|Varela&subset=latin,latin-ext' rel='stylesheet' type='text/css'>{% endblock %} {% block custom_css %} {% endblock %}
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <title>Datathletics</title>
+
+    {% endblock %} {% block custom_css %} {% endblock %}
 </head>
 
 <body>
-    <div class="wrap">
-        <div class="site-header">
-            <div id="logo">
+    <div class="wrapper">
+        <div id="header">
+            <div id="logo" class="heading">
                 <i class="fa fa-bar-chart-o"></i>
-                <a href="/">DATATHLETICS</a>
+                DATATHLETICS
             </div>
-            <div id="topnav">
-                <ul>
-                    <li><a href="/landing#howitworks">Our Analysis</a>
-                    </li>
-                    <li><a href="/landing#whatwedo">What We Do</a>
-                    </li>
-                </ul>
-            </div>
+            {% block main-menu %}
+                <div id="main-menu" class="menu right heading">
+                    <ul>
+                        <li data-menuanchor="analysis"><a href="#analysis">ANALYSIS</a>
+                        </li>
+                        <li data-menuanchor="pricing"><a href="#pricing">PRICING</a>
+                            <li data-menuanchor="about"><a href="#about">ABOUT</a>
+                            </li>
+                            <li class="button">
+                                <span><a href="/login">Login</a>
+                                </span>
+                            </li>
+                            <li class="button">
+                                <span><a href="/signup">Signup</a>
+                                </span>
+                            </li>
+
+                    </ul>
+                </div>
+            {% endblock %}
         </div>
         <!--[if lt IE 7]>
                 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -58,40 +110,40 @@
     </div>
 
     {% block footer %}
-    <div class="footerContainer">
-        <ul>
-            <li><a href="/">Home</a>
-            </li>
-            <li>|</li>
-            <li><a href="/landing#whatwedo"> What We Do</a>
-            </li>
-            <li>|</li>
-            <li><a href="/landing#howitworks">Our Analysis</a>
-            </li>
-        </ul>
+    <div id="footer">
+        <div class="menu left">
+            <ul>
+                <li><a href="#">PRIVACY POLICY</a>
+                </li>
+                <li><a href="#">TERMS OF USE</a>
+                </li>
+                <li><a href="#">CONTACT</a>
+                </li>
+            </ul>
+        </div>
     </div>
     {% endblock %}
 
     <script type="text/javascript">
-        mixpanel.track("Landing page view");
+    mixpanel.track("Landing page view");
     </script>
 
     <script>
-        (function(i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-        ga('create', 'UA-49160228-1', 'datathletics.com');
-        ga('require', 'displayfeatures');
-        ga('send', 'pageview');
+    ga('create', 'UA-49160228-1', 'datathletics.com');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
     </script>
 </body>
 
