@@ -5,15 +5,17 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 18px;
 }
+
+/* Header menu */
 #header {
     height: 70px;
-    width: 80%;
+    width: 100%;
     float: left;
     padding: 0 10%;
 }
 #logo, #logo a, #logo a:visited, #logo a:hover {
     float: left;
-    padding: 20px 0 0 60px;
+    padding: 20px 170px 0 100px;
     color: #C83527;
     text-decoration: none;
 }
@@ -27,10 +29,8 @@ h3 {
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
 }
-
-/* Heading menu */
 .menu.right {
-    float: right;
+    padding: 0px 10px;
 }
 .menu ul {
     list-style: none;
@@ -61,8 +61,8 @@ h3 {
     height: 52px;
     margin: 0 5px;
 }
-/*Login sign up button*/
 
+/*Login sign up button*/
 .menu ul li span a {
     font-size: 16px;
     color: #fff;
@@ -78,9 +78,9 @@ h3 {
 }
 #raceform {
     width: 510px;
-    height: 495px;
+    height: 456px;
     float: right;
-    margin: 185px 140px 0 0;
+    margin: 244px 140px 0 0;
     background: #fff;
     opacity: 0.9;
     border-top: 20px solid #C83527;
@@ -164,7 +164,9 @@ h3 {
 #contact, #contact-logo, #contact-form {
     float: left;
 }
-#pricing {
+
+/* Pricing details */
+.pricing {
     width: 600px;
     color: #BBBBBB;
     text-align: center;
@@ -177,8 +179,13 @@ h3 {
     width: 200px;
     height: 400;
 }
-#pricing h3 {
+
+.pricing h2{
     color: #C83527;
+}
+
+.pricing h3 {
+    color: #137182;
 }
 .plan ul, .plan ol {
     margin: 0;

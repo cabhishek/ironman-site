@@ -52,7 +52,7 @@ require('./race/routes').loadPublicRoutes(publicRoute)
 //Index Page
 publicRoute.get('/', function* index() {
     this.body =
-        yield render('index', {
+        yield render('overview', {
             title: 'index'
         })
 })
