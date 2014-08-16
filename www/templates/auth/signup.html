@@ -1,67 +1,90 @@
-{% extends '../layout.html' %} {% block content %}
-
-<h2>{{greetings}}</h2>
+{% extends '../layout.html' %} {% block content %} {% block main-menu %}{% endblock %} {% block custom_css %}
+<link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
+<link type="text/css" rel="stylesheet" href="css/login.css" />{% endblock %}
 
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 <script src="https://checkout.stripe.com/checkout.js"></script>
 
-<form action="/signup" id="registration-form" role="form" method="POST">
+<div class="row signup-row">
+    <div class="col-md-6 signup-info">
+        <p>
+            You're signing up for the
+            <strong>Post-Race Analysis</strong>
+            plan at
+            <strong>$149.00</strong>.
+        </p>
+        <p>
 
-    <div class="form-group">
-        <label>
-            <span>First name</span>
-            <input type="text" name="first_name" autocomplete="first-name" value="" required="" autofocus="">
-        </label>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
+        </p>
+
+        <p>Any questions, call us on <a href="tel:+1.224.475.1226">+1.224.475.1226</a>, or email us at <a href="mailto:team@datathletics.com">team@datathletics.com</a>
+        </p>
     </div>
+    <div class="col-md-6 signup-form">
+        <form action="/signup" class="form-horizontal" method="POST">
 
-    <div class="form-group">
-        <label>
-            <span>Last name</span>
-            <input type="text" name="last_name" autocomplete="last-name" value="" required="">
-        </label>
+            <div class="form-group">
+                <div class="col-xs-5">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" name="first_name" autocomplete="first-name" required autofocus>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-5">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" name="last_name" autocomplete="last-name" required>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-5">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="username" autocomplete="email" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-5">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" required>
+                    </label>
+                </div>
+            </div>
+
+            <button id="customButton">Signup</button>
+
+            <a href="/login">
+                <strong>Or sign in to your account.</strong>
+            </a>
+
+            <script>
+            var handler = StripeCheckout.configure({
+                key: 'pk_test_4Zyapezg1w1gapFAiGEhQdtU',
+                image: '',
+                token: function(token) {
+                    var form$ = $("#registration-form");
+
+                    form$.append("<input type='hidden' name='stripeToken' value='" + JSON.stringify(token) + "' />");
+
+                    form$.get(0).submit();
+                }
+            });
+
+            document.getElementById('customButton').addEventListener('click', function(e) {
+                handler.open({
+                    name: 'Datathletics',
+                    description: 'Post Race Analysis ($20.00)',
+                    amount: 2000
+                });
+                e.preventDefault();
+            });
+            </script>
+
+        </form>
+
     </div>
-
-    <div class="form-group">
-        <label>
-            <span>Email</span>
-            <input type="email" name="username" autocomplete="email" value="" required="">
-        </label>
-    </div>
-
-    <div class="form-group">
-        <label>
-            <span>Password</span>
-            <input type="password" name="password" required="">
-        </label>
-    </div>
-
-    <button id="customButton">Signup</button>
-
-    <a href="/login">Or <strong>sign in</strong> to your account.</a>
-    <script>
-      var handler = StripeCheckout.configure({
-          key: 'pk_test_4Zyapezg1w1gapFAiGEhQdtU',
-          image: '/square-image.png',
-          token: function(token) {
-              var form$ = $("#registration-form");
-
-              form$.append("<input type='hidden' name='stripeToken' value='" + JSON.stringify(token) + "' />");
-
-              form$.get(0).submit();
-          }
-      });
-
-      document.getElementById('customButton').addEventListener('click', function(e) {
-          handler.open({
-              name: 'Datathletics',
-              description: 'Post Race Analysis ($20.00)',
-              amount: 2000
-          });
-          e.preventDefault();
-      });
-    </script>
-
-</form>
-
-
+</div>
 {% endblock %}

@@ -1,15 +1,15 @@
-.form{
+/* Login form CSS */
+.login-form{
     width: 100%;
     color: #137182;
     height: 636px;
     padding: 100px 300px;
 }
 
-.form button {
+.login-form button {
     background-color: #137182;
     color: #fff;
-    text-transform: uppercase;
-    height: 28px;
+    height: 30px;
     font-size: 14px;
     font-weight: bold;
     border-radius: 5px;
@@ -17,6 +17,39 @@
     width: 80px;
 }
 
-.form strong {
+.login-form strong {
     padding: 0 10px;
+}
+
+.signup-row{
+    height: 636px;
+}
+
+.signup-form{
+    color: #137182;
+    width: 650px;
+    padding: 0px;
+}
+
+/* Sign up form CSS */
+.signup-form button{
+    background-color: #137182;
+    color: #fff;
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    width: 80px;
+}
+
+.signup-row {
+    padding: 130px 2px;
+}
+
+
+.signup-info {
+    padding: 10px 100px;
+    width: 600px;
+    font-size: 19px;
 }

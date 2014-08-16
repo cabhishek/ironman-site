@@ -3,20 +3,21 @@
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
 <link type="text/css" rel="stylesheet" href="css/login.css" />{% endblock %}
 
-<div class="form">
+<div class="login-form">
 
     <h2>Sign in to your account</h2>
-
+    </br>
     <form action="/login" class="form-horizontal" method="post">
         <div class="form-group">
             <div class="col-xs-5">
-                <input type="text" class="form-control" placeholder="Email" name="username" />
+                <input type="text" class="form-control" placeholder="Email" name="username" autofocus required />
             </div>
         </div class="form-group">
 
         <div class="form-group">
             <div class="col-xs-5">
-                <input type="password" class="form-control" placeholder="Password" name="password" />
+                <input type="password" class="form-control" placeholder="Password" name="password" required />
+
             </div>
         </div class="form-group">
 
