@@ -124,9 +124,10 @@ h3 {
     font-weight: bold;
     border-radius: 5px;
     border: none;
+    padding: 5px 12px 10px 11px;
 }
 #about-content {
-    padding: 0 250px;
+    padding: 20px 250px;
     color: #137182;
 }
 #analysis h3 {
@@ -152,11 +153,12 @@ h3 {
 }
 #about {
     clear: both;
-    height: 400px;
+    height: 480px;
     background: #F8F8F8;
     padding: 10px 200px 0;
     color: #137182;
     margin: 0;
+    padding: 20px 250px;
 }
 #about p {
     width: 100%;
@@ -167,17 +169,19 @@ h3 {
 
 /* Pricing details */
 .pricing {
-    width: 600px;
+    width: 1000px;
     color: #BBBBBB;
     text-align: center;
     margin: 0 auto;
+    height: 200px;
+    padding: 20px 100px;
 }
 .plan {
     float: left;
-    padding: 0 50px 30px;
+    padding: 0 54px 40px;
     color: #585959;
-    width: 200px;
-    height: 400;
+    width: 400px;
+    height: 500px;
 }
 
 .pricing h2{
@@ -197,12 +201,13 @@ h3 {
     font-weight: bold;
 }
 .plan button {
-    background: #C83527;
+    background: #137182;
     color: #fff;
     padding: 10px;
     border-radius: 5px;
     border: none;
     font-size: 20px;
+    width: 100px;
 }
 #footer {
     clear: both;
