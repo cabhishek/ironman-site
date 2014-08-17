@@ -1,0 +1,61 @@
+{% extends 'layout.html' %} {% block content %}
+
+<div id="banner">
+    <div id="raceform">
+        <h3>DATASCIENCE + ATHLETICS</h3>
+        <p>Discover what affects you as an athlete</p>
+        <p>Compare with competitors</p>
+        <p>Turn knowledge into advantages</p>
+        <span id="lines"></span>
+        <h4>GET YOUR RACE ANALYSIS</h4>
+        <form>
+            <input type="text" id="rf_email" placeholder="firstname+lastname" />
+            <input type="submit" id="rf_submit" value="Search">
+        </form>
+    </div>
+</div>
+<div id="analysis">
+    <div id="about-content" class="section">
+        <div id="ab-content1">
+            <h3>OUR ANALYSIS</h3>
+            <img src="images/about1.png">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+        </div>
+        <div id="ab-content2">
+            <img src="images/about2.png">
+            <h3>SCIENTIFIC ADVANTAGE</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+        </div>
+    </div>
+    <div id="about" class="section">
+        <h3>ABOUT US</h3>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+    </div>
+</div>
+<div id="pricing-details" class="pricing">
+    <h3 class="our-plan">OUR PLANS</h3>
+
+    <div class="plan">
+        <h3>Bike Race Plan</h3>
+            <li>Precise power targets for each course segment</li>
+            <li>Hyper-personalized to your equipment and ability</li>
+            <li>Stream instructions to your Garmin during race</li>
+        <span class="price">$15.00</span>
+        <button>Buy</button>
+    </div>
+
+    <div class="plan">
+        <h3>Post Race Analysis</h3>
+            <li>Personal evaluation using rigorous data science techniques</li>
+            <li>Benchmark your performance apples-to-apples with other results</li>
+            <li>Mesure progress and identify specific skills for improvement</li>
+        <span class="price">$149.95</span>
+        <button>Buy</button>
+    </div>
+</div>
+
+{% endblock %}
