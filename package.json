@@ -26,6 +26,7 @@
     "bookshelf": "~0.6.8",
     "browserify": "~3.32.1",
     "browserify-shim": "~3.4.0",
+    "clean-css": "^2.2.13",
     "co": "~3.0.5",
     "co-body": "0.0.1",
     "co-views": "~0.2.0",
