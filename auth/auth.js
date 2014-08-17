@@ -4,35 +4,36 @@ var User = require('./../models/user'),
 
 exports.routes = function(route) {
 
-    route.get('/login', function* index() {
+    route.get('/login', function * index() {
+
         this.body =
             yield render('auth/login', {
-                greetings: "Hello User"
+                'loginFail': this.request.query.status == 'fail' ? true : false
             });
     })
 
     route.post('/login', passport.authenticate('local', {
         successRedirect: '/compare',
-        failureRedirect: '/login'
+        failureRedirect: '/login?status=fail'
     }))
 
-    route.get('/fail', function* index() {
-        this.body =
-            yield {
-                'status': 'fail'
-            }
-    })
-
-    route.get('/out', function* index() {
+    route.get('/out', function * index() {
         this.body =
             yield {
                 'loggged in status': this.isAuthenticated()
-            }
+        }
     })
 
-    route.get('/logout', function*(next) {
+    route.get('/logout', function * (next) {
         this.logout()
         this.redirect('/login')
+    })
+
+
+    route.get('/forgot', function * index() {
+
+        this.body =
+            yield render('auth/forgot');
     })
 
     route.get('/auth/facebook', passport.authenticate('facebook'));

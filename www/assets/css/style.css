@@ -200,14 +200,17 @@ h3 {
     padding: 10px 0;
     font-weight: bold;
 }
-.plan button {
+.buy a {
     background: #137182;
     color: #fff;
     padding: 10px;
     border-radius: 5px;
-    border: none;
+    border: 0px;
     font-size: 20px;
     width: 100px;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
 }
 #footer {
     clear: both;

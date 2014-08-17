@@ -57,3 +57,23 @@
     width: 600px;
     font-size: 19px;
 }
+
+/*Forgot password form*/
+
+.forgot-form{
+    width: 100%;
+    color: #137182;
+    height: 636px;
+    padding: 100px 300px;
+}
+
+.forgot-form button {
+    background-color: #137182;
+    color: #fff;
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    width: 175px;
+}

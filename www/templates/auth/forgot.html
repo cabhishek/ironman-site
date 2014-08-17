@@ -1,0 +1,25 @@
+{% extends '../layout.html' %} {% block content %} {% block main-menu %}{% endblock %} {% block custom_css %}
+<link type="text/css" rel="stylesheet" href="css/auth.css" />{% endblock %}
+
+<div class="forgot-form">
+
+    <h1>Forgot your password?</h1>
+    </br>
+    <h5>No worries, just enter your email below.</h5>
+    </br>
+
+    <form action="/forgot" class="form-horizontal" method="post">
+
+        <div class="form-group">
+            <div class="col-xs-5">
+                <input type="text" class="form-control" placeholder="Email" name="username" autofocus required />
+            </div>
+        </div class="form-group">
+
+        <button type="submit">Reset my password</button>
+    </form>
+
+</div>
+
+{% endblock %}
+div>

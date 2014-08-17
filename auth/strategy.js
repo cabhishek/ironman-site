@@ -33,12 +33,11 @@ exports.init = function() {
             //SO THIS IS A HACK TO BE CLEANED IN FUTURE
             var user =
                 yield new User({
-                    'email': username,
-                    'password': password
+                    'email': username
                 }).fetch();
 
             if (user) {
-                if (username === user.get('email') && password === user.get('password')) {
+                if (user.isValid(username, password)) {
                     done(null, user)
                 } else {
                     done(null, false)
