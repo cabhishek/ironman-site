@@ -1,26 +1,22 @@
 var User = require('./../models/user'),
     render = require('./../lib/render'),
     Subscription = require('./../models/subscription'),
-    passport = require('./strategy').init(),
-    bcrypt = require('bcrypt')
+    plans = require('./../data/plans'),
+    bcrypt = require('bcrypt'),
+    passport = require('./strategy').init()
 
 exports.routes = function(route) {
 
     route.get('/signup', function * () {
 
-        var query = this.request.query,
-            price = 0,
-            planName = ''
+        var plan = plans[this.request.query.plan_id || "149_post_race"]
 
-        if (query && query.plan == "149_post_race") {
-            price = 149
-            planName = "Post-Race Analysis"
-        }
+        this.session.plan = plan
 
         this.body =
             yield render('auth/signup', {
-                'planName': planName,
-                'price': price
+                'planName': plan.name,
+                'price': plan.price
             });
     })
 
@@ -35,6 +31,7 @@ exports.routes = function(route) {
             'email': formData.username,
             'first_name': formData.first_name,
             'last_name': formData.last_name,
+            'zipcode': formData.zipcode,
             'password': passwordHash
         }).save()
 

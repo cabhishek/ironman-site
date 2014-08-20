@@ -17,7 +17,7 @@ exports.routes = function(route) {
         failureRedirect: '/login?status=fail'
     }))
 
-    route.get('/out', function * index() {
+    route.get('/status', function * index() {
         this.body =
             yield {
                 'loggged in status': this.isAuthenticated()
@@ -28,7 +28,6 @@ exports.routes = function(route) {
         this.logout()
         this.redirect('/login')
     })
-
 
     route.get('/forgot', function * index() {
 
@@ -43,5 +42,4 @@ exports.routes = function(route) {
             successRedirect: '/',
             failureRedirect: '/login'
         }));
-
 }

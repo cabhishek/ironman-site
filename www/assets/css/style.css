@@ -173,19 +173,20 @@ h3 {
     color: #BBBBBB;
     text-align: center;
     margin: 0 auto;
-    height: 200px;
-    padding: 20px 100px;
+    height: 220px;
+    padding: 10px 100px;
 }
 .plan {
     float: left;
     padding: 0 54px 40px;
     color: #585959;
     width: 400px;
-    height: 500px;
+    height: 540px;
 }
 
 .pricing h3{
     color: #C83527;
+    padding: 14px 10px;
 }
 
 .plan h3 {
@@ -199,6 +200,7 @@ h3 {
     display: block;
     padding: 10px 0;
     font-weight: bold;
+    font-size: 42px;
 }
 .buy a {
     background: #137182;
@@ -212,6 +214,13 @@ h3 {
     cursor: pointer;
     text-decoration: none;
 }
+
+.plan-checklist{
+    text-align: -webkit-center;
+    padding: 5px 10px 10px 10px;
+}
+
+/* Footer details*/
 #footer {
     clear: both;
     width: 100%;
