@@ -13,6 +13,7 @@ var db = require('./lib/dbInitialize'),
 
 var app = koa()
 
+console.log('Assets dir =>' + config.staticDir)
 console.log('Connecting to DB =>' + config.db.connection.host)
 console.log('Env isProduction =>' + config.isProduction)
 
@@ -56,7 +57,6 @@ publicRoute.get('/', function* index() {
             title: 'index'
         })
 })
-
 
 publicRoute.get('/landing', function* index() {
     this.redirect('/')

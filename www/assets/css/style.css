@@ -1,9 +1,9 @@
-@import url('/css/components/header.css');
-@import url('/css/components/menu.css');
-@import url('/css/components/raceform.css');
-@import url('/css/components/plans.css');
-@import url('/css/components/about.css');
-@import url('/css/components/footer.css');
-@import url('/css/auth.css');
-@import url('/css/main.css');
+@import url('./main.css');
+@import url('./components/header.css');
+@import url('./components/menu.css');
+@import url('./components/raceform.css');
+@import url('./components/plans.css');
+@import url('./components/about.css');
+@import url('./components/footer.css');
+@import url('./auth.css');
 

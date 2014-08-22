@@ -44,6 +44,7 @@
     "koa-static-cache": "~1.0.9",
     "log": "~1.4.0",
     "mysql": "~2.1.1",
+    "myth": "^1.1.1",
     "passport": "~0.2.0",
     "passport-facebook": "^1.0.3",
     "passport-local": "~1.0.0",

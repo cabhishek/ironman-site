@@ -5,3 +5,4 @@ temp.*
 www/asssets/bundle
 *Bundle.*
 *bundle.*
+www/build/*

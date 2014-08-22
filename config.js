@@ -1,8 +1,7 @@
 var path = require('path'),
-    settings = require('./settings')
-    projectRoot = path.resolve(settings.PROJECT_DIR)
+    settings = require('./settings'),
+    projectRoot = path.resolve(settings.PROJECT_DIR),
     isProduction = process.env.NODE_ENV === "production"
-
 
 console.log("NODE_ENV =>" + process.env.NODE_ENV)
 
@@ -22,7 +21,7 @@ var localDB = {
 }
 
 //Swig + Consolidate ulginess
-var templateOptions = (function() {
+var templateOptions = function() {
     if (isProduction) {
         return {
             map: {
@@ -39,27 +38,38 @@ var templateOptions = (function() {
             cache: false
         }
     }
-})()
+}()
 
-//Base
+var staticDir = function() {
+    var assetsDir = "/www/assets"
+
+    if (isProduction) {
+        // All minifed, gzipped assets are build
+        assetsDir = "www/build"
+    }
+
+    return path.resolve(projectRoot + assetsDir)
+}()
+
+var dbString = function() {
+    return isProduction ? liveDB : localDB
+}()
+
+//Base configs for Site
 var config = {
     env: process.env.NODE_ENV || 'development',
     port: process.env.PORT || 3000,
-    staticDir: path.resolve(projectRoot + "/www/assets"),
+    staticDir: staticDir,
     templateDir: path.resolve(projectRoot + "/www/templates"),
     templateOptions: templateOptions,
     browserifyDebug: !isProduction,
     isProduction: isProduction,
     projectRoot: projectRoot,
     title: "Data Athletics",
-    sessionKey: ['datathletics-is-awesome']
-}
-
-//DB
-config.db = {
-    'connection': (function() {
-        return isProduction ? liveDB : localDB
-    })()
+    sessionKey: ['datathletics-is-awesome'],
+    db: {
+        'connection': dbString
+    }
 }
 
 module.exports = config
