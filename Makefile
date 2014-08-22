@@ -10,12 +10,22 @@ BUILD_SUBDIR := $(BUILD_DIR)/css $(BUILD_DIR)/css/vendor
 # Main Datathletics CSS file
 SITE_CSS := /css/style.css
 
+# All static content linking go here
+LAYOUT_HTML := ./www/templates/layout.html
+
 # Vendor files
 VENDOR_CSS := /css/vendor/bootstrap.css
+
+TIMSTAMP := $$(date +'%Y%m%d%H%M%S')
+
+CACHE_BUSTER := $(subst %,$(TIMSTAMP),?v=%)
 
 all:build
 
 build:
+
+	@sed -i '' "s/$(subst /,\/,${SITE_CSS})/$(subst /,\/,${SITE_CSS})${CACHE_BUSTER}/g" $(LAYOUT_HTML)
+
 	@echo "Build started ...."
 	@echo "NODE_ENV =>" $(NODE_ENV)
 
@@ -24,8 +34,8 @@ build:
 
 	@cp -r $(ASSETS)/images $(BUILD_DIR)/images
 
-	@myth -c $(ASSETS)/$(SITE_CSS) > $(BUILD_DIR)/$(SITE_CSS)
-	@myth -c $(ASSETS)/$(VENDOR_CSS) > $(BUILD_DIR)/$(VENDOR_CSS)
+	@myth -c $(ASSETS)/$(SITE_CSS) > $(BUILD_DIR)$(SITE_CSS)$(CACHE_BUSTER)
+	@myth -c $(ASSETS)/$(VENDOR_CSS) > $(BUILD_DIR)$(VENDOR_CSS)$(CACHE_BUSTER)
 
 	@echo "Done bundling and compressing CSS ...."
 
