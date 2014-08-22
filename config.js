@@ -44,8 +44,9 @@ var staticDir = function() {
     var assetsDir = "/www/assets"
 
     if (isProduction) {
-        // All minifed, gzipped assets are build
-        assetsDir = "www/build"
+        // All minifed, compressed and gzipped assets are packaged
+        // and stored in build folder. Structure mimics /assets
+        assetsDir = "/www/build"
     }
 
     return path.resolve(projectRoot + assetsDir)

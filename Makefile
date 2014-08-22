@@ -31,6 +31,7 @@ build:
 	@echo "Build finished successfully...."
 
 print-vars:
+	@echo $(BUILD_DIR)
 	@echo $(BUILD_SUBDIR)
 
 clean:
