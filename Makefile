@@ -17,7 +17,7 @@ all:build
 
 build:
 	@echo "Build started ...."
-	@echo $(NODE_ENV)
+	@echo "NODE_ENV =>" $(NODE_ENV)
 
 	@rm -rf $(BUILD_DIR) && mkdir $(BUILD_DIR) && mkdir $(BUILD_SUBDIR)
 	@echo "Removed old CSS folder ...."
