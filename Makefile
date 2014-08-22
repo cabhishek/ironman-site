@@ -26,6 +26,7 @@ build:
 
 	@echo "http://www.example.com/index.html" | sed 's_com/index_org/home_'
 
+	sed -i '' "s/$(subst /,\/,${SITE_CSS})/$(subst /,\/,${SITE_CSS})${CACHE_BUSTER}/g" $(LAYOUT_HTML)
 
 	@echo "Done adding cache buster ...."
 
