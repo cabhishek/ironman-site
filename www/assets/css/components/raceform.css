@@ -1,0 +1,50 @@
+#raceform {
+    width: 510px;
+    height: 456px;
+    float: right;
+    margin: 244px 140px 0 0;
+    background: #fff;
+    opacity: 0.9;
+    border-top: 20px solid #C83527;
+    padding: 0 0 0 40px;
+}
+#raceform h3 {
+    color: #C83527;
+    font-weight: bold;
+    margin: 40px 0;
+}
+#raceform p {
+    color: #585959;
+}
+#raceform #lines {
+    display: block;
+    border-top: 1px solid #C83527;
+    border-bottom: 1px solid #C83527;
+    height: 5px;
+    width: 93%;
+    margin: 40px 0;
+}
+#raceform h4 {
+    display: block;
+    background-color: #C83527;
+    color: #fff;
+    padding: 10px;
+    width: 345px;
+    margin: 40px 0;
+}
+#raceform #rf_email {
+    width: 360px;
+    height: 25px;
+    border: 1px solid #C83527;
+}
+#raceform #rf_submit {
+    background-color: #137182;
+    color: #fff;
+    text-transform: uppercase;
+    height: 28px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 12px 10px 11px;
+}

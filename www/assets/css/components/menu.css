@@ -1,0 +1,40 @@
+.menu.right {
+    padding: 0px 10px;
+}
+.menu ul {
+    list-style: none;
+    margin: 0;
+}
+.menu ul li {
+    float: left;
+    position: relative;
+    text-transform: uppercase;
+    height: 70px;
+    padding: 0 10px;
+}
+.menu ul li:hover {
+    background-color: #C83527;
+}
+.menu ul li a {
+    display: block;
+    padding: 20px 0 0;
+    color: #C83527;
+    text-decoration: none;
+}
+.menu ul li a:hover, .menu ul li:hover a {
+    color: #fff;
+}
+.menu .button, menu li.button:hover {
+    background-color: #fff !important;
+    padding: 18px 0 0;
+    height: 52px;
+    margin: 0 5px;
+}
+.menu ul li span a {
+    font-size: 16px;
+    color: #fff;
+    background: #137182;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 5px;
+}

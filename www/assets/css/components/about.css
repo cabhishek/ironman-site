@@ -1,0 +1,37 @@
+#about-content {
+    padding: 20px 250px;
+    color: #137182;
+}
+#analysis h3 {
+    margin: 30px 0;
+}
+#ab-content2 h3 {
+    margin: 0;
+}
+#analysis img {
+    float: left;
+    padding-right: 25px
+}
+#ab-content1, #ab-content2 {
+    clear: both;
+    overflow: auto;
+}
+#ab-content1 {
+    margin-bottom: 80px;
+}
+#ab-content2 {
+    padding: 40px 0;
+    border-top: 10px double #137182;
+}
+#about {
+    clear: both;
+    height: 480px;
+    background: #F8F8F8;
+    padding: 10px 200px 0;
+    color: #137182;
+    margin: 0;
+    padding: 20px 250px;
+}
+#about p {
+    width: 100%;
+}
