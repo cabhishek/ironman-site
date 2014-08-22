@@ -34,7 +34,7 @@
     color: #137182;
     text-align: center;
     margin: 0 auto;
-    height: 660px;
+    height: 700px;
     padding: 9px 100px;
 }
 
@@ -83,4 +83,18 @@
 
 .panel-body .active {
     background-color: #F8F8F8;
+}
+
+i.fa.fa-check{
+    float: left;
+    margin: 10px 10px;
+}
+
+.panel-body td{
+    text-align: left;
+}
+
+.panel-body .table div{
+    padding-left: 40px;
+
 }
