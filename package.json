@@ -1,12 +1,13 @@
 {
   "name": "datathletics-site",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Data Athletics Web Site",
-  "main": "index.js",
+  "main": "application.js",
   "keywords": [
     "ironman",
     "athletics",
-    "triathlon"
+    "triathlon",
+    "data science"
   ],
   "scripts": {
     "up": "DEBUG_COLORS=true nodemon --harmony application.js",
