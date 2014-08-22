@@ -4,23 +4,6 @@
 @import url('/css/components/plans.css');
 @import url('/css/components/about.css');
 @import url('/css/components/footer.css');
- body {
-    max-width: 2000px;
-    width: 100%;
-    margin: 0 auto;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 18px;
-}
-h3 {
-    font-size: 28px;
-    font-weight: bold;
-    font-family: 'Roboto', sans-serif;
-}
-.banner {
-    clear: both;
-    height: 700px;
-    background: url(../images/banner.png) no-repeat;
-}
-#contact, #contact-logo, #contact-form {
-    float: left;
-}
+@import url('/css/auth.css');
+@import url('/css/main.css');
+
