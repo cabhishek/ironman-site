@@ -1,12 +1,14 @@
-body {
-	max-width: 2000px;
-	width: 100%;
-	margin: 0 auto;
-	font-family: 'Open Sans',sans-serif;
-	font-size: 18px;
-}
+@import url('/css/plans.css');
 
+body {
+    max-width: 2000px;
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+}
 /* Header menu */
+
 #header {
     height: 70px;
     width: 100%;
@@ -61,8 +63,8 @@ h3 {
     height: 52px;
     margin: 0 5px;
 }
-
 /*Login sign up button*/
+
 .menu ul li span a {
     font-size: 16px;
     color: #fff;
@@ -71,7 +73,7 @@ h3 {
     display: inline-block;
     padding: 5px;
 }
-#banner {
+.banner {
     clear: both;
     height: 700px;
     background: url(../images/banner.png) no-repeat;
@@ -167,60 +169,8 @@ h3 {
     float: left;
 }
 
-/* Pricing details */
-.pricing {
-    width: 1000px;
-    color: #BBBBBB;
-    text-align: center;
-    margin: 0 auto;
-    height: 220px;
-    padding: 10px 100px;
-}
-.plan {
-    float: left;
-    padding: 0 54px 40px;
-    color: #585959;
-    width: 400px;
-    height: 540px;
-}
-
-.pricing h3{
-    color: #C83527;
-    padding: 14px 10px;
-}
-
-.plan h3 {
-    color: #137182;
-}
-.plan ul, .plan ol {
-    margin: 0;
-    padding: 0;
-}
-.price {
-    display: block;
-    padding: 10px 0;
-    font-weight: bold;
-    font-size: 42px;
-}
-.buy a {
-    background: #137182;
-    color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    border: 0px;
-    font-size: 20px;
-    width: 100px;
-    display: inline-block;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.plan-checklist{
-    text-align: -webkit-center;
-    padding: 5px 10px 10px 10px;
-}
-
 /* Footer details*/
+
 #footer {
     clear: both;
     width: 100%;

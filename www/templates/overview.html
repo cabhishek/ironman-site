@@ -1,6 +1,6 @@
 {% extends 'layout.html' %} {% block content %}
 
-<div id="banner">
+<div class="banner">
     <div id="raceform">
         <h3>DATASCIENCE + ATHLETICS</h3>
         <p>Discover what affects you as an athlete</p>
@@ -36,41 +36,7 @@
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
     </div>
 </div>
-<div id="pricing-details" class="pricing">
-    <h3 class="our-plan">OUR PLANS</h3>
 
-    <div class="plan">
-        <h3>Bike Race Plan</h3>
-        <div class="plan-checklist">
-        <li>Precise power targets for each course segment</li>
-        </div>
-        <div class="plan-checklist">
-        <li>Hyper-personalized to your equipment and ability</li>
-        </div>
-        <div class="plan-checklist">
-        <li>Stream instructions to your Garmin during race</li>
-        </div>
-        <span class="price">$15.00</span>
-        <span class="buy"><a href="/signup">Buy</a>
-        </span>
-    </div>
-
-    <div class="plan">
-
-        <h3>Post Race Analysis</h3>
-        <div class="plan-checklist">
-            <li> Personal evaluation using rigorous  data science techniques</li>
-        </div>
-        <div class="plan-checklist">
-            <li>Benchmark your performance apples-to-apples with other results</li>
-            </div>
-            <li>Mesure progress and identify specific skills for improvement</li>
-
-
-        <span class="price">$149.95</span>
-        <span class="buy"><a href="/signup?plan_id=149_post_race">Buy</a>
-        </span>
-    </div>
-</div>
+{% include "_plans.html" %}
 
 {% endblock %}

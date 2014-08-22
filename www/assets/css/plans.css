@@ -1,0 +1,86 @@
+.panel
+{
+    text-align: center;
+}
+.panel:hover { box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4), 0 1px 5px rgba(130, 130, 130, 0.35); }
+.panel-body
+{
+    padding: 0px;
+    text-align: center;
+}
+
+.the-price
+{
+    background-color: #F8F8F8;
+    box-shadow: 0 1px 0 #dcdcdc, inset 0 1px 0 #fff;
+    padding: 20px;
+    margin: 0;
+}
+
+.the-price h1
+{
+    line-height: 1em;
+    padding: 0;
+    margin: 0;
+}
+
+.subscript
+{
+    font-size: 25px;
+}
+
+.pricing {
+    width: 1000px;
+    color: #137182;
+    text-align: center;
+    margin: 0 auto;
+    height: 660px;
+    padding: 9px 100px;
+}
+
+.pricing h3 {
+    padding: 14px 10px;
+}
+
+.panel-primary > .panel-heading{
+    background-color: #C83527;
+}
+
+.panel-primary {
+    border-color: #C83527;
+}
+
+.panel-success > .panel-heading{
+    background-color: #C83527;
+}
+
+.panel-success {
+    border-color: #C83527;
+}
+
+.panel-heading .panel-title {
+    color: #fff;
+}
+
+.pricing .container {
+    width: 1000px;
+    padding: 20px 0px 10px 100px;
+}
+
+.panel-footer .btn-success {
+    background-color: #137182;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    border: 0px;
+    font-size: 20px;
+    width: 100px;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.panel-body .active {
+    background-color: #F8F8F8;
+}
