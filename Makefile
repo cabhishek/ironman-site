@@ -24,7 +24,7 @@ all:build
 
 build:
 
-	@sed -i '' "s/style.css/style.css${CACHE_BUSTER}/g" $(LAYOUT_HTML)
+	@sed -i '' 's/style.css/style.css${CACHE_BUSTER}/g' $(LAYOUT_HTML)
 
 
 	@echo "Done adding cache buster ...."
