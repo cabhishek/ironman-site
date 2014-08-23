@@ -45,7 +45,6 @@ if (!config.isProduction) {
     log.info("Caching static contents")
 
     app.use(staticCache(config.staticDir, {
-        maxAge: 365 * 24 * 60 * 60,
         gzip: true
     }))
 }
