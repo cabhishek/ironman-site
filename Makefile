@@ -24,14 +24,6 @@ all:build
 
 build:
 
-	@echo "http://www.example.com/index.html" | sed 's_com/index_org/home_'
-	@echo which $SHELL
-	@echo which sed
-
-	sed -i '' "s/$(subst /,\/,${SITE_CSS})/$(subst /,\/,${SITE_CSS})${CACHE_BUSTER}/g" $(LAYOUT_HTML)
-
-	@echo "Done adding cache buster ...."
-
 	@echo "Build started ...."
 	@echo "NODE_ENV =>" $(NODE_ENV)
 
@@ -40,8 +32,8 @@ build:
 
 	@cp -r $(ASSETS)/images $(BUILD_DIR)/images
 
-	@myth -c $(ASSETS)/$(SITE_CSS) > $(BUILD_DIR)$(SITE_CSS)$(CACHE_BUSTER)
-	@myth -c $(ASSETS)/$(VENDOR_CSS) > $(BUILD_DIR)$(VENDOR_CSS)$(CACHE_BUSTER)
+	@myth -c $(ASSETS)/$(SITE_CSS) > $(BUILD_DIR)$(SITE_CSS)
+	@myth -c $(ASSETS)/$(VENDOR_CSS) > $(BUILD_DIR)$(VENDOR_CSS)
 
 	@echo "Done bundling and compressing CSS ...."
 
