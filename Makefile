@@ -1,50 +1,51 @@
 export PATH  := node_modules/.bin:$(PATH)
 
 # Root path to asset files
-ASSETS := www/assets
+assets_dir := www/assets
 
-# Root path for assets files after build
-BUILD_DIR := www/build
-BUILD_SUBDIR := $(BUILD_DIR)/css $(BUILD_DIR)/css/vendor
+# Root path for assets_dir files after build
+build_dir := www/build
+build_sub_dir := $(build_dir)/css $(build_dir)/css/vendor
 
 # Main Datathletics CSS file
-SITE_CSS := /css/style.css
+site_css := /css/style.css
 
-# All static content linking go here
-LAYOUT_HTML := ./www/templates/layout.html
 
 # Vendor files
-VENDOR_CSS := /css/vendor/bootstrap.css
+vendor_css := /css/vendor/bootstrap.css
 
 TIMSTAMP := $$(date +'%Y%m%d%H%M%S')
 
-CACHE_BUSTER := $(subst %,$(TIMSTAMP),?v=%)
+cache_buster := $(subst %,$(TIMSTAMP),?v=%)
 
 all:build
 
 build:
 
-	@echo "Build started ...."
-	@echo "NODE_ENV =>" $(NODE_ENV)
+	@echo ">>> Build started ...."
+	@echo ">>> NODE_ENV =>" $(NODE_ENV)
 
-	@rm -rf $(BUILD_DIR) && mkdir $(BUILD_DIR) && mkdir $(BUILD_SUBDIR)
-	@echo "Removed old CSS folder ...."
+	@rm -rf $(build_dir) && mkdir $(build_dir) && mkdir $(build_sub_dir)
+	@echo ">>> Removed old CSS folder ...."
 
-	@cp -r $(ASSETS)/images $(BUILD_DIR)/images
+	@cp -r $(assets_dir)/images $(build_dir)/images
+	@echo ">>> Copied images ...."
 
-	@myth -c $(ASSETS)/$(SITE_CSS) > $(BUILD_DIR)$(SITE_CSS)
-	@myth -c $(ASSETS)/$(VENDOR_CSS) > $(BUILD_DIR)$(VENDOR_CSS)
+	@cp -r $(assets_dir)/js $(build_dir)/js
+	@echo ">>> Copied JS files"
 
-	@echo "Done bundling and compressing CSS ...."
+	@myth -c $(assets_dir)/$(site_css) > $(build_dir)$(site_css)
+	@myth -c $(assets_dir)/$(vendor_css) > $(build_dir)$(vendor_css)
+	@echo ">>> Done bundling and compressing CSS ...."
 
-	@echo "Build finished successfully...."
+	@echo ">>> Build finished successfully...."
 
 print-vars:
-	@echo $(BUILD_DIR)
-	@echo $(BUILD_SUBDIR)
+	@echo $(build_dir)
+	@echo $(build_sub_dir)
 
 clean:
-	@rm -rf $(BUILD_DIR)
-	@echo "Removed build files ...."
+	@rm -rf $(build_dir)
+	@echo ">>> Removed build files ...."
 
 .PHONY: all build print-vars
