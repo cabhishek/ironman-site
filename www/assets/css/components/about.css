@@ -10,7 +10,8 @@
 }
 #analysis img {
     float: left;
-    padding-right: 25px
+    padding-right: 25px;
+    display:inline-block;
 }
 #ab-content1, #ab-content2 {
     clear: both;
@@ -19,13 +20,19 @@
 #ab-content1 {
     margin-bottom: 80px;
 }
+#ab-content1-copy {
+    margin-left:225px;
+}
 #ab-content2 {
     padding: 40px 0;
     border-top: 10px double #137182;
 }
+#ab-content2-copy {
+    margin-left:300px;
+}
 #about {
     clear: both;
-    height: 480px;
+    height: 600px;
     background: #F8F8F8;
     padding: 10px 200px 0;
     color: #137182;

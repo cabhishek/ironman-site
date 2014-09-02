@@ -33,12 +33,12 @@
     margin: 40px 0;
 }
 #raceform #rf_email {
-    width: 360px;
+    width: 345px;
     height: 25px;
     border: 1px solid #C83527;
 }
 #raceform #rf_submit {
-    background-color: #137182;
+/*  background-color: #137182;
     color: #fff;
     text-transform: uppercase;
     height: 28px;
@@ -47,4 +47,13 @@
     border-radius: 5px;
     border: none;
     padding: 5px 12px 10px 11px;
+*/
+    display: block;
+    background-color: #C83527;
+    border:none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px;
+    width: 345px;
+    margin: 20px 0;
 }
