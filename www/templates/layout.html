@@ -13,7 +13,6 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
     <!-- start Mixpanel -->
     <script type="text/javascript">
     (function(e, b) {
@@ -66,10 +65,17 @@
 
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="/css/vendor/bootstrap.css" />
-    <link type="text/css" rel="stylesheet" href="/css/style.css" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/vendor/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+
+    <script src="js/vendor/bind-polyfill.min.js"></script>
+    <script src="js/vendor/smooth-scroll.min.js"></script>
+
+    <script>
+        smoothScroll.init()
+    </script>
+
     <title>Datathletics</title>
 
     {% endblock %} {% block custom_css %} {% endblock %}
@@ -85,24 +91,28 @@
                 </div>
             </a>
             {% block main-menu %}
-                <div class="menu right heading">
-                    <ul>
-                        <li data-menuanchor="analysis"><a href="#analysis">ANALYSIS</a>
-                        </li>
-                        <li data-menuanchor="pricing"><a href="#pricing-details">PRICING</a>
-                            <li data-menuanchor="about"><a href="#about">ABOUT</a>
-                            </li>
-                            <li class="button">
-                                <span><a href="/login">Login</a>
-                                </span>
-                            </li>
-                            <li class="button">
-                                <span><a href="#pricing-details">Signup</a>
-                                </span>
-                            </li>
+            <div class="menu right heading">
+                <ul>
+                    <li><a data-scroll href="#analysis">ANALYSIS</a>
+                    </li>
 
-                    </ul>
-                </div>
+                    <li><a data-scroll href="#pricing-details">PRICING</a>
+                    </li>
+
+                    <li><a data-scroll href="#about">ABOUT</a>
+                    </li>
+
+                    <li class="button">
+                        <span><a href="/login">Login</a>
+                        </span>
+                    </li>
+
+                    <li class="button">
+                        <span><a href="#pricing-details">Signup</a>
+                        </span>
+                    </li>
+                </ul>
+            </div>
             {% endblock %}
         </div>
         <!--[if lt IE 7]>
