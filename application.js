@@ -1,17 +1,17 @@
-var db = require('./lib/dbInitialize'),
-    logger = require('koa-logger'),
-    Router = require('koa-router'),
-    serve = require('koa-static'),
+var db          = require('./lib/dbInitialize'),
+    logger      = require('koa-logger'),
+    Router      = require('koa-router'),
+    serve       = require('koa-static'),
     staticCache = require('koa-static-cache'),
-    render = require('./lib/render'),
-    swig = require('swig'),
-    koa = require('koa'),
-    config = require('./config'),
-    bodyParser = require('koa-bodyparser'),
-    passport = require('koa-passport'),
-    session = require('koa-session'),
-    Log = require('log'),
-    log = new Log('info')
+    render      = require('./lib/render'),
+    swig        = require('swig'),
+    koa         = require('koa'),
+    config      = require('./config'),
+    bodyParser  = require('koa-bodyparser'),
+    passport    = require('koa-passport'),
+    session     = require('koa-session'),
+    Log         = require('log'),
+    log         = new Log('info')
 
 var app = koa()
 

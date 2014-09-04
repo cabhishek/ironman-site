@@ -1,5 +1,5 @@
 var Bookshelf = require('bookshelf').Mysql,
-    User = require('./user')
+    User      = require('./user')
 
 
 var Subscription = Bookshelf.Model.extend({

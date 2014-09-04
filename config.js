@@ -6,11 +6,11 @@ var path = require('path'),
 console.log("NODE_ENV =>" + process.env.NODE_ENV)
 
 var liveDB = {
-    host: 'datathletics-db-live.cc3tkob2sz1n.us-west-2.rds.amazonaws.com',
-    user: 'datathletics',
-    database: 'datathleticsdb',
-    password: 'F00lF00l!',
-    charset: 'utf8'
+    host     : 'datathletics-db-live.cc3tkob2sz1n.us-west-2.rds.amazonaws.com',
+    user     : 'datathletics',
+    database : 'datathleticsdb',
+    password : 'F00lF00l!',
+    charset  : 'utf8'
 }
 
 var localDB = {
@@ -58,18 +58,18 @@ var dbString = function() {
 
 //Base configs for Site
 var config = {
-    env: process.env.NODE_ENV || 'development',
-    port: process.env.PORT || 3000,
-    staticDir: staticDir,
-    templateDir: path.resolve(projectRoot + "/www/templates"),
-    templateOptions: templateOptions,
-    browserifyDebug: !isProduction,
-    isProduction: isProduction,
-    projectRoot: projectRoot,
-    title: "Data Athletics",
-    sessionKey: ['datathletics-is-awesome'],
-    db: {
-        'connection': dbString
+    env              : process.env.NODE_ENV || 'development',
+    port             : process.env.PORT || 3000,
+    staticDir        : staticDir,
+    templateDir      : path.resolve(projectRoot + "/www/templates"),
+    templateOptions  : templateOptions,
+    browserifyDebug  : !isProduction,
+    isProduction     : isProduction,
+    projectRoot      : projectRoot,
+    title            : "Data Athletics",
+    sessionKey       : ['datathletics-is-awesome'],
+    db               : {
+        'connection' : dbString
     }
 }
 

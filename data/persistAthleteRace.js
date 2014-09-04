@@ -1,9 +1,9 @@
 var AthleteRace = require('./../models/athleteRace'),
-    Athlete = require('./../models/athlete'),
-    Race = require('./../models/race'),
-    _ = require('underscore'),
-    Log = require('log'),
-    log = new Log('info')
+    Athlete     = require('./../models/athlete'),
+    Race        = require('./../models/race'),
+    _           = require('underscore'),
+    Log         = require('log'),
+	log         = new Log('info');
 
 module.exports = function* persistAthleteRace(data) {
 
@@ -16,9 +16,9 @@ module.exports = function* persistAthleteRace(data) {
 
         //E-cap
         yield athlete.save({
-            'first_name': data.first_name,
-            'last_name': data.last_name,
-            'email': data.email
+            'first_name' : data.first_name,
+            'last_name'  : data.last_name,
+            'email'      : data.email
         }, {
             patch: true
         })
@@ -37,7 +37,7 @@ function* _fetchAthlete(data) {
 
     var athlete =
         yield new Athlete({
-            'id': data.id
+            'id':  data.id
         }).fetch()
 
     return athlete
@@ -58,9 +58,9 @@ function* _createAthlete(data) {
 
     var athlete =
         yield Athlete.forge({
-            first_name: data.first_name,
-            last_name: data.last_name,
-            email: data.email
+            first_name : data.first_name,
+            last_name  : data.last_name,
+            email      : data.email
 
         }).save()
 
@@ -100,12 +100,12 @@ function* persist(race) {
 
         ironmanRace =
             yield Race.forge({
-                name: race.name,
-                year: race.year,
-                qualifier_id: qualifier.attributes.qualifier_id,
-                race_type: qualifier.attributes.race_type,
-                month: qualifier.attributes.month,
-                type: qualifier.attributes.race_type == 'Ironman' ? 0 : 1
+                name         : race.name,
+                year         : race.year,
+                qualifier_id : qualifier.attributes.qualifier_id,
+                race_type    : qualifier.attributes.race_type,
+                month        : qualifier.attributes.month,
+                type         : qualifier.attributes.race_type == 'Ironman' ? 0 : 1
             }).save()
     }
 

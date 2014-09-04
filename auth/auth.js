@@ -1,5 +1,5 @@
-var User = require('./../models/user'),
-    render = require('./../lib/render'),
+var User     = require('./../models/user'),
+    render   = require('./../lib/render'),
     passport = require('./strategy').init()
 
 exports.routes = function(route) {
@@ -13,8 +13,8 @@ exports.routes = function(route) {
     })
 
     route.post('/login', passport.authenticate('local', {
-        successRedirect: '/compare',
-        failureRedirect: '/login?status=fail'
+        successRedirect:  '/compare',
+        failureRedirect:  '/login?status=fail'
     }))
 
     route.get('/status', function * index() {
@@ -39,7 +39,7 @@ exports.routes = function(route) {
 
     route.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect: '/',
-            failureRedirect: '/login'
+            successRedirect:  '/',
+            failureRedirect:  '/login'
         }));
 }
