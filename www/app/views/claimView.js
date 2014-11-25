@@ -269,8 +269,6 @@ var ClaimView = Backbone.View.extend({
 
         if (this.model.isErrorFree()) {
 
-            alert("Saving model")
-
             this.model.save();
 
             Backbone.history.navigate('/confirmation', {
@@ -279,7 +277,6 @@ var ClaimView = Backbone.View.extend({
             });
 
         } else {
-            alert("Model is not valid")
             console.log("Not valid");
         }
     },

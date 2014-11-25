@@ -6,10 +6,10 @@ var path = require('path'),
 console.log("NODE_ENV =>" + process.env.NODE_ENV)
 
 var liveDB = {
-    host     : 'datathletics-db-live.cc3tkob2sz1n.us-west-2.rds.amazonaws.com',
+    host     : '',
     user     : 'datathletics',
     database : 'datathleticsdb',
-    password : 'F00lF00l!',
+    password : '',
     charset  : 'utf8'
 }
 
