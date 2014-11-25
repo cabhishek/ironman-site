@@ -1,6 +1,6 @@
-var Backbone = require('backbone'),
-    Athlete = require('./models/athlete'),
-    ClaimView = require("./views/claimView"),
+var Backbone         = require('backbone'),
+    Athlete          = require('./models/athlete'),
+    ClaimView        = require("./views/claimView"),
     ConfirmationView = require("./views/confirmationView");
 
 (function() {

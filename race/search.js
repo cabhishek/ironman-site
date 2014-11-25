@@ -1,8 +1,8 @@
-var _ = require('underscore'),
-    render = require('./../lib/render'),
+var _        = require('underscore'),
+    render   = require('./../lib/render'),
     Athletes = require('./../collections/athletes'),
-    Log = require('log'),
-    log = new Log('info')
+    Log      = require('log'),
+    log      = new Log('info')
 
 exports.routes = function(route) {
     route.get('/search', function*() {

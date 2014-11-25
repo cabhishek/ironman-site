@@ -1,12 +1,12 @@
-var _ = require('underscore'),
-    render = require('./../lib/render'),
-    Athlete = require('./../models/athlete'),
-    Race = require('./../models/race'),
-    AthleteRace = require('./../models/athleteRace'),
+var _            = require('underscore'),
+    render       = require('./../lib/render'),
+    Athlete      = require('./../models/athlete'),
+    Race         = require('./../models/race'),
+    AthleteRace  = require('./../models/athleteRace'),
     AthleteRaces = require('./../collections/athleteRaces'),
-    ageGroups = require('./../data/ageGroups'),
-    Log = require('log'),
-    log = new Log('info')
+    ageGroups    = require('./../data/ageGroups'),
+    Log          = require('log'),
+    log          = new Log('info')
 
 
 function* _fetchRace(raceId) {

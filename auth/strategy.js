@@ -1,8 +1,8 @@
-var co = require('co'),
-    passport = require('koa-passport'),
-    LocalStrategy = require('passport-local').Strategy,
+var co               = require('co'),
+    passport         = require('koa-passport'),
+    LocalStrategy    = require('passport-local').Strategy,
     FacebookStrategy = require('passport-facebook').Strategy,
-    User = require('./../models/user')
+    User             = require('./../models/user')
 
 exports.init = function() {
     passport.serializeUser(function(user, done) {

@@ -1,7 +1,7 @@
-var _ = require('underscore'),
+var _      = require('underscore'),
     render = require('./../lib/render'),
-    Log = require('log'),
-    log = new Log('info')
+    Log    = require('log'),
+    log    = new Log('info')
 
 exports.routes = function(route) {
 

@@ -1,10 +1,10 @@
-var $ = require('jquery'),
-    _ = require('underscore'),
-    Backbone = require('backbone'),
-    Validation = require('backbone-validation'),
-    Stickit = require('./../../assets/js/backbone.stickit.js'),
+var $           = require('jquery'),
+    _           = require('underscore'),
+    Backbone    = require('backbone'),
+    Validation  = require('backbone-validation'),
+    Stickit     = require('./../../assets/js/backbone.stickit.js'),
     AthleteRace = require('./../models/athleteRace'),
-    Races = require('./../races');
+    Races       = require('./../races');
 
 //JQuery dependancy
 Backbone.$ = $;
@@ -93,31 +93,31 @@ var RaceRow = Backbone.View.extend({
     },
 
     bindings: {
-        '#swim_time': '_pivot_swim_time',
-        '#run_time': '_pivot_run_time',
-        '#cycle_time': '_pivot_cycle_time',
-        '#final_time': '_pivot_final_time',
+        '#swim_time'  : '_pivot_swim_time',
+        '#run_time'   : '_pivot_run_time',
+        '#cycle_time' : '_pivot_cycle_time',
+        '#final_time' : '_pivot_final_time',
         'select#name': {
             observe: 'name',
             selectOptions: {
-                collection: 'this.races',
-                labelPath: 'name',
-                valuePath: 'name',
-                defaultOption: {
-                    label: 'Choose one...',
-                    value: null
+                collection    : 'this.races',
+                labelPath     : 'name',
+                valuePath     : 'name',
+                defaultOption : {
+                    label     : 'Choose one...',
+                    value     : null
                 }
             }
         },
         'select#year': {
             observe: 'year',
             selectOptions: {
-                collection: 'this.years',
-                labelPath: 'year',
-                valuePath: 'year',
-                defaultOption: {
-                    label: 'Choose one...',
-                    value: null
+                collection    : 'this.years',
+                labelPath     : 'year',
+                valuePath     : 'year',
+                defaultOption : {
+                    label     : 'Choose one...',
+                    value     : null
                 }
             }
         }
@@ -181,8 +181,8 @@ var ClaimView = Backbone.View.extend({
     el: "#container",
 
     events: {
-        'click #add': 'addNewRace',
-        'click #submit': 'submitForm'
+        'click #add'    : 'addNewRace',
+        'click #submit' : 'submitForm'
     },
 
     render: function() {
@@ -192,8 +192,6 @@ var ClaimView = Backbone.View.extend({
 
         //Counter to track unique races you add
         this.iterator = 10001;
-
-        window.model = this.model;
 
         if (this.model.isNewAthlete()) {
 

@@ -1,9 +1,9 @@
-var _ = require('underscore'),
-    Athlete = require('./../models/athlete'),
-    AthleteRace = require('./../models/athleteRace'),
+var _                 = require('underscore'),
+    Athlete           = require('./../models/athlete'),
+    AthleteRace       = require('./../models/athleteRace'),
     persisAthleteRace = require('./../data/persistAthleteRace'),
-    Log = require('log'),
-    log = new Log('info')
+    Log               = require('log'),
+    log               = new Log('info')
 
 // API's streaming JSON for Backone view
 exports.routes = function(route) {

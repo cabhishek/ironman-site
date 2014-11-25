@@ -1,5 +1,5 @@
-var $ = require('jquery'),
-    _ = require('underscore'),
+var $        = require('jquery'),
+    _        = require('underscore'),
     Backbone = require('backbone');
 
 var Confirmation = Backbone.View.extend({
