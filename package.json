@@ -1,7 +1,7 @@
 {
-  "name": "datathletics-site",
+  "name": "ironman-site",
   "version": "0.1.0",
-  "description": "Data Athletics Web Site",
+  "description": "Athletics Web Site",
   "main": "application.js",
   "keywords": [
     "ironman",
@@ -17,7 +17,7 @@
   "author": "Abhishek Kapatkar <cabhishek@gmail.com> (http://cabhishek.com/)",
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:cabhishek/datathletics-site.git"
+    "url": "git@github.com:cabhishek/ironman-site.git"
   },
   "dependencies": {
     "async": "~0.2.10",
@@ -57,5 +57,5 @@
   "engines": {
     "node": "0.11.x"
   },
-  "license": "BSD-2-Clause"
+  "license": "MIT"
 }

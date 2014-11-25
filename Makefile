@@ -40,6 +40,9 @@ build:
 
 	@echo ">>> Build finished successfully...."
 
+deploy:
+	git push heroku master
+
 print-vars:
 	@echo $(build_dir)
 	@echo $(build_sub_dir)
@@ -48,4 +51,4 @@ clean:
 	@rm -rf $(build_dir)
 	@echo ">>> Removed build files ...."
 
-.PHONY: all build print-vars
+.PHONY: all build deploy print-vars

@@ -1,4 +1,4 @@
-Data Athletics Web site
+Ironman race claim web site
 ===
 ### Make sure you have following dependancies setup correctly before ###
 
@@ -8,16 +8,13 @@ Data Athletics Web site
 
 
 ### Setup ###
-1. git clone git@bitbucket.org:datathletics/datathletics-site.git && datathletics-site
-1. npm install
-1. npm run up
+1. ```git clone git@github.com:cabhishek/ironman-site.git && ironman-site```
+1. ```npm install && npm run up```
 1. visit [http://localhost:3000]()
 
 ### Deploy [live] ###
 1. Install Heroku toolbelt [https://toolbelt.heroku.com/]()
-1. git push heroku master 
-
-##### (contact abhishek@datathletics.com incase any setup issues)
+1. ```make deploy```
 
 ### Tech stack ###
 1. NodeJS (Make sure to have ***0.11.x*** version)
