@@ -1,1 +1,1 @@
-require('./claimApp');
+require("./claimApp");

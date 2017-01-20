@@ -1,8 +1,6 @@
-var Bookshelf = require('bookshelf').Mysql,
-    AthleteRace = require('./../models/athleteRace')
+var Bookshelf = require("bookshelf").Mysql,
+  AthleteRace = require("./../models/athleteRace");
 
-var AthleteRaces = Bookshelf.Collection.extend({
-    model: AthleteRace
-})
+var AthleteRaces = Bookshelf.Collection.extend({ model: AthleteRace });
 
-module.exports = AthleteRaces
+module.exports = AthleteRaces;

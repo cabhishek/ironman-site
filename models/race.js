@@ -1,15 +1,12 @@
-var Bookshelf = require('bookshelf').Mysql,
-    AthleteRace = require('./athleteRace')
+var Bookshelf = require("bookshelf").Mysql,
+  AthleteRace = require("./athleteRace");
 
 var Race = Bookshelf.Model.extend({
-    tableName: 'races',
+  tableName: "races",
+  hasTimestamps: [ "created", "modified" ],
+  athleteRace: function() {
+    return this.hasMany(AthleteRace);
+  }
+});
 
-    hasTimestamps: ['created', 'modified'],
-
-    athleteRace: function(){
-        return this.hasMany(AthleteRace)
-    }
-
-})
-
-module.exports = Race
+module.exports = Race;
