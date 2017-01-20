@@ -1,3 +1,1 @@
-module.exports = {
-    PROJECT_DIR: __dirname
-};
+module.exports = { PROJECT_DIR: __dirname };
